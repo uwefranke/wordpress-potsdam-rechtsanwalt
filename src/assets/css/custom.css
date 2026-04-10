@@ -1,0 +1,76 @@
+/**
+ * Custom Styles - Zusätzliche Anpassungen
+ * 
+ * Diese Datei können Sie für eigene CSS-Anpassungen verwenden,
+ * ohne die Haupt-style.css zu bearbeiten.
+ */
+
+/* === Beispiel-Anpassungen === */
+
+/* Logo-Größe anpassen */
+/*
+.site-logo {
+    font-size: 28px;
+}
+*/
+
+/* Service-Karte Hintergrundfarbe ändern */
+/*
+.service-card {
+    background-color: #f9f9f9;
+}
+*/
+
+/* Header-Höhe anpassen */
+/*
+.site-header {
+    padding: 25px 0;
+}
+*/
+
+/* Hero-Bereich Höhe ändern */
+/*
+.hero-section {
+    height: 600px;
+}
+*/
+
+/* Schriftarten ändern */
+/*
+:root {
+    --font-primary: 'Open Sans', sans-serif;
+    --font-secondary: 'Lora', serif;
+}
+*/
+
+/* Button-Stil anpassen */
+/*
+.btn {
+    border-radius: 25px;
+    text-transform: none;
+}
+*/
+
+/* Sidebar-Breite anpassen */
+/*
+.wrapper {
+    grid-template-columns: 1fr 400px;
+}
+*/
+
+/* Footer-Hintergrundfarbe ändern */
+/*
+.site-footer {
+    background-color: #1a1a1a;
+}
+*/
+
+/* Service-Icon-Farbe ändern */
+/*
+.service-icon {
+    color: #c0a062;
+    border-color: #c0a062;
+}
+*/
+
+/* === Ihre eigenen Styles hier einfügen === */

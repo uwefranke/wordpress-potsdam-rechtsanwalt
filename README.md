@@ -1,142 +1,266 @@
-# Joomla Template: Potsdam Rechtsanwalt
+# Potsdam Rechtsanwalt - WordPress Theme
 
-Ein modernes, professionelles Joomla-Template für Rechtsanwaltskanzleien.
+Ein elegantes, professionelles WordPress-Theme für Rechtsanwaltskanzleien in Potsdam.
 
-## Features
-
-- ✅ **Bootstrap 5** aus Joomla (keine lokale Installation nötig)
-- ✅ **Bootstrap Icons** lokal integriert
-- ✅ **Responsive Design** - Mobile-First Ansatz
-- ✅ **Moderne Farbpalette** basierend auf potsdam-rechtsanwalt.de
-- ✅ **Professionelles Layout** für Rechtsanwälte optimiert
-- ✅ **Barrierefreiheit** (WCAG 2.1 konform)
-- ✅ **SEO-optimiert**
-
-## Farbschema
-
-### Primärfarben
-- **Primär**: `#003d6b` (Dunkles Blau)
-- **Primär Hell**: `#1a4d7a` (Helleres Blau)
-- **Sekundär**: `#b8860b` (Gold/Bronze)
-- **Akzent**: `#d4af37` (Helles Gold)
-
-### Anwendung
-- Header/Navigation: Blau-Gradient
-- Akzente/Hover: Gold
-- Text: Dunkelgrau
-- Hintergrund: Weiß/Hellgrau
-
-## Installation
-
-1. Laden Sie das Template herunter
-2. In Joomla: System → Templates → Installieren
-3. ZIP-Datei hochladen und installieren
-4. Als Standard-Template festlegen
-
-## Ordnerstruktur
+## 📁 Repository-Struktur
 
 ```
 potsdam-rechtsanwalt/
-├── css/
-│   ├── template.css
-│   └── bootstrap-icons.min.css
-├── fonts/
-│   ├── bootstrap-icons.woff
-│   └── bootstrap-icons.woff2
-├── js/
-│   └── template.js
-├── images/
-├── language/
-│   └── de-DE/
-│       ├── tpl_potsdam-rechtsanwalt.ini
-│       └── tpl_potsdam-rechtsanwalt.sys.ini
-├── index.php
-├── error.php
-└── templateDetails.xml
+│
+├── src/                         # Theme-Quellcode
+│   ├── style.css                # Theme-Stylesheet
+│   ├── functions.php            # Theme-Funktionen
+│   ├── index.php                # Haupt-Template
+│   ├── header.php               # Header-Template
+│   ├── footer.php               # Footer-Template
+│   ├── sidebar.php              # Sidebar-Template
+│   ├── *.php                    # Weitere Templates
+│   ├── assets/                  # CSS, JS, Bilder
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   └── inc/                     # Zusätzliche PHP-Funktionen
+│       ├── customizer.php
+│       └── template-tags.php
+│
+├── .github/                     # GitHub Actions Workflows
+│   └── workflows/
+│       ├── release.yml          # Automatisches Release
+│       └── build.yml            # Build & Test
+│
+├── README.md                    # Diese Datei
+├── INSTALLATION.md              # Installations-Anleitung
+├── CHANGELOG.md                 # Versions-Historie
+├── RELEASE.md                   # Release-Anleitung
+└── create-theme-package.ps1    # Lokales Build-Skript
 ```
 
-## Module-Positionen
+**Hinweis:** Alle Theme-Dateien befinden sich im `/src` Ordner. Die GitHub Workflows erstellen automatisch ein installationsfähiges ZIP-Paket daraus.
 
-- **header** - Kopfbereich (z.B. für Such-Modul)
-- **navigation** - Hauptnavigation
-- **banner** - Banner-Bereich unter der Navigation
-- **sidebar-left** - Linke Sidebar
-- **sidebar-right** - Rechte Sidebar
-- **main-content** - Hauptinhalt (automatisch)
-- **footer-top** - Oberer Footer-Bereich
-- **footer** - Unterer Footer-Bereich
-- **contact-info** - Kontaktinformationen im Footer
+## Features
 
-## Template-Parameter
+- **Modernes Design**: Klares, professionelles Layout mit zweispaltiger Struktur
+- **Responsive**: Vollständig responsive für alle Geräte (Desktop, Tablet, Mobile)
+- **Farbschema**: Elegantes Marineblau, Anthrazitgrau mit Gold/Beige-Akzenten
+- **Hero-Bereich**: Eindrucksvoller Hero mit Hintergrundbild und Call-to-Action
+- **Service-Grid**: 4 Rechtsdienstleistungsfelder mit Icons
+- **Kontaktformular**: Integriertes Kontaktformular in der Sidebar
+- **Customizer-Support**: Einfache Anpassung über WordPress Customizer
+- **SEO-freundlich**: Sauberer, semantischer HTML5-Code
+- **Performance**: Optimiert für schnelle Ladezeiten
 
-Im Joomla-Backend konfigurierbar:
-- Logo hochladen
-- Primärfarbe anpassen
-- Sekundärfarbe anpassen
-- Telefonnummer
-- E-Mail-Adresse
-- Anschrift
-- Öffnungszeiten
-- Breadcrumbs ein/aus
+## Installation
 
-## Technische Details
+### Option 1: GitHub Release herunterladen (empfohlen)
 
-- **Joomla Version**: 5.x / 6.x
-- **PHP Version**: 8.1+
-- **Bootstrap Version**: 5.3 (aus Joomla)
-- **Icons**: Bootstrap Icons 1.11.3
+1. Gehe zu [Releases](https://github.com/DEIN-USERNAME/potsdam-rechtsanwalt/releases)
+2. Lade die neueste `potsdam-rechtsanwalt-theme-vX.X.X.zip` herunter
+3. In WordPress: **Design → Themes → Installieren → Theme hochladen**
+4. ZIP-Datei auswählen und installieren
+5. Theme aktivieren
 
-## Browser-Unterstützung
+### Option 2: Lokal mit PowerShell-Skript
 
-- Chrome (aktuell)
-- Firefox (aktuell)
-- Safari (aktuell)
-- Edge (aktuell)
+1. Repository klonen:
+   ```bash
+   git clone https://github.com/DEIN-USERNAME/potsdam-rechtsanwalt.git
+   cd potsdam-rechtsanwalt
+   ```
+
+2. Build-Skript ausführen:
+   ```powershell
+   .\create-theme-package.ps1
+   ```
+
+3. Die ZIP-Datei befindet sich im übergeordneten Verzeichnis
+4. In WordPress hochladen und aktivieren
+
+## Konfiguration
+
+### Hero-Bereich anpassen
+
+1. Navigieren Sie zu **Design > Customizer**
+2. Wählen Sie **Hero-Bereich**
+3. Passen Sie folgende Einstellungen an:
+   - **Hero Überschrift**: Die Hauptüberschrift im Hero-Bereich
+   - **Hero Text**: Der Beschreibungstext unter der Überschrift
+   - **Hero Hintergrundbild**: Laden Sie ein hochwertiges Bild der Potsdamer Skyline hoch (empfohlene Größe: 1920x500px)
+
+### Kontaktinformationen
+
+1. Navigieren Sie zu **Design > Customizer**
+2. Wählen Sie **Kontakt-Informationen**
+3. Tragen Sie ein:
+   - Telefonnummer
+   - E-Mail-Adresse
+   - Adresse der Kanzlei
+
+### Logo hochladen
+
+1. Gehen Sie zu **Design > Customizer > Website-Identität**
+2. Klicken Sie auf **Logo auswählen**
+3. Laden Sie Ihr Kanzlei-Logo hoch (empfohlene Größe: 300x100px)
+
+### Menüs einrichten
+
+#### Hauptmenü (Header)
+
+1. Navigieren Sie zu **Design > Menüs**
+2. Erstellen Sie ein neues Menü namens "Hauptmenü"
+3. Fügen Sie folgende Seiten hinzu:
+   - Startseite
+   - Rechtsgebiete
+   - Team
+   - Über uns
+   - Kontakt
+4. Weisen Sie das Menü der Position **Hauptmenü** zu
+
+#### Footer-Menü
+
+1. Erstellen Sie ein weiteres Menü für den Footer
+2. Fügen Sie hinzu:
+   - Impressum
+   - Datenschutz
+   - AGB
+3. Weisen Sie das Menü der Position **Footer-Menü** zu
+
+## Erforderliche Seiten
+
+Erstellen Sie folgende Seiten für die vollständige Funktionalität:
+
+### 1. Startseite
+- Wird automatisch mit Hero und Services angezeigt
+
+### 2. Rechtsgebiete-Seiten
+- Verkehrsrecht
+- Familienrecht
+- Vertragsrecht
+- Immobilienrecht
+
+### 3. Rechtliche Seiten
+- **Impressum** (gesetzlich erforderlich)
+- **Datenschutz** (DSGVO-konform)
+- AGB
+
+### 4. Zusätzliche Seiten
+- Team / Über uns
+- Kontakt
+- Termin (für Online-Terminvereinbarung)
+
+## Hero-Bild einfügen
+
+1. **Bild vorbereiten**:
+   - Empfohlene Größe: 1920x500px
+   - Format: JPG oder PNG
+   - Zeigt die Potsdamer Skyline mit Nikolaikirche
+   - Leicht unscharf für bessere Textlesbarkeit
+
+2. **Bild hochladen**:
+   - Gehen Sie zu **Medien > Datei hinzufügen**
+   - Laden Sie das Bild hoch
+   - Oder nutzen Sie den Customizer (siehe oben)
+
+3. **Manuell einfügen** (optional):
+   - Speichern Sie das Bild als `potsdam-skyline.jpg`
+   - Laden Sie es nach `/wp-content/themes/potsdam-rechtsanwalt/assets/images/` hoch
+
+## Kontaktformular
+
+Das integrierte Kontaktformular sendet E-Mails an die in WordPress hinterlegte Admin-E-Mail-Adresse.
+
+### E-Mail-Einstellungen optimieren
+
+Für zuverlässigen E-Mail-Versand empfehlen wir ein SMTP-Plugin:
+
+1. Installieren Sie **WP Mail SMTP** oder **Easy WP SMTP**
+2. Konfigurieren Sie Ihre SMTP-Einstellungen
+3. Testen Sie den E-Mail-Versand
+
+## Widgets
+
+Das Theme unterstützt folgende Widget-Bereiche:
+
+1. **Sidebar**: Hauptseitenleiste (wird automatisch mit Kontaktformular gefüllt)
+2. **Footer Widget 1**: Erste Spalte im Footer
+3. **Footer Widget 2**: Zweite Spalte im Footer
+4. **Footer Widget 3**: Dritte Spalte im Footer
+
+**Hinweis**: Die Sidebar hat bereits ein integriertes Kontaktformular. Widgets werden unterhalb angezeigt.
+
+## Empfohlene Plugins
+
+- **Contact Form 7** oder **WPForms**: Für erweiterte Formulare
+- **Yoast SEO**: Für Suchmaschinenoptimierung
+- **UpdraftPlus**: Für Backups
+- **WP Mail SMTP**: Für zuverlässigen E-Mail-Versand
+- **Really Simple SSL**: Für HTTPS-Verschlüsselung
+- **GDPR Cookie Consent**: Für DSGVO-konforme Cookie-Hinweise
+
+## Anpassungen
+
+### Farben ändern
+
+Bearbeiten Sie die CSS-Variablen in `style.css` (ab Zeile 15):
+
+```css
+:root {
+    --color-navy: #1a3a5c;          /* Hauptfarbe Marineblau */
+    --color-anthracite: #2d3436;    /* Dunkelgrau */
+    --color-gold: #d4af37;          /* Goldakzent */
+    --color-beige: #f5e6d3;         /* Beige-Akzent */
+    /* ... */
+}
+```
+
+### Rechtsgebiete anpassen
+
+Bearbeiten Sie `index.php` (ab Zeile 25) um die Service-Karten zu ändern:
+- Icon
+- Überschrift
+- Beschreibungstext
+
+## Support & Updates
+
+### Theme-Version
+Aktuelle Version: 1.0
+
+### Changelog
+- **1.0** (2026-04-10): Initiale Veröffentlichung
+
+## Browser-Kompatibilität
+
+- Chrome (neueste Version)
+- Firefox (neueste Version)
+- Safari (neueste Version)
+- Edge (neueste Version)
 - Mobile Browser (iOS Safari, Chrome Mobile)
 
-## Entwicklung
+## Technische Anforderungen
 
-### Voraussetzungen
-- Git
-- Joomla 5.x oder 6.x Testumgebung
-- Code-Editor (VS Code empfohlen)
-
-### Lokale Entwicklung
-```bash
-git clone https://github.com/uwefranke/joomla-potsdam-rechtsanwalt.git
-```
-
-### Änderungen committen
-```bash
-git add .
-git commit -m "Beschreibung der Änderung"
-git push
-```
+- WordPress 5.0 oder höher
+- PHP 7.4 oder höher
+- MySQL 5.6 oder höher
 
 ## Lizenz
 
-GNU General Public License version 2 or later
+Dieses Theme ist unter der GNU General Public License v2 oder höher lizenziert.
 
-## Autor
+## Credits
 
-Erstellt: Januar 2026
+- Theme-Entwicklung: Ihre Kanzlei
+- Icons: Line Icons (SVG)
+- Schriftarten: Google Fonts (Roboto, Merriweather)
 
-## Support
+## Hilfe & Dokumentation
 
-Bei Fragen oder Problemen erstellen Sie bitte ein Issue auf GitHub.
+Bei Fragen zur Einrichtung oder Anpassung wenden Sie sich an Ihren WordPress-Administrator oder Theme-Entwickler.
 
-## Changelog
+---
 
-### Version 2.0.0 (03.01.2026)
-- ✅ Modernes Design implementiert
-- ✅ Farbschema von potsdam-rechtsanwalt.de übernommen
-- ✅ Bootstrap 5 Integration
-- ✅ Bootstrap Icons lokal
-- ✅ Responsive Design optimiert
-- ✅ Barrierefreiheit verbessert
-- ✅ Performance optimiert
+**Wichtig für den rechtssicheren Betrieb:**
 
-### Version 1.0.0 (03.01.2026)
-- ✅ Erste Version
-- ✅ Basis-Layout
-- ✅ Template-Struktur
+- Impressum anlegen (gesetzliche Pflicht)
+- Datenschutzerklärung erstellen (DSGVO)
+- Cookie-Consent einrichten
+- SSL-Zertifikat installieren
+- Regelmäßige Backups durchführen

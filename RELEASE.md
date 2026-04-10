@@ -1,137 +1,78 @@
-# GitHub Workflow - Automatische Release-Erstellung
+# Quick Start - GitHub Workflow
 
-## Übersicht
+## Automatisches Theme-Release erstellen
 
-Der GitHub Actions Workflow erstellt automatisch ein Release mit ZIP-Datei, wenn Sie einen neuen Tag pushen.
-
-## Verwendung
-
-### 1. Neuen Tag erstellen und pushen
+### 1. Änderungen vorbereiten
 
 ```bash
-# Tag lokal erstellen
-git tag -a v2.0.0 -m "Release Version 2.0.0"
-
-# Tag zu GitHub pushen
-git push origin v2.0.0
-```
-
-### 2. Automatischer Ablauf
-
-Der Workflow wird automatisch ausgeführt und:
-1. ✅ Erstellt ein neues Release auf GitHub
-2. ✅ Packt alle Template-Dateien in eine ZIP-Datei
-3. ✅ Fügt die ZIP-Datei zum Release hinzu
-4. ✅ Generiert Release-Notes
-
-### 3. ZIP-Datei herunterladen
-
-Nach wenigen Minuten finden Sie das Release unter:
-```
-https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/releases
-```
-
-## Tag-Format
-
-Verwenden Sie das Format `v{MAJOR}.{MINOR}.{PATCH}`:
-
-- `v2.0.0` - Erste stabile Version
-- `v2.0.1` - Bugfix-Release
-- `v2.1.0` - Neue Features
-- `v3.0.0` - Breaking Changes
-
-## Beispiel-Workflow
-
-```bash
-# Änderungen machen
+# Dateien hinzufügen
 git add .
-git commit -m "Neue Features hinzugefügt"
 
-# Tag erstellen
-git tag -a v2.1.0 -m "Version 2.1.0 - Neue Sidebar-Module"
+# Committen
+git commit -m "Theme-Updates für Version 1.0.0"
 
-# Alles pushen
+# Pushen
 git push origin main
-git push origin v2.1.0
 ```
 
-## Was wird in die ZIP gepackt?
+### 2. CHANGELOG aktualisieren
 
-Folgende Dateien und Ordner:
-- ✅ `css/`
-- ✅ `fonts/`
-- ✅ `js/`
-- ✅ `language/`
-- ✅ `images/`
-- ✅ `index.php`
-- ✅ `error.php`
-- ✅ `templateDetails.xml`
-- ✅ `README.md`
-- ✅ `INSTALLATION.md`
+Bearbeite `CHANGELOG.md` und füge deine Änderungen hinzu.
 
-**Nicht enthalten:**
-- ❌ `.git/` (Git-Verzeichnis)
-- ❌ `.github/` (Workflow-Dateien)
-- ❌ `.gitignore`
-- ❌ Andere Entwicklerdateien
-
-## Bestehende Tags anzeigen
+### 3. Release-Tag erstellen
 
 ```bash
-# Alle Tags lokal anzeigen
-git tag
+# Tag erstellen
+git tag -a v1.0.0 -m "Release Version 1.0.0"
 
-# Alle Tags mit Messages
-git tag -n
-
-# Tags auf GitHub anzeigen
-git ls-remote --tags origin
+# Tag pushen (löst automatischen Workflow aus!)
+git push origin v1.0.0
 ```
 
-## Tag löschen (falls nötig)
+### 4. Warten (1-2 Minuten)
 
-```bash
-# Lokal löschen
-git tag -d v2.0.0
+GitHub Actions erstellt automatisch:
+- ✅ ZIP-Paket des Themes
+- ✅ SHA-256 Prüfsumme
+- ✅ GitHub Release mit Download-Links
 
-# Auf GitHub löschen
-git push origin :refs/tags/v2.0.0
-```
+### 5. Theme herunterladen
 
-## Release bearbeiten
+1. Gehe zu: https://github.com/DEIN-USERNAME/potsdam-rechtsanwalt/releases
+2. Finde deine Version (z.B. v1.0.0)
+3. Lade `potsdam-rechtsanwalt-theme-v1.0.0.zip` herunter
 
-Nach der automatischen Erstellung können Sie das Release auf GitHub manuell bearbeiten:
-1. Gehen Sie zu **Releases**
-2. Klicken Sie auf **Edit** beim entsprechenden Release
-3. Passen Sie die Release-Notes an
-4. Fügen Sie weitere Assets hinzu (z.B. Screenshots)
+### 6. In WordPress installieren
 
-## Troubleshooting
+1. WordPress Dashboard → **Design** → **Themes** → **Installieren**
+2. **Theme hochladen** klicken
+3. ZIP-Datei auswählen
+4. **Installieren** klicken
+5. **Aktivieren**
 
-### Workflow startet nicht
-- Überprüfen Sie das Tag-Format (muss mit `v` beginnen)
-- Workflow-Datei muss im `main` Branch sein
+---
 
-### ZIP fehlt
-- Prüfen Sie die Actions-Logs: **Actions** → Workflow-Run
-- Berechtigungen prüfen (sollten automatisch gesetzt sein)
+## Workflow-Status ansehen
 
-### Release ist "Draft"
-- Workflow erstellt publizierte Releases
-- Falls Draft, manuell auf "Publish" klicken
+**GitHub → Actions Tab**
 
-## Semantic Versioning
+Dort siehst du:
+- ✅ Erfolgreich gelaufene Workflows (grün)
+- ❌ Fehlgeschlagene Workflows (rot)
+- 🟡 Laufende Workflows (gelb)
 
-Empfohlenes Versioning nach [semver.org](https://semver.org/lang/de/):
+---
 
-- **MAJOR** (v3.0.0): Breaking Changes (inkompatible API-Änderungen)
-- **MINOR** (v2.1.0): Neue Features (abwärtskompatibel)
-- **PATCH** (v2.0.1): Bugfixes (abwärtskompatibel)
+## Versionsnummern
 
-## Nächste Schritte
+Nutze **Semantic Versioning**:
 
-Nach dem Erstellen eines Release:
-1. ✅ ZIP-Datei in Joomla testen
-2. ✅ Release-Notes überprüfen/ergänzen
-3. ✅ Changelog in README.md aktualisieren
-4. ✅ Benutzer über neue Version informieren
+- `v1.0.0` → Erste stabile Version
+- `v1.1.0` → Neues Feature hinzugefügt
+- `v1.0.1` → Bugfix
+
+---
+
+## Weitere Infos
+
+Siehe [.github/WORKFLOW-GUIDE.md](.github/WORKFLOW-GUIDE.md) für Details.

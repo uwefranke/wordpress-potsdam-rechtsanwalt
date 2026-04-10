@@ -1,0 +1,96 @@
+name: Theme Build & Test
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Theme-Paket testen
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+      
+      - name: Theme-Struktur validieren
+        run: |
+          echo "Prüfe Theme-Dateien in src/..."
+          
+          # Pflicht-Dateien prüfen
+          required_files=("style.css" "functions.php" "index.php" "header.php" "footer.php" "sidebar.php")
+          
+          for file in "${required_files[@]}"; do
+            if [ ! -f "src/$file" ]; then
+              echo "❌ Fehlt: src/$file"
+              exit 1
+            else
+              echo "✓ Gefunden: src/$file"
+            fi
+          done
+          
+          echo "Alle erforderlichen Dateien vorhanden!"
+      
+      - name: style.css Header prüfen
+        run: |
+          echo "Prüfe style.css Header..."
+          
+          if grep -q "Theme Name:" src/style.css; then
+            echo "✓ Theme Name gefunden"
+          else
+            echo "❌ Theme Name fehlt in style.css"
+            exit 1
+          fi
+          
+          if grep -q "Version:" src/style.css; then
+            VERSION=$(grep "Version:" src/style.css | head -n1 | cut -d':' -f2 | xargs)
+            echo "✓ Version gefunden: $VERSION"
+          else
+            echo "❌ Version fehlt in style.css"
+            exit 1
+          fi
+      
+      - name: PHP Syntax prüfen
+        run: |
+          echo "Prüfe PHP-Syntax..."
+          find src -name "*.php" | while read file; do
+            php -l "$file"
+            if [ $? -ne 0 ]; then
+              echo "❌ Syntax-Fehler in: $file"
+              exit 1
+            fi
+          done
+          echo "✓ Alle PHP-Dateien sind syntaktisch korrekt"
+      
+      - name: Test-Build erstellen
+        run: |
+          THEME_NAME="potsdam-rechtsanwalt"
+          BUILD_DIR="build/$THEME_NAME"
+          
+          mkdir -p $BUILD_DIR
+          
+          # Theme-Dateien aus src/ kopieren
+          cp -r src/* $BUILD_DIR/
+          
+          cd build
+          zip -r ../test-theme.zip $THEME_NAME
+          cd ..
+          
+          FILE_SIZE=$(stat -f%z test-theme.zip 2>/dev/null || stat -c%s test-theme.zip)
+          FILE_SIZE_KB=$((FILE_SIZE / 1024))
+          
+          echo "✓ Test-Build erfolgreich erstellt"
+          echo "Dateigröße: ${FILE_SIZE_KB} KB"
+          
+          if [ $FILE_SIZE_KB -gt 10240 ]; then
+            echo "⚠️  Warnung: Theme ist größer als 10 MB"
+          fi
+      
+      - name: Test-Artifact hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-theme-build
+          path: test-theme.zip
+          retention-days: 7

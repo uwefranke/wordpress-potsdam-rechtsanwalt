@@ -1,4 +1,21 @@
-# Joomla
+# WordPress Theme Build Files
+*.zip
+*.tar.gz
+build/
+dist/
+*.sha256
+
+# Node & Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# WordPress Debug & Cache
+debug.log
+wp-config.php
+.htaccess
+
+# Joomla (Legacy)
 configuration.php
 cache/
 tmp/
@@ -9,10 +26,19 @@ administrator/cache/
 .DS_Store
 Thumbs.db
 desktop.ini
+*.bak
+*.tmp
 
-# IDE
+# IDE & Editors
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.sublime-project
+.sublime-workspace
+
+# OS
+.AppleDouble
+.LSOverride
+._*

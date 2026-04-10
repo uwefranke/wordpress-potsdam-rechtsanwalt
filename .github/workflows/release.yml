@@ -1,85 +1,103 @@
-name: Create Release ZIP
+name: WordPress Theme Release
 
 on:
   push:
     tags:
-      - 'v*.*.*'  # Wird bei Tags wie v2.0.0, v2.1.0 etc. ausgelöst
-
-permissions:
-  contents: write
+      - 'v*.*.*'  # Wird ausgelöst bei Tags wie v1.0.0, v1.2.3, etc.
+  workflow_dispatch:  # Erlaubt manuelles Auslösen
 
 jobs:
   build-and-release:
+    name: Theme-Paket erstellen und veröffentlichen
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Code
+      - name: Repository auschecken
         uses: actions/checkout@v4
-      
-      - name: Get Tag Name
-        id: tag_name
-        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-      
-      - name: Create Template ZIP
+        
+      - name: Theme-Version ermitteln
+        id: version
         run: |
-          # Erstelle temporäres Verzeichnis
-          mkdir -p build/potsdam-rechtsanwalt
-          
-          # Kopiere nur Template-Dateien (ohne Git-Dateien)
-          cp -r css build/potsdam-rechtsanwalt/
-          cp -r fonts build/potsdam-rechtsanwalt/
-          cp -r js build/potsdam-rechtsanwalt/
-          cp -r language build/potsdam-rechtsanwalt/
-          
-          # Erstelle images Ordner explizit (auch wenn leer)
-          mkdir -p build/potsdam-rechtsanwalt/images
-          if [ -d "images" ] && [ "$(ls -A images)" ]; then
-            cp -r images/* build/potsdam-rechtsanwalt/images/ 2>/dev/null || true
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          else
+            VERSION=$(date +'%Y%m%d-%H%M%S')
           fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Theme Version: $VERSION"
+      
+      - name: Theme-Paket vorbereiten
+        run: |
+          THEME_NAME="potsdam-rechtsanwalt"
+          BUILD_DIR="build/$THEME_NAME"
           
-          cp index.php build/potsdam-rechtsanwalt/
-          cp error.php build/potsdam-rechtsanwalt/
-          cp templateDetails.xml build/potsdam-rechtsanwalt/
-          cp README.md build/potsdam-rechtsanwalt/
-          cp INSTALLATION.md build/potsdam-rechtsanwalt/
+          # Build-Verzeichnis erstellen
+          mkdir -p $BUILD_DIR
           
-          # Erstelle ZIP im Build-Verzeichnis
+          # Theme-Dateien aus src/ kopieren
+          cp -r src/* $BUILD_DIR/
+          
+          # Version in style.css aktualisieren
+          sed -i "s/Version: .*/Version: ${{ steps.version.outputs.version }}/" $BUILD_DIR/style.css
+          
+          echo "Theme-Dateien vorbereitet in $BUILD_DIR"
+      
+      - name: ZIP-Archiv erstellen
+        run: |
           cd build
-          zip -r potsdam-rechtsanwalt-${{ steps.tag_name.outputs.TAG }}.zip potsdam-rechtsanwalt/
+          zip -r ../potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip potsdam-rechtsanwalt
           cd ..
           
-          # Verschiebe ZIP ins Root für Upload
-          mv build/potsdam-rechtsanwalt-${{ steps.tag_name.outputs.TAG }}.zip ./
+          # Dateigröße anzeigen
+          ls -lh potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip
       
-      - name: Create Release
+      - name: Prüfsumme erstellen
+        run: |
+          sha256sum potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip > potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip.sha256
+          cat potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip.sha256
+      
+      - name: Release erstellen
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
-          files: potsdam-rechtsanwalt-${{ steps.tag_name.outputs.TAG }}.zip
+          files: |
+            potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip
+            potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip.sha256
           body: |
-            ## Joomla Template: Potsdam Rechtsanwalt ${{ github.ref_name }}
+            ## WordPress Theme: Potsdam Rechtsanwalt v${{ steps.version.outputs.version }}
             
             ### Installation
+            
             1. Laden Sie die ZIP-Datei herunter
-            2. In Joomla: System → Templates → Install Template
-            3. ZIP hochladen und installieren
-            4. Als Standard-Template festlegen
+            2. In WordPress: **Design → Themes → Installieren → Theme hochladen**
+            3. ZIP-Datei auswählen und installieren
+            4. Theme aktivieren
             
-            ### Automatisches Update
-            Das Template kann automatisch über Joomla aktualisiert werden:
-            - System → Update → Extensions
+            ### Änderungen
             
-            ### SHA512 Checksum
-            ```
-            $(sha512sum potsdam-rechtsanwalt-${{ steps.tag_name.outputs.TAG }}.zip | awk '{print $1}')
-            ```
+            Details siehe [CHANGELOG.md](CHANGELOG.md)
             
-            ### Weitere Informationen
-            - [INSTALLATION.md](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/blob/main/INSTALLATION.md)
-            - [README.md](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/blob/main/README.md)
+            ### Prüfsumme
             
-            ### Changelog
-            Alle Änderungen finden Sie in den Commits seit dem letzten Release.
-          draft: false
-          prerelease: false
+            Die SHA-256 Prüfsumme finden Sie in der `.sha256` Datei.
+            
+            ### Dokumentation
+            
+            - [README.md](README.md) - Theme-Dokumentation
+            - [INSTALLATION.md](INSTALLATION.md) - Installations-Anleitung
+            
+            ---
+            
+            **Theme-Version:** ${{ steps.version.outputs.version }}  
+            **WordPress:** 5.0+  
+            **PHP:** 7.4+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Artifact hochladen (für manuelle Workflows)
+        if: "!startsWith(github.ref, 'refs/tags/')"
+        uses: actions/upload-artifact@v4
+        with:
+          name: potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}
+          path: potsdam-rechtsanwalt-theme-v${{ steps.version.outputs.version }}.zip
+          retention-days: 30

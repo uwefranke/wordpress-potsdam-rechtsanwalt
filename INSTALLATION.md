@@ -1,206 +1,257 @@
-# Potsdam Rechtsanwalt Template - Installation & Konfiguration
+# Installations- und Migrations-Anleitung
 
-## Installation in Joomla
+## Von Joomla zu WordPress migrieren
 
-### 1. Template-ZIP erstellen
-Erstellen Sie ein ZIP-Archiv des gesamten Template-Ordners:
-```
-potsdam-rechtsanwalt.zip
-├── css/
-├── fonts/
-├── images/
-├── js/
-├── language/
-├── error.php
-├── index.php
-├── templateDetails.xml
-└── README.md
-```
+### Schritt 1: Vorbereitung
 
-### 2. In Joomla installieren
-1. Im Joomla-Backend: **System → Templates → Site Templates**
-2. Klicken Sie auf **Install Template**
-3. Wählen Sie die ZIP-Datei aus
-4. Klicken Sie auf **Upload & Install**
+1. **Backup erstellen**
+   - Sichern Sie Ihre aktuelle Joomla-Website
+   - Exportieren Sie alle Inhalte, Bilder und Dateien
 
-### 3. Template aktivieren
-1. Nach erfolgreicher Installation: **System → Site Templates**
-2. Suchen Sie "Potsdam Rechtsanwalt" in der Liste
-3. Klicken Sie auf den Template-Namen
-4. Klicken Sie auf **Default** (Stern-Symbol), um es als Standard festzulegen
+2. **WordPress installieren**
+   - Installieren Sie WordPress auf Ihrem Server
+   - Richten Sie eine neue Datenbank ein
+   - Führen Sie die WordPress-Installation durch
 
-## Template-Konfiguration
+### Schritt 2: Theme installieren
 
-### Grundeinstellungen
-1. **System → Site Templates**
-2. Klicken Sie auf **Potsdam Rechtsanwalt**
-3. Tab: **Advanced**
+1. **Theme hochladen**
+   ```
+   - Navigieren Sie zu wp-content/themes/
+   - Erstellen Sie einen Ordner: potsdam-rechtsanwalt
+   - Laden Sie alle Theme-Dateien in diesen Ordner hoch
+   ```
 
-#### Logo hochladen
-- Klicken Sie auf **Logo** → **Select**
-- Laden Sie Ihr Kanzlei-Logo hoch (empfohlen: PNG mit transparentem Hintergrund, max. 200px Höhe)
+2. **Theme aktivieren**
+   - WordPress Dashboard → Design → Themes
+   - Aktivieren Sie "Potsdam Rechtsanwalt"
 
-### Farbeinstellungen
-- **Primärfarbe**: Standard `#003d6b` (Dunkles Blau)
-- **Sekundärfarbe**: Standard `#b8860b` (Gold)
+### Schritt 3: Inhalte migrieren
 
-### Kontaktinformationen
-Füllen Sie aus:
-- **Telefonnummer**: z.B. `0331 1234567`
-- **E-Mail**: z.B. `kontakt@ihre-kanzlei.de`
-- **Anschrift**: 
-  ```
-  Kanzleiname
-  Straße 123
-  14482 Potsdam
-  ```
-- **Öffnungszeiten**:
-  ```
-  Mo-Do: 9:00 - 17:00 Uhr
-  Fr: 9:00 - 14:00 Uhr
-  ```
+#### Automatische Migration (empfohlen)
 
-### Erweiterte Einstellungen
-- **Breadcrumbs anzeigen**: Ja (empfohlen)
-- **Fixierter Header**: Ja (Header bleibt beim Scrollen sichtbar)
-- **Smooth Scrolling**: Ja (sanftes Scrollen bei Links)
+1. **Plugin installieren**
+   - Installieren Sie "FG Joomla to WordPress" Plugin
+   - Aktivieren Sie das Plugin
 
-## Module einrichten
+2. **Migration durchführen**
+   - Gehen Sie zu Werkzeuge → Import → Joomla (FG)
+   - Geben Sie die Joomla-Datenbank-Zugangsdaten ein
+   - Wählen Sie aus, was importiert werden soll:
+     * Artikel
+     * Kategorien
+     * Medien
+     * Menüs
+   - Starten Sie den Import
 
-### Navigation erstellen
-1. **Menus → Main Menu** (oder neues Menü erstellen)
-2. Erstellen Sie Menüpunkte:
+#### Manuelle Migration
+
+1. **Seiten erstellen**
+   - Erstellen Sie neue Seiten in WordPress
+   - Kopieren Sie Inhalte aus Joomla
+   - Verwenden Sie den Block-Editor oder Classic Editor
+
+2. **Bilder hochladen**
+   - Medien → Datei hinzufügen
+   - Laden Sie alle Bilder aus Joomla hoch
+   - Fügen Sie Bilder in Ihre Seiten ein
+
+3. **Menüs einrichten**
+   - Design → Menüs
+   - Erstellen Sie Hauptmenü und Footer-Menü
+   - Ordnen Sie die Positionen zu
+
+### Schritt 4: Theme konfigurieren
+
+1. **Customizer öffnen**
+   - Design → Customizer
+
+2. **Hero-Bereich einstellen**
+   - Hero-Bereich → Hero Überschrift: "Kompetente Rechtsberatung in Potsdam"
+   - Hero Text: Ihr Slogan
+   - Hero Hintergrundbild: Potsdam Skyline hochladen
+
+3. **Kontaktinformationen**
+   - Kontakt-Informationen → Telefonnummer eintragen
+   - E-Mail-Adresse eintragen
+   - Adresse eintragen
+
+4. **Logo hochladen**
+   - Website-Identität → Logo auswählen
+   - Logo hochladen (empfohlen: 300x100px)
+
+### Schritt 5: Wichtige Seiten erstellen
+
+Erstellen Sie folgende Seiten:
+
+1. **Startseite**
+   - Titel: "Willkommen"
+   - Template: Automatisch (verwendet index.php)
+
+2. **Rechtsgebiete**
+   - Verkehrsrecht
+   - Familienrecht
+   - Vertragsrecht
+   - Immobilienrecht
+
+3. **Team**
+   - Vorstellung Ihrer Anwälte
+
+4. **Kontakt**
+   - Kontaktformular (bereits in Sidebar)
+   - Zusätzliche Kontaktinformationen
+   - Google Maps einbetten
+
+5. **Impressum** (Pflicht!)
+   - Vollständiges Impressum nach TMG
+
+6. **Datenschutz** (Pflicht!)
+   - DSGVO-konforme Datenschutzerklärung
+   - Generator nutzen: https://datenschutz-generator.de/
+
+### Schritt 6: Menüs konfigurieren
+
+1. **Hauptmenü erstellen**
+   ```
+   Design → Menüs → Neues Menü erstellen
+   Name: Hauptmenü
+   
+   Seiten hinzufügen:
    - Startseite
-   - Rechtsgebiete
-   - Über uns
+   - Rechtsgebiete (mit Untermenü)
+     |- Verkehrsrecht
+     |- Familienrecht
+     |- Vertragsrecht
+     |- Immobilienrecht
+   - Team
    - Kontakt
+   
+   Position zuweisen: Hauptmenü
+   ```
 
-3. **Extensions → Modules → New**
-4. Typ: **Menu**
-5. Titel: `Hauptnavigation`
-6. Position: **navigation**
-7. Menü auswählen: **Main Menu**
-8. Status: **Published**
+2. **Footer-Menü erstellen**
+   ```
+   Name: Footer-Menü
+   
+   Seiten hinzufügen:
+   - Impressum
+   - Datenschutz
+   - AGB
+   
+   Position zuweisen: Footer-Menü
+   ```
 
-### Sidebar-Module (optional)
-Erstellen Sie Module für die Sidebars:
+### Schritt 7: Plugins installieren (empfohlen)
 
-#### Beispiel: Kontakt-Widget
-1. **Extensions → Modules → New**
-2. Typ: **Custom**
-3. Titel: `Kontakt`
-4. Position: **sidebar-right**
-5. Inhalt:
-```html
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Kontaktieren Sie uns</h5>
-        <p><i class="bi bi-telephone"></i> 0331 1234567</p>
-        <p><i class="bi bi-envelope"></i> info@beispiel.de</p>
-        <a href="/kontakt" class="btn btn-primary w-100">
-            Termin vereinbaren
-        </a>
-    </div>
-</div>
-```
+1. **Essentiell**
+   - Yoast SEO oder Rank Math (SEO)
+   - Really Simple SSL (HTTPS)
+   - UpdraftPlus (Backup)
 
-#### Beispiel: Rechtsgebiete
-1. **Extensions → Modules → New**
-2. Typ: **Articles - Categories**
-3. Titel: `Rechtsgebiete`
-4. Position: **sidebar-left**
-5. Wählen Sie die Kategorie "Rechtsgebiete"
+2. **Erweiterte Funktionen**
+   - WP Mail SMTP (zuverlässiger E-Mail-Versand)
+   - Contact Form 7 (erweiterte Formulare)
+   - Borlabs Cookie (DSGVO Cookie-Consent)
 
-## SEO-Optimierung
+3. **Performance**
+   - WP Super Cache oder W3 Total Cache
+   - Autoptimize
+   - ShortPixel oder Smush (Bildoptimierung)
 
-### Meta-Tags konfigurieren
-1. **System → Global Configuration**
-2. Tab: **Site**
-3. Füllen Sie aus:
-   - **Site Name**: z.B. "Rechtsanwalt [Name] - Potsdam"
-   - **Site Description**: Kurze Beschreibung Ihrer Kanzlei
-   - **Site Metakeywords**: Relevante Keywords
+### Schritt 8: SEO & Weiterleitungen
 
-### Artikel-Meta-Daten
-Bei jedem Artikel:
-1. **Content → Articles → [Artikel bearbeiten]**
-2. Tab: **Publishing**
-3. Füllen Sie **Meta Description** aus
+1. **Alte URLs weiterleiten**
+   - Installieren Sie "Redirection" Plugin
+   - Richten Sie 301-Weiterleitungen ein von:
+     ```
+     alte-joomla-url → neue-wordpress-url
+     ```
 
-### Friendly URLs aktivieren
-1. **System → Global Configuration**
-2. Tab: **Site**
-3. **Search Engine Friendly URLs**: Yes
-4. **Use URL Rewriting**: Yes
-5. Benennen Sie `htaccess.txt` in `.htaccess` um
+2. **SEO optimieren**
+   - Yoast SEO konfigurieren
+   - Meta-Beschreibungen für alle Seiten
+   - XML-Sitemap generieren
+   - Google Search Console einrichten
 
-## Performance-Optimierung
+### Schritt 9: Bilder und Medien
 
-### CSS/JS Kompression
-1. **System → Global Configuration**
-2. Tab: **System**
-3. **Gzip Page Compression**: Yes
+1. **Hero-Bild hochladen**
+   - Medien → Datei hinzufügen
+   - Potsdam Skyline-Bild (1920x500px)
+   - Im Customizer als Hero-Hintergrundbild setzen
 
-### Caching aktivieren
-1. **System → Global Configuration**
-2. Tab: **System**
-3. **Cache**: ON - Conservative caching
+2. **Weitere Bilder**
+   - Team-Fotos
+   - Office-Bilder
+   - Rechtsgebiet-Illustrationen
 
-## Fehlersuche
+### Schritt 10: Testen
 
-### Template wird nicht angezeigt
-- Prüfen Sie, ob das Template als **Default** markiert ist
-- Cache leeren: **System → Clear Cache**
+1. **Funktionstest**
+   - [ ] Alle Seiten erreichbar
+   - [ ] Navigation funktioniert
+   - [ ] Kontaktformular sendet E-Mails
+   - [ ] Responsive auf Mobile/Tablet
+   - [ ] Bilder werden korrekt angezeigt
 
-### Module werden nicht angezeigt
-- Prüfen Sie die **Position** des Moduls
-- Status muss auf **Published** stehen
-- Prüfen Sie **Menu Assignment** (auf welchen Seiten soll es erscheinen?)
+2. **Browser-Test**
+   - [ ] Chrome
+   - [ ] Firefox
+   - [ ] Safari
+   - [ ] Edge
+   - [ ] Mobile Browser
 
-### Farben ändern sich nicht
-- Cache leeren
-- Im Template: Prüfen Sie die Farbwerte
-- Browser-Cache leeren (Strg+F5)
+3. **Performance-Test**
+   - Google PageSpeed Insights
+   - GTmetrix
 
-## Support & Anpassungen
+### Schritt 11: Live-Schaltung
 
-### Template-Dateien bearbeiten
-**WICHTIG**: Verwenden Sie Template-Overrides, nicht die Core-Dateien!
+1. **Finale Checks**
+   - SSL-Zertifikat aktiv
+   - Impressum und Datenschutz vorhanden
+   - Cookie-Consent funktioniert
+   - Backup erstellt
 
-1. **System → Site Templates**
-2. Klicken Sie auf **Potsdam Rechtsanwalt**
-3. Tab: **Editor**
-4. Bearbeiten Sie CSS oder JS nach Bedarf
+2. **DNS umstellen**
+   - Domain auf neuen WordPress-Server zeigen lassen
+   - Alte Joomla-Seite als Backup behalten
 
-### CSS anpassen
-Eigene CSS-Regeln können Sie in `css/template.css` hinzufügen oder ein eigenes `custom.css` erstellen.
+3. **Nach der Migration**
+   - Alle Links testen
+   - 404-Fehler beheben
+   - Google Analytics einrichten
+   - Google Search Console aktualisieren
 
-### Backup erstellen
-Vor größeren Änderungen:
-1. **System → Manage → Templates**
-2. Wählen Sie das Template
-3. Klicken Sie auf **Export**
+## Troubleshooting
 
-## Checkliste nach Installation
+### Problem: Kontaktformular sendet keine E-Mails
 
-- [ ] Template als Standard festgelegt
-- [ ] Logo hochgeladen
-- [ ] Farben angepasst (optional)
-- [ ] Kontaktdaten eingegeben
-- [ ] Navigation eingerichtet
-- [ ] Module platziert
-- [ ] SEO-Einstellungen konfiguriert
-- [ ] URLs optimiert (Friendly URLs)
-- [ ] Caching aktiviert
-- [ ] Mobile Ansicht getestet
-- [ ] Alle Seiten geprüft
+**Lösung:**
+1. WP Mail SMTP Plugin installieren
+2. SMTP-Server konfigurieren (z.B. Gmail, SendGrid)
+3. Test-E-Mail senden
 
-## Weitere Ressourcen
+### Problem: Seite lädt langsam
 
-- Joomla-Dokumentation: https://docs.joomla.org/
-- Bootstrap 5 Docs: https://getbootstrap.com/docs/5.3/
-- Bootstrap Icons: https://icons.getbootstrap.com/
+**Lösung:**
+1. Cache-Plugin installieren (WP Super Cache)
+2. Bilder komprimieren (ShortPixel)
+3. Hosting optimieren oder upgraden
 
-## Lizenz
+### Problem: Hero-Bild wird nicht angezeigt
 
-GNU General Public License version 2 or later
+**Lösung:**
+1. Prüfen Sie den Dateipfad in style.css
+2. Laden Sie das Bild nach /assets/images/ hoch
+3. Oder setzen Sie es im Customizer
+
+## Support-Kontakte
+
+- **WordPress.org Support**: https://wordpress.org/support/
+- **Theme-Dokumentation**: Siehe README.md
+- **Joomla zu WordPress Migration**: https://de.wordpress.org/
+
+---
+
+**Wichtig**: Testen Sie alles erst auf einer Staging-Umgebung, bevor Sie live gehen!

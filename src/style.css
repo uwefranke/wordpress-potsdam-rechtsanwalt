@@ -1,0 +1,453 @@
+/*
+Theme Name: Potsdam Rechtsanwalt
+Theme URI: http://www.potsdam-rechtsanwalt.de/
+Author: Ihre Kanzlei
+Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: potsdam-rechtsanwalt
+*/
+
+/* === CSS Variablen === */
+:root {
+    --color-navy: #1a3a5c;
+    --color-anthracite: #2d3436;
+    --color-gold: #d4af37;
+    --color-beige: #f5e6d3;
+    --color-white: #ffffff;
+    --color-light-gray: #f8f9fa;
+    --color-dark-gray: #495057;
+    --font-primary: 'Helvetica Neue', Arial, sans-serif;
+    --font-secondary: Georgia, serif;
+    --transition: all 0.3s ease;
+}
+
+/* === Reset & Base === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-anthracite);
+    background-color: var(--color-white);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* === Header === */
+.site-header {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    padding: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.site-logo {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo:hover {
+    color: var(--color-gold);
+    transition: var(--transition);
+}
+
+/* === Navigation === */
+.main-navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus {
+    color: var(--color-gold);
+    border-bottom-color: var(--color-gold);
+}
+
+/* === Hero Section === */
+.hero-section {
+    position: relative;
+    height: 500px;
+    background: linear-gradient(rgba(26, 58, 92, 0.7), rgba(26, 58, 92, 0.7)),
+                url('assets/images/potsdam-skyline.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    margin-bottom: 60px;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    font-size: 20px;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* === Services Grid === */
+.services-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 36px;
+    color: var(--color-navy);
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-gold);
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-navy);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--color-gold);
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+.service-card h3 {
+    font-size: 22px;
+    color: var(--color-navy);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.service-card p {
+    font-size: 15px;
+    color: var(--color-dark-gray);
+    line-height: 1.7;
+}
+
+/* === Sidebar === */
+.sidebar {
+    background-color: var(--color-light-gray);
+    padding: 30px;
+    border-radius: 8px;
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+}
+
+.sidebar h3 {
+    font-size: 24px;
+    color: var(--color-navy);
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--color-anthracite);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: var(--font-primary);
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    padding: 14px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: var(--color-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-appointment {
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--color-navy);
+}
+
+.btn-appointment:hover {
+    background-color: var(--color-gold);
+}
+
+/* === Content Area === */
+.content-area {
+    background-color: var(--color-white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.content-area h2 {
+    font-size: 32px;
+    color: var(--color-navy);
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.content-area p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.content-area ul,
+.content-area ol {
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.content-area li {
+    margin-bottom: 10px;
+}
+
+/* === Footer === */
+.site-footer {
+    background-color: var(--color-anthracite);
+    color: var(--color-white);
+    padding: 60px 20px 30px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--color-gold);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-section a {
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-section a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* === Responsive Design === */
+@media (max-width: 1024px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        position: static;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-area {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+/* === Utility Classes === */
+.text-center {
+    text-align: center;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}

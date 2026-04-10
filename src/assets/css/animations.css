@@ -1,0 +1,98 @@
+/* Mobile Styles für Navigation */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .main-navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .main-navigation.active {
+        max-height: 500px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .main-navigation ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.scroll-to-top:hover {
+    background-color: var(--color-navy);
+    transform: translateY(-3px);
+}
+
+/* Formular Fehler-Styling */
+.contact-form input.error,
+.contact-form textarea.error,
+.contact-form select.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+/* Animation für Service Cards */
+.service-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.service-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger Animation */
+.service-card:nth-child(1).fade-in {
+    transition-delay: 0.1s;
+}
+
+.service-card:nth-child(2).fade-in {
+    transition-delay: 0.2s;
+}
+
+.service-card:nth-child(3).fade-in {
+    transition-delay: 0.3s;
+}
+
+.service-card:nth-child(4).fade-in {
+    transition-delay: 0.4s;
+}
