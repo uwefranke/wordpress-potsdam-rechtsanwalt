@@ -1,0 +1,61 @@
+/**
+ * Lokale Google Fonts
+ * DSGVO-konform ohne externe Anfragen
+ * 
+ * Fonts herunterladen mit: .\download-fonts.ps1
+ * Oder manuell von: https://gwfh.mranftl.com/fonts
+ */
+
+/* Open Sans - Light 300 */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('fonts/open-sans-300.woff2') format('woff2');
+}
+
+/* Open Sans - Regular 400 */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/open-sans.woff2') format('woff2');
+}
+
+/* Open Sans - SemiBold 600 */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/open-sans-600.woff2') format('woff2');
+}
+
+/* Playfair Display - Regular 400 */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/playfair-display.woff2') format('woff2');
+}
+
+/* Playfair Display - SemiBold 600 */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/playfair-display-600.woff2') format('woff2');
+}
+
+/* Playfair Display - Bold 700 */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/playfair-display-700.woff2') format('woff2');
+}

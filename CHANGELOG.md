@@ -12,6 +12,38 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Zusätzliche Farbschemata
 - Widget für Öffnungszeiten
 
+## [1.0.2] - 2026-04-11
+
+### Hinzugefügt
+- **Playfair Display-Schrift** für Überschriften (elegante Serifenschrift)
+- **CTA-Button "TERMIN VEREINBAREN"** im Header
+- **Hero-Section Buttons**: "UNSERE LEISTUNGEN" und "TERMIN VEREINBAREN"
+- **Social Media Icons** in der Sidebar (LinkedIn & XING)
+- **Customizer-Einstellungen** für Social Media URLs
+- **Gold-Umrandung** bei Service-Card Hover
+- **Sticky Header** für bessere Navigation
+
+### Geändert
+- **Hero-Standardtexte** aktualisiert:
+  - Überschrift: "IHRE KANZLEI IN POTSDAM"
+  - Untertitel: "FÜR RECHT, DAS VERTRAUEN SCHAFFT. KOMPETENT & LOKAL."
+- **Typografie** verbessert mit Open Sans und Playfair Display
+- **Navigation** nutzt jetzt Serifenschrift für edleren Look
+- **Mobile Responsiveness** für neue Button-Elemente optimiert
+
+### Verbessert
+- Design entspricht modernem Kanzlei-Konzept 2024
+- Vertrauensbildende visuelle Elemente
+- Professionellere Farbakzente mit Gold
+- Bessere Call-to-Action Platzierung
+
+## [1.0.1] - 2026-04-11
+
+### Hinzugefügt
+- GitHub Auto-Update Funktionalität
+- Update URI im Theme-Header
+- Automatische Versions-Prüfung
+
 ## [1.0.0] - 2026-04-10
 
 ### Hinzugefügt

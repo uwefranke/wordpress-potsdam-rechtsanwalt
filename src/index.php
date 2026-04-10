@@ -9,8 +9,12 @@ get_header();
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="hero-content">
-        <h1><?php echo get_theme_mod('hero_title', 'Kompetente Rechtsberatung in Potsdam'); ?></h1>
-        <p><?php echo get_theme_mod('hero_text', 'Ihre erfahrenen Rechtsanwälte für alle rechtlichen Angelegenheiten'); ?></p>
+        <h1><?php echo get_theme_mod('hero_title', 'IHRE KANZLEI IN POTSDAM'); ?></h1>
+        <p class="hero-subtitle"><?php echo get_theme_mod('hero_text', 'FÜR RECHT, DAS VERTRAUEN SCHAFFT. KOMPETENT & LOKAL.'); ?></p>
+        <div class="hero-buttons">
+            <a href="#rechtsgebiete" class="btn btn-primary">UNSERE LEISTUNGEN</a>
+            <a href="#kontakt" class="btn btn-secondary">TERMIN VEREINBAREN</a>
+        </div>
     </div>
 </section>
 
@@ -21,7 +25,7 @@ get_header();
         <main class="main-content">
             
             <!-- Services Section -->
-            <section class="services-section">
+            <section class="services-section" id="rechtsgebiete">
                 <h2 class="section-title">Unsere Rechtsgebiete</h2>
                 <div class="services-grid">
                     

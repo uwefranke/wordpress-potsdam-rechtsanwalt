@@ -1,12 +1,29 @@
 /*
 Theme Name: Potsdam Rechtsanwalt
 Theme URI: http://www.potsdam-rechtsanwalt.de/
-Author: Ihre Kanzlei
+Author: Uwe Franke
+Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.1
+Version: 1.0.2
 Requires at least: 5.0
 Tested up to: 6.5
-Requires PHP: 7.4
+Requires PHP: 8.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: potsdam-rechtsanwalt
+Update URI: https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt
+*/
+
+/*
+Theme Name: Potsdam Rechtsanwalt
+Theme URI: http://www.potsdam-rechtsanwalt.de/
+Author: Uwe Franke
+Author URI: https://github.com/uwefranke
+Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
+Version: 1.0.2
+Requires at least: 5.0
+Tested up to: 6.5
+Requires PHP: 8.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: potsdam-rechtsanwalt
@@ -22,8 +39,8 @@ Update URI: https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt
     --color-white: #ffffff;
     --color-light-gray: #f8f9fa;
     --color-dark-gray: #495057;
-    --font-primary: 'Helvetica Neue', Arial, sans-serif;
-    --font-secondary: Georgia, serif;
+    --font-primary: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-secondary: 'Playfair Display', Georgia, serif;
     --transition: all 0.3s ease;
 }
 
@@ -110,6 +127,7 @@ body {
     transition: var(--transition);
     padding: 8px 0;
     border-bottom: 2px solid transparent;
+    font-family: var(--font-secondary);
 }
 
 .main-navigation a:hover,
@@ -181,7 +199,7 @@ body {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-navy);
+    border-color: var(--color-gold);
 }
 
 .service-icon {
@@ -412,12 +430,26 @@ body {
         text-align: center;
     }
     
+    .cta-button {
+        margin-top: 15px;
+    }
+    
     .hero-content h1 {
         font-size: 36px;
     }
     
     .hero-content p {
         font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
     }
     
     .services-grid {
@@ -437,6 +469,128 @@ body {
     .section-title {
         font-size: 28px;
     }
+}
+
+/* === CTA Button (Header) === */
+.cta-button {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #c69d2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
+}
+
+/* === Hero Buttons === */
+.hero-subtitle {
+    font-size: 22px;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 14px 35px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border-color: var(--color-gold);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-gold);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-navy);
+    transform: translateY(-2px);
+}
+
+/* === Social Media Icons === */
+.social-media-widget {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.social-media-widget h4 {
+    font-size: 18px;
+    color: var(--color-navy);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 20px;
+}
+
+.social-icon:hover {
+    background-color: var(--color-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.social-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
 }
 
 /* === Utility Classes === */

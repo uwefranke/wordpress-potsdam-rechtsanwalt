@@ -30,6 +30,7 @@
                 'fallback_cb'    => 'potsdam_rechtsanwalt_fallback_menu',
             ));
             ?>
+            <a href="#kontakt" class="cta-button">TERMIN VEREINBAREN</a>
         </nav>
     </div>
 </header>

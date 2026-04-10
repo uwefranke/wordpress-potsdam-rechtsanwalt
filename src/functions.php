@@ -76,16 +76,17 @@ add_action('widgets_init', 'potsdam_rechtsanwalt_widgets_init');
 
 // Skripte und Styles einbinden
 function potsdam_rechtsanwalt_scripts() {
-    wp_enqueue_style('potsdam-rechtsanwalt-style', get_stylesheet_uri(), array(), '1.0');
+    // Lokale Fonts (DSGVO-konform)
+    wp_enqueue_style('potsdam-rechtsanwalt-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), '1.0.2');
     
-    // Google Fonts
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@300;400;700&display=swap', array(), null);
+    // Haupt-Stylesheet
+    wp_enqueue_style('potsdam-rechtsanwalt-style', get_stylesheet_uri(), array('potsdam-rechtsanwalt-fonts'), '1.0.2');
     
     // jQuery (ist bereits in WordPress enthalten)
     wp_enqueue_script('jquery');
     
     // Custom JavaScript
-    wp_enqueue_script('potsdam-rechtsanwalt-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('potsdam-rechtsanwalt-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.2', true);
 }
 add_action('wp_enqueue_scripts', 'potsdam_rechtsanwalt_scripts');
 

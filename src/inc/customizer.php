@@ -13,7 +13,7 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     ));
     
     $wp_customize->add_setting('hero_title', array(
-        'default'   => 'Kompetente Rechtsberatung in Potsdam',
+        'default'   => 'IHRE KANZLEI IN POTSDAM',
         'transport' => 'refresh',
     ));
     
@@ -24,7 +24,7 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     ));
     
     $wp_customize->add_setting('hero_text', array(
-        'default'   => 'Ihre erfahrenen Rechtsanwälte für alle rechtlichen Angelegenheiten',
+        'default'   => 'FÜR RECHT, DAS VERTRAUEN SCHAFFT. KOMPETENT & LOKAL.',
         'transport' => 'refresh',
     ));
     
@@ -78,6 +78,34 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'label'    => __('Adresse', 'potsdam-rechtsanwalt'),
         'section'  => 'contact_info',
         'type'     => 'textarea',
+    ));
+    
+    // Social Media
+    $wp_customize->add_section('social_media', array(
+        'title'    => __('Social Media', 'potsdam-rechtsanwalt'),
+        'priority' => 50,
+    ));
+    
+    $wp_customize->add_setting('social_linkedin', array(
+        'default'   => '#',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('social_linkedin', array(
+        'label'    => __('LinkedIn URL', 'potsdam-rechtsanwalt'),
+        'section'  => 'social_media',
+        'type'     => 'url',
+    ));
+    
+    $wp_customize->add_setting('social_xing', array(
+        'default'   => '#',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('social_xing', array(
+        'label'    => __('XING URL', 'potsdam-rechtsanwalt'),
+        'section'  => 'social_media',
+        'type'     => 'url',
     ));
 }
 add_action('customize_register', 'potsdam_rechtsanwalt_customizer');
