@@ -10,7 +10,28 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
-- Widget für Öffnungszeiten
+
+## [1.0.3] - 2026-04-11
+
+### Hinzugefügt
+- **Anklickbare Service-Cards** auf der Startseite
+- Automatische Verlinkung zu Rechtsgebiete-Seiten:
+  - `/verkehrsrecht/`
+  - `/familienrecht/`
+  - `/vertragsrecht/`
+  - `/immobilienrecht/`
+- **"Mehr erfahren →" Links** in jeder Service-Card
+- **setup-pages.php** - Automatisches Setup-Script für Rechtsgebiete-Seiten
+- **MIGRATION.md** - Umfassende Migrations-Anleitung von Joomla
+
+### Geändert
+- Service-Cards sind jetzt komplett anklickbar
+- Hover-Effekt: Icon färbt sich Gold, Border wird Navy
+
+### Verbessert
+- Bessere UX durch intuitive Klickflächen
+- Card-Layout mit Flexbox für gleichmäßige Höhen
+- CSS-Optimierung für anklickbare Elemente
 
 ## [1.0.2] - 2026-04-11
 

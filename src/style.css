@@ -4,23 +4,7 @@ Theme URI: http://www.potsdam-rechtsanwalt.de/
 Author: Uwe Franke
 Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.2
-Requires at least: 5.0
-Tested up to: 6.5
-Requires PHP: 8.4
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: potsdam-rechtsanwalt
-Update URI: https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt
-*/
-
-/*
-Theme Name: Potsdam Rechtsanwalt
-Theme URI: http://www.potsdam-rechtsanwalt.de/
-Author: Uwe Franke
-Author URI: https://github.com/uwefranke
-Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.2
+Version: 1.0.3
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 8.4
@@ -186,6 +170,13 @@ body {
     gap: 30px;
 }
 
+.service-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
 .service-card {
     background: var(--color-white);
     border: 2px solid var(--color-gold);
@@ -194,12 +185,26 @@ body {
     text-align: center;
     transition: var(--transition);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.service-card:hover {
+.service-card-link:hover .service-card {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-gold);
+    border-color: var(--color-navy);
+}
+
+.service-card-link:hover .service-icon {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+}
+
+.service-card-link:hover .service-link-arrow {
+    color: var(--color-navy);
+    font-weight: 600;
 }
 
 .service-icon {
@@ -227,6 +232,18 @@ body {
     font-size: 15px;
     color: var(--color-dark-gray);
     line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.service-link-arrow {
+    display: inline-block;
+    color: var(--color-gold);
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: auto;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
 }
 
 /* === Sidebar === */
