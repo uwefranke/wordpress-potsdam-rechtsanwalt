@@ -11,6 +11,20 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.5] - 2026-04-11
+
+### Behoben
+- **Tippfehler in setup-pages.php** behoben:
+  - Leerzeichen vor 'title' entfernt (Zeile 245)
+  - 'menu-it em-status' korrigiert zu 'menu-item-status' (Zeile 332)
+- **Menü-Titel fehlen nicht mehr** - Zeigen jetzt korrekt:
+  - "Miet- / Wohnungseigentumsrecht" (statt "#14 (kein Titel)")
+  - "Grundstücks- / Immobilienrecht" (statt "#15 (kein Titel)")
+  - "Baurecht" (statt "#16 (kein Titel)")
+  - "BU / Erwerbsminderungsrente" (statt "#17 (kein Titel)")
+  - "Kontakt" und "Über mich" im Informationen-Menü
+- Arrays mit Slug => Titel Mapping für korrekte Menüanzeige
+
 ## [1.0.4] - 2026-04-11
 
 ### Geändert
