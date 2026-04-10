@@ -1,0 +1,41 @@
+# WordPress .htaccess Beispiel-Datei
+# 
+# Diese Datei muss ins WordPress-Root-Verzeichnis kopiert werden (nicht ins Theme-Verzeichnis!)
+# und zu ".htaccess" umbenannt werden (ohne .example)
+#
+# WICHTIG: Passe "RewriteBase" an, falls WordPress in einem Unterverzeichnis installiert ist
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+# Optionale Sicherheits-Header
+<IfModule mod_headers.c>
+    # HSTS (HTTP Strict Transport Security)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    
+    # XSS-Schutz
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Clickjacking-Schutz
+    Header always append X-Frame-Options SAMEORIGIN
+    
+    # MIME-Type Sniffing verhindern
+    Header set X-Content-Type-Options nosniff
+</IfModule>
+
+# WordPress-Admin-Verzeichnis zusätzlich schützen (optional)
+# <Files wp-login.php>
+#     Order Deny,Allow
+#     Deny from all
+#     # Erlaube nur bestimmte IP-Adressen:
+#     # Allow from 123.456.789.0
+# </Files>

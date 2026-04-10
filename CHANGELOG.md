@@ -11,6 +11,31 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.7] - 2026-04-11
+
+### Hinzugefügt
+- **Automatische .htaccess-Erstellung** in setup-pages.php
+  - Erstellt WordPress Rewrite-Rules automatisch
+  - Prüft ob .htaccess bereits existiert und gültig ist
+  - Zeigt Fehler mit manueller Lösung bei fehlenden Schreibrechten
+  - Behebt 404-Fehler bei Pretty Permalinks
+- **.htaccess.example** - Vorlage für manuelle Installation
+- **TROUBLESHOOTING.md** - Umfassende Fehlerbehebungs-Anleitung
+  - 404-Fehler bei Links
+  - mod_rewrite-Prüfung
+  - Nginx-Konfiguration
+  - Schritt-für-Schritt-Lösungen
+
+### Geändert
+- **MIGRATION.md** erweitert mit .htaccess-Sektion
+  - Automatische vs. manuelle Erstellung
+  - Unterverzeichnis-Konfiguration
+  - mod_rewrite-Hinweise
+
+### Behoben
+- **Links funktionieren jetzt** - .htaccess behebt 404-Fehler
+- Service-Card-Links auf Startseite navigieren korrekt
+
 ## [1.0.6] - 2026-04-11
 
 ### Behoben

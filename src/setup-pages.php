@@ -422,6 +422,50 @@ if (empty($current_structure) || $current_structure === '?p=%postname%') {
     echo '<div class="info">ℹ️ Permalinks bereits konfiguriert: ' . $current_structure . '</div>';
 }
 
+// .htaccess-Datei erstellen/aktualisieren
+$htaccess_path = ABSPATH . '.htaccess';
+$htaccess_content = "# BEGIN WordPress\n";
+$htaccess_content .= "<IfModule mod_rewrite.c>\n";
+$htaccess_content .= "RewriteEngine On\n";
+$htaccess_content .= "RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\n";
+$htaccess_content .= "RewriteBase /\n";
+$htaccess_content .= "RewriteRule ^index\\.php$ - [L]\n";
+$htaccess_content .= "RewriteCond %{REQUEST_FILENAME} !-f\n";
+$htaccess_content .= "RewriteCond %{REQUEST_FILENAME} !-d\n";
+$htaccess_content .= "RewriteRule . /index.php [L]\n";
+$htaccess_content .= "</IfModule>\n";
+$htaccess_content .= "# END WordPress";
+
+// Prüfen ob .htaccess existiert und WordPress-Regeln enthält
+$htaccess_exists = file_exists($htaccess_path);
+$needs_update = false;
+
+if ($htaccess_exists) {
+    $current_htaccess = file_get_contents($htaccess_path);
+    // Prüfen ob WordPress-Regeln fehlen
+    if (strpos($current_htaccess, '# BEGIN WordPress') === false) {
+        $needs_update = true;
+    }
+} else {
+    $needs_update = true;
+}
+
+if ($needs_update) {
+    $result = @file_put_contents($htaccess_path, $htaccess_content);
+    if ($result !== false) {
+        echo '<div class="success">✓ .htaccess-Datei erstellt mit WordPress Rewrite-Rules</div>';
+        echo '<div class="info">📁 Pfad: <code>' . $htaccess_path . '</code></div>';
+    } else {
+        echo '<div class="error">✗ .htaccess konnte nicht erstellt werden (Schreibrechte fehlen)</div>';
+        echo '<div class="warning">';
+        echo '<p><strong>Manuelle Lösung:</strong> Erstelle eine .htaccess-Datei im WordPress-Root mit folgendem Inhalt:</p>';
+        echo '<pre style="background:#f0f0f0;padding:15px;overflow-x:auto;">' . htmlspecialchars($htaccess_content) . '</pre>';
+        echo '</div>';
+    }
+} else {
+    echo '<div class="info">ℹ️ .htaccess existiert bereits und enthält WordPress-Regeln</div>';
+}
+
 // --- ZUSAMMENFASSUNG ---
 
 echo '<div class="summary">';
@@ -430,12 +474,14 @@ echo '<p><strong>Erstellte Seiten:</strong> ' . $created . '</p>';
 echo '<p><strong>Übersprungene Seiten:</strong> ' . $skipped . ' (existierten bereits)</p>';
 echo '<p><strong>Menü:</strong> Hauptmenü mit Hierarchie erstellt</p>';
 echo '<p><strong>Permalinks:</strong> Auf "Beitragsname" gesetzt</p>';
+echo '<p><strong>.htaccess:</strong> WordPress Rewrite-Rules ' . ($needs_update && $result !== false ? 'erstellt' : 'vorhanden') . '</p>';
 echo '</div>';
 
 echo '<div class="warning">';
 echo '<h3>⚠️ WICHTIG - Nächste Schritte:</h3>';
 echo '<ol>';
 echo '<li><strong>Diese Datei JETZT löschen!</strong> (Sicherheitsrisiko)</li>';
+echo '<li><strong>Links testen:</strong> Rufe eine Seite auf (z.B. /kontakt/) - bei 404-Fehler siehe TROUBLESHOOTING.md</li>';
 echo '<li><strong>Impressum anpassen:</strong> Vollständige Daten eintragen</li>';
 echo '<li><strong>Datenschutz erstellen:</strong> DSGVO-Generator nutzen</li>';
 echo '<li><strong>Inhalte aus Joomla übertragen:</strong> Texte pro Seite kopieren</li>';

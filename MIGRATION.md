@@ -209,6 +209,44 @@ Auswählen: "Beitragsname"
 
 Dies erzeugt schöne URLs: `/verkehrsrecht/` statt `/?page_id=123`
 
+**⚠️ WICHTIG: .htaccess-Datei erforderlich!**
+
+Damit die schönen URLs funktionieren, benötigt WordPress eine `.htaccess`-Datei im Root-Verzeichnis.
+
+**Automatisch** (wenn setup-pages.php verwendet):
+- Die .htaccess wird automatisch erstellt
+
+**Manuell** (falls automatisch nicht funktioniert):
+
+1. Erstelle eine neue Datei `.htaccess` im WordPress-Root-Verzeichnis
+2. Füge folgenden Inhalt ein:
+
+```apache
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+```
+
+3. Speichern (nicht im Theme-Ordner, sondern neben wp-config.php!)
+
+**HINWEIS für Subdomain/Unterverzeichnis:**  
+Falls WordPress in einem Unterverzeichnis liegt (z.B. `/wordpress/`), passe `RewriteBase` an:
+```apache
+RewriteBase /wordpress/
+```
+
+**Testen:**
+- Rufe eine Seite auf: `https://deine-domain.de/kontakt/`
+- Bei **404-Fehler** trotz .htaccess: `mod_rewrite` auf dem Server aktivieren lassen
+
 ### Startseite festlegen
 
 ```
