@@ -242,7 +242,7 @@ foreach ($pages as $page_data) {
     }
     
     $page_id = wp_insert_post(array(
-        'post_title'    => $page_data[' title'],
+        'post_title'    => $page_data['title'],
         'post_name'     => $page_data['slug'],
         'post_content'  => $page_data['content'],
         'post_status'   => 'publish',
@@ -306,11 +306,17 @@ if ($menu_id) {
         ));
         
         // Unterseiten
-        $rechtsgebiete_children = array('miet-wohnungseigentumsrecht', 'grundstuecks-immobilienrecht', 'baurecht', 'bu-erwerbsminderungsrente');
+        $rechtsgebiete_children = array(
+            'miet-wohnungseigentumsrecht' => 'Miet- / Wohnungseigentumsrecht',
+            'grundstuecks-immobilienrecht' => 'Grundstücks- / Immobilienrecht',
+            'baurecht' => 'Baurecht',
+            'bu-erwerbsminderungsrente' => 'BU / Erwerbsminderungsrente'
+        );
         $pos = 1;
-        foreach ($rechtsgebiete_children as $child_slug) {
+        foreach ($rechtsgebiete_children as $child_slug => $child_title) {
             if (isset($created_page_ids[$child_slug])) {
                 wp_update_nav_menu_item($menu_id, 0, array(
+                    'menu-item-title' => $child_title,
                     'menu-item-object-id' => $created_page_ids[$child_slug],
                     'menu-item-object' => 'page',
                     'menu-item-type' => 'post_type',
@@ -329,16 +335,20 @@ if ($menu_id) {
             'menu-item-object-id' => $created_pages['informationen'],
             'menu-item-object' => 'page',
             'menu-item-type' => 'post_type',
-            'menu-it em-status' => 'publish',
+            'menu-item-status' => 'publish',
             'menu-item-position' => 3,
         ));
         
         // Unterseiten
-        $info_children = array('kontakt', 'ueber-mich');
+        $info_children = array(
+            'kontakt' => 'Kontakt',
+            'ueber-mich' => 'Über mich'
+        );
         $pos = 1;
-        foreach ($info_children as $child_slug) {
+        foreach ($info_children as $child_slug => $child_title) {
             if (isset($created_page_ids[$child_slug])) {
                 wp_update_nav_menu_item($menu_id, 0, array(
+                    'menu-item-title' => $child_title,
                     'menu-item-object-id' => $created_page_ids[$child_slug],
                     'menu-item-object' => 'page',
                     'menu-item-type' => 'post_type',
@@ -369,6 +379,7 @@ if (!$footer_menu_exists) {
         // Impressum und Datenschutz hinzufügen
         if (isset($created_page_ids['impressum'])) {
             wp_update_nav_menu_item($footer_menu_id, 0, array(
+                'menu-item-title' => 'Impressum',
                 'menu-item-object-id' => $created_page_ids['impressum'],
                 'menu-item-object' => 'page',
                 'menu-item-type' => 'post_type',
@@ -377,6 +388,7 @@ if (!$footer_menu_exists) {
         }
         if (isset($created_page_ids['datenschutz'])) {
             wp_update_nav_menu_item($footer_menu_id, 0, array(
+                'menu-item-title' => 'Datenschutz',
                 'menu-item-object-id' => $created_page_ids['datenschutz'],
                 'menu-item-object' => 'page',
                 'menu-item-type' => 'post_type',
