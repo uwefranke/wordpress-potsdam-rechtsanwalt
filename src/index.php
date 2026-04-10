@@ -29,25 +29,51 @@ get_header();
                 <h2 class="section-title">Unsere Rechtsgebiete</h2>
                 <div class="services-grid">
                     
-                    <!-- Verkehrsrecht -->
-                    <a href="<?php echo esc_url(home_url('/verkehrsrecht')); ?>" class="service-card-link">
+                    <!-- Miet- / Wohnungseigentumsrecht -->
+                    <a href="<?php echo esc_url(home_url('/miet-wohnungseigentumsrecht')); ?>" class="service-card-link">
                         <div class="service-card">
                             <div class="service-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="1" y="3" width="15" height="13"></rect>
-                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                    <path d="M9 10h6M9 14h6M9 18h6M3 10v9a2 2 0 002 2h14a2 2 0 002-2v-9M3 5a2 2 0 012-2h14a2 2 0 012 2v5H3z"></path>
                                 </svg>
                             </div>
-                            <h3>Verkehrsrecht</h3>
-                            <p>Umfassende Beratung bei Verkehrsunfällen, Bußgeldern und Führerscheinentzug. Wir setzen Ihre Rechte durch.</p>
+                            <h3>Miet- / Wohnungseigentumsrecht</h3>
+                            <p>Umfassende Beratung bei Wohnungs- und Gewerbemietrecht, Kündigungen, Mietminderungen und WEG-Recht.</p>
                             <span class="service-link-arrow">Mehr erfahren →</span>
                         </div>
                     </a>
                     
-                    <!-- Familienrecht -->
-                    <a href="<?php echo esc_url(home_url('/familienrecht')); ?>" class="service-card-link">
+                    <!-- Grundstücks- / Immobilienrecht -->
+                    <a href="<?php echo esc_url(home_url('/grundstuecks-immobilienrecht')); ?>" class="service-card-link">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
+                            <h3>Grundstücks- / Immobilienrecht</h3>
+                            <p>Kaufverträge, Förderdarlehen (ILB/IBB), Nachbarschaftsrecht und alle immobilienrechtlichen Angelegenheiten.</p>
+                            <span class="service-link-arrow">Mehr erfahren →</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Baurecht -->
+                    <a href="<?php echo esc_url(home_url('/baurecht')); ?>" class="service-card-link">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path>
+                                </svg>
+                            </div>
+                            <h3>Baurecht</h3>
+                            <p>Bauverträge (BGB/VOB), Baumängel, Gewährleistung, Architektenrecht und bauplanungsrechtliche Fragen.</p>
+                            <span class="service-link-arrow">Mehr erfahren →</span>
+                        </div>
+                    </a>
+                    
+                    <!-- BU / Erwerbsminderungsrente -->
+                    <a href="<?php echo esc_url(home_url('/bu-erwerbsminderungsrente')); ?>" class="service-card-link">
                         <div class="service-card">
                             <div class="service-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -57,41 +83,8 @@ get_header();
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
                             </div>
-                            <h3>Familienrecht</h3>
-                            <p>Einfühlsame Unterstützung bei Scheidung, Sorgerecht, Unterhalt und allen familiären Angelegenheiten.</p>
-                            <span class="service-link-arrow">Mehr erfahren →</span>
-                        </div>
-                    </a>
-                    
-                    <!-- Vertragsrecht -->
-                    <a href="<?php echo esc_url(home_url('/vertragsrecht')); ?>" class="service-card-link">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <polyline points="10 9 9 9 8 9"></polyline>
-                                </svg>
-                            </div>
-                            <h3>Vertragsrecht</h3>
-                            <p>Prüfung, Gestaltung und Durchsetzung von Verträgen aller Art. Professionelle rechtliche Absicherung.</p>
-                            <span class="service-link-arrow">Mehr erfahren →</span>
-                        </div>
-                    </a>
-                    
-                    <!-- Immobilienrecht -->
-                    <a href="<?php echo esc_url(home_url('/immobilienrecht')); ?>" class="service-card-link">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <h3>Immobilienrecht</h3>
-                            <p>Kompetente Beratung bei Kauf, Verkauf, Miete und allen immobilienrechtlichen Fragestellungen.</p>
+                            <h3>BU / Erwerbsminderungsrente</h3>
+                            <p>Durchsetzung von Ansprüchen bei Berufsunfähigkeit und Erwerbsminderung gegenüber Versicherungen und Behörden.</p>
                             <span class="service-link-arrow">Mehr erfahren →</span>
                         </div>
                     </a>

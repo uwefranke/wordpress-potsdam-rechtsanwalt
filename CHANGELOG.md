@@ -11,6 +11,38 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.4] - 2026-04-11
+
+### Geändert
+- **Rechtsgebiete angepasst an tatsächliche Joomla-Website** (www.potsdam-rechtsanwalt.de)
+  - Miet- / Wohnungseigentumsrecht (statt Verkehrsrecht)
+  - Grundstücks- / Immobilienrecht (erweitert)
+  - Baurecht (statt Vertragsrecht)
+  - BU / Erwerbsminderungsrente (statt Familienrecht)
+- Service-Cards auf der Startseite mit korrekten Inhalten und Links
+- **setup-pages.php komplett überarbeitet** mit:
+  - Automatischer Seitenerstellung basierend auf Joomla-Struktur
+  - Automatischer Menü-Erstellung mit Hierarchie (Hauptmenü + Footer)
+  - Korrekte Parent-Child-Beziehungen (Rechtsgebiete, Informationen)
+  - Vollständig ausgefüllte Inhalte:
+    - Miet-/Wohnungseigentumsrecht mit allen Services
+    - Grundstücks-/Immobilienrecht mit ILB/IBB-Referenz
+    - Baurecht mit VOB/BGB
+    - BU/Erwerbsminderungsrente
+    - Kontakt-Seite mit echter Anschrift (Matthias Lange, Schornsteinfegergasse 5)
+    - Über-mich-Seite mit Vita
+    - Impressum und Datenschutz (Platzhalter)
+
+### Hinzugefügt
+- Automatische Menü-Erstellung in setup-pages.php
+- Hierarchische Seitenstruktur (Parent-Seiten: Rechtsgebiete, Informationen)
+- Vollständiges Setup mit einem Skript-Aufruf
+
+### Verbessert
+- Bessere Übereinstimmung mit der ursprünglichen Joomla-Website
+- Einfachere Migration durch automatisiertes Setup
+- Professionelle Bedienoberfläche im Setup-Skript
+
 ## [1.0.3] - 2026-04-11
 
 ### Hinzugefügt
