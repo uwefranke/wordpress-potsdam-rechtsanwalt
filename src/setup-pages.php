@@ -321,7 +321,7 @@ if ($menu_id) {
                     'menu-item-object' => 'page',
                     'menu-item-type' => 'post_type',
                     'menu-item-status' => 'publish',
-                    'menu-item-parent-id' => $rechtsgebiete_item,
+                    'menu-item-parent' => $rechtsgebiete_item,
                     'menu-item-position' => $pos++,
                 ));
             }
@@ -353,7 +353,7 @@ if ($menu_id) {
                     'menu-item-object' => 'page',
                     'menu-item-type' => 'post_type',
                     'menu-item-status' => 'publish',
-                    'menu-item-parent-id' => $info_item,
+                    'menu-item-parent' => $info_item,
                     'menu-item-position' => $pos++,
                 ));
             }
@@ -407,6 +407,21 @@ if (!$footer_menu_exists) {
     echo '<div class="info">ℹ️ Footer-Menü existiert bereits</div>';
 }
 
+// --- PERMALINKS AKTIVIEREN ---
+
+echo '<h2>🔗 Permalinks konfigurieren</h2>';
+
+// Pretty Permalinks aktivieren (Beitragsname)
+$current_structure = get_option('permalink_structure');
+if (empty($current_structure) || $current_structure === '?p=%postname%') {
+    update_option('permalink_structure', '/%postname%/');
+    flush_rewrite_rules();
+    echo '<div class="success">✓ Pretty Permalinks aktiviert (Beitragsname)</div>';
+    echo '<div class="info">URLs sind jetzt: <code>https://deine-domain.de/seitenname/</code> statt <code>?page_id=123</code></div>';
+} else {
+    echo '<div class="info">ℹ️ Permalinks bereits konfiguriert: ' . $current_structure . '</div>';
+}
+
 // --- ZUSAMMENFASSUNG ---
 
 echo '<div class="summary">';
@@ -414,6 +429,7 @@ echo '<h2>✅ Setup abgeschlossen!</h2>';
 echo '<p><strong>Erstellte Seiten:</strong> ' . $created . '</p>';
 echo '<p><strong>Übersprungene Seiten:</strong> ' . $skipped . ' (existierten bereits)</p>';
 echo '<p><strong>Menü:</strong> Hauptmenü mit Hierarchie erstellt</p>';
+echo '<p><strong>Permalinks:</strong> Auf "Beitragsname" gesetzt</p>';
 echo '</div>';
 
 echo '<div class="warning">';

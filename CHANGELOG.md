@@ -11,6 +11,21 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.6] - 2026-04-11
+
+### Behoben
+- **Menü-Hierarchie funktioniert jetzt korrekt**
+  - `menu-item-parent-id` korrigiert zu `menu-item-parent`
+  - Unterseiten erscheinen jetzt als Dropdown unter Rechtsgebiete und Informationen
+  - Flaches Menü-Problem behoben
+
+### Hinzugefügt
+- **Automatische Permalink-Aktivierung** in setup-pages.php
+  - Pretty Permalinks werden automatisch auf "Beitragsname" gesetzt
+  - URLs sind jetzt `/seitenname/` statt `?page_id=123`
+  - flush_rewrite_rules() nach Aktivierung
+  - Card-Links funktionieren jetzt korrekt
+
 ## [1.0.5] - 2026-04-11
 
 ### Behoben
