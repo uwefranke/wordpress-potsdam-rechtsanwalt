@@ -11,6 +11,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.14] - 2026-04-11
+
+### Geändert
+- **Hero-Section für 1040x233px Bilder optimiert**
+  - Höhe: 350px (Desktop), 280px (Tablet), 220px (Mobile)
+  - Leichteres Overlay (60-75% statt 85%) für bessere Bildsichtbarkeit
+  - background-position: center center
+  - overflow: hidden hinzugefügt
+
 ## [1.0.13] - 2026-04-11
 
 ### Behoben
