@@ -1,0 +1,41 @@
+# Nginx Konfiguration für WordPress Pretty Permalinks
+# 
+# Diese Regeln müssen vom Hosting-Provider in die Nginx-Konfiguration eingefügt werden
+# .htaccess-Dateien funktionieren NICHT mit Nginx!
+
+server {
+    listen 80;
+    server_name lawv8.scriptbb.de;
+    
+    root /pfad/zu/wordpress;
+    index index.php index.html;
+    
+    # WordPress Pretty Permalinks
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+    
+    # PHP-Verarbeitung
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+    
+    # Sicherheit: Zugriff auf versteckte Dateien verhindern
+    location ~ /\. {
+        deny all;
+    }
+    
+    # Sicherheit: Zugriff auf wp-config.php verhindern
+    location ~* wp-config.php {
+        deny all;
+    }
+    
+    # Statische Dateien cachen
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+}

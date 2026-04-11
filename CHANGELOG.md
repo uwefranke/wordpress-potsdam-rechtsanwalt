@@ -11,6 +11,20 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.8] - 2026-04-11
+
+### Hinzugefügt
+- **NGINX-SETUP.md** - Anleitung für Nginx-Server
+  - Erklärung warum .htaccess nicht funktioniert bei Nginx
+  - 4 Lösungsansätze (Hosting-Support, Control Panel, Workaround, SSH)
+  - Anfrage-Template für scriptbb.de Support
+  - Nginx-Konfigurationsbeispiel
+- **nginx.conf.example** - Vollständige Nginx-Konfiguration für WordPress
+
+### Dokumentation
+- Hinweis dass .htaccess nur bei Apache funktioniert
+- Nginx benötigt andere Konfiguration (server-seitig)
+
 ## [1.0.7] - 2026-04-11
 
 ### Hinzugefügt
