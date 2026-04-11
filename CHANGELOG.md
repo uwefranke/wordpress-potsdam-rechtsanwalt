@@ -11,6 +11,20 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.10] - 2026-04-11
+
+### Behoben
+- **Menü-Hierarchie wird jetzt korrekt erstellt** 🔧
+  - setup-pages.php löscht altes Menü komplett vor Neuaufbau
+  - Verhindert flache Menü-Struktur bei mehrfachem Ausführen
+  - Korrigierte Menu-Positionen (Rechtsgebiete=1, Informationen=2)
+
+### Verbessert
+- Besseres Debugging in setup-pages.php
+  - Zeigt Parent IDs für jedes Menu-Item
+  - Zeigt Item IDs für Child-Items
+  - Detaillierte Hierarchie-Ausgabe beim Erstellen
+
 ## [1.0.9] - 2026-04-11
 
 ### Behoben

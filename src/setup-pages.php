@@ -269,13 +269,15 @@ echo '<h2>📱 Menü erstellen</h2>';
 $menu_name = 'Hauptmenü';
 $menu_exists = wp_get_nav_menu_object($menu_name);
 
-if (!$menu_exists) {
-    $menu_id = wp_create_nav_menu($menu_name);
-    echo '<div class="success">✓ Menü "' . $menu_name . '" erstellt</div>';
-} else {
-    $menu_id = $menu_exists->term_id;
-    echo '<div class="info">ℹ️ Menü "' . $menu_name . '" existiert bereits. Erweitere es...</div>';
+// Altes Menü komplett löschen für sauberen Neuaufbau
+if ($menu_exists) {
+    wp_delete_nav_menu($menu_exists->term_id);
+    echo '<div class="warning">⚠️ Altes Menü "' . $menu_name . '" gelöscht für Neuaufbau</div>';
 }
+
+// Neues Menü erstellen
+$menu_id = wp_create_nav_menu($menu_name);
+echo '<div class="success">✓ Menü "' . $menu_name . '" neu erstellt (ID: ' . $menu_id . ')</div>';
 
 if ($menu_id) {
     // Startseite hinzufügen
@@ -302,8 +304,9 @@ if ($menu_id) {
             'menu-item-object' => 'page',
             'menu-item-type' => 'post_type',
             'menu-item-status' => 'publish',
-            'menu-item-position' => 2,
+            'menu-item-position' => 1,
         ));
+        echo '<div class="success">✓ Menü-Item "Rechtsgebiete" erstellt (Parent ID: ' . $rechtsgebiete_item . ')</div>';
         
         // Unterseiten
         $rechtsgebiete_children = array(
@@ -315,7 +318,7 @@ if ($menu_id) {
         $pos = 1;
         foreach ($rechtsgebiete_children as $child_slug => $child_title) {
             if (isset($created_page_ids[$child_slug])) {
-                wp_update_nav_menu_item($menu_id, 0, array(
+                $child_item = wp_update_nav_menu_item($menu_id, 0, array(
                     'menu-item-title' => $child_title,
                     'menu-item-object-id' => $created_page_ids[$child_slug],
                     'menu-item-object' => 'page',
@@ -324,6 +327,7 @@ if ($menu_id) {
                     'menu-item-parent' => $rechtsgebiete_item,
                     'menu-item-position' => $pos++,
                 ));
+                echo '<div class="success">  ↳ Kind-Item "' . $child_title . '" hinzugefügt (Parent: ' . $rechtsgebiete_item . ', Item ID: ' . $child_item . ')</div>';
             }
         }
     }
@@ -336,8 +340,9 @@ if ($menu_id) {
             'menu-item-object' => 'page',
             'menu-item-type' => 'post_type',
             'menu-item-status' => 'publish',
-            'menu-item-position' => 3,
+            'menu-item-position' => 2,
         ));
+        echo '<div class="success">✓ Menü-Item "Informationen" erstellt (Parent ID: ' . $info_item . ')</div>';
         
         // Unterseiten
         $info_children = array(
@@ -347,7 +352,7 @@ if ($menu_id) {
         $pos = 1;
         foreach ($info_children as $child_slug => $child_title) {
             if (isset($created_page_ids[$child_slug])) {
-                wp_update_nav_menu_item($menu_id, 0, array(
+                $child_item = wp_update_nav_menu_item($menu_id, 0, array(
                     'menu-item-title' => $child_title,
                     'menu-item-object-id' => $created_page_ids[$child_slug],
                     'menu-item-object' => 'page',
@@ -356,6 +361,7 @@ if ($menu_id) {
                     'menu-item-parent' => $info_item,
                     'menu-item-position' => $pos++,
                 ));
+                echo '<div class="success">  ↳ Kind-Item "' . $child_title . '" hinzugefügt (Parent: ' . $info_item . ', Item ID: ' . $child_item . ')</div>';
             }
         }
     }
