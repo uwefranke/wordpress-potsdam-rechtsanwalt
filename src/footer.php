@@ -17,10 +17,10 @@
                 <?php dynamic_sidebar('footer-2'); ?>
             <?php else : ?>
                 <h4>Rechtsgebiete</h4>
-                <a href="<?php echo esc_url(home_url('/verkehrsrecht')); ?>">Verkehrsrecht</a>
-                <a href="<?php echo esc_url(home_url('/familienrecht')); ?>">Familienrecht</a>
-                <a href="<?php echo esc_url(home_url('/vertragsrecht')); ?>">Vertragsrecht</a>
-                <a href="<?php echo esc_url(home_url('/immobilienrecht')); ?>">Immobilienrecht</a>
+                <a href="<?php echo esc_url(home_url('/rechtsgebiete/miet-wohnungseigentumsrecht/')); ?>">Miet- / Wohnungseigentumsrecht</a>
+                <a href="<?php echo esc_url(home_url('/rechtsgebiete/grundstuecks-immobilienrecht/')); ?>">Grundstücks- / Immobilienrecht</a>
+                <a href="<?php echo esc_url(home_url('/rechtsgebiete/baurecht/')); ?>">Baurecht</a>
+                <a href="<?php echo esc_url(home_url('/rechtsgebiete/bu-erwerbsminderungsrente/')); ?>">BU / Erwerbsminderungsrente</a>
             <?php endif; ?>
         </div>
         

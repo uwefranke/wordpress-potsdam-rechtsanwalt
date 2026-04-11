@@ -11,6 +11,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.11] - 2026-04-11
+
+### Behoben
+- **Footer-Links korrigiert** - zeigen jetzt auf echte Rechtsgebiete:
+  - /rechtsgebiete/miet-wohnungseigentumsrecht/
+  - /rechtsgebiete/grundstuecks-immobilienrecht/
+  - /rechtsgebiete/baurecht/
+  - /rechtsgebiete/bu-erwerbsminderungsrente/
+- Alte ungültige Links entfernt (verkehrsrecht, familienrecht, vertragsrecht)
+
 ## [1.0.10] - 2026-04-11
 
 ### Behoben
