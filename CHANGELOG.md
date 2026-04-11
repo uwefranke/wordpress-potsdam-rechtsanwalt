@@ -11,6 +11,18 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.12] - 2026-04-11
+
+### Behoben
+- **KRITISCHER FIX: Version-Cache Problem gelöst** 🔥
+  - functions.php liest Version jetzt automatisch aus style.css
+  - Keine hardcodierten Versionen mehr in wp_enqueue_style/script
+  - Verhindert "alte CSS wird geladen" Problem nach Updates
+
+### Geändert
+- Auto-Versioning in functions.php implementiert
+- Über wp_get_theme()->get('Version') aus style.css
+
 ## [1.0.11] - 2026-04-11
 
 ### Behoben
