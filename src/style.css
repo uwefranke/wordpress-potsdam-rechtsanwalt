@@ -4,7 +4,7 @@ Theme URI: http://www.potsdam-rechtsanwalt.de/
 Author: Uwe Franke
 Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.12
+Version: 1.0.13
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 8.4
@@ -176,12 +176,61 @@ body {
     margin-left: 5px;
 }
 
+/* === Mobile Menu Toggle === */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle-icon,
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+    content: '';
+    position: absolute;
+}
+
+.menu-toggle-icon::before {
+    transform: translateY(-8px);
+}
+
+.menu-toggle-icon::after {
+    transform: translateY(8px);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon {
+    background: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon::before {
+    transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon::after {
+    transform: rotate(-45deg);
+}
+
 /* === Hero Section === */
 .hero-section {
     position: relative;
     height: 500px;
-    background: linear-gradient(rgba(26, 58, 92, 0.7), rgba(26, 58, 92, 0.7)),
-                url('assets/images/potsdam-skyline.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(26, 58, 92, 0.85), rgba(26, 58, 92, 0.85)), var(--color-navy);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -493,21 +542,58 @@ body {
 
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: column;
-        gap: 20px;
+        position: relative;
+    }
+    
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    
+    .main-navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-navy);
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+    
+    .main-navigation.is-open {
+        display: block;
     }
     
     .main-navigation > ul {
         flex-direction: column;
-        gap: 15px;
+        gap: 0;
         text-align: center;
+    }
+    
+    .main-navigation > ul > li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px 0;
+    }
+    
+    .main-navigation > ul > li:last-child {
+        border-bottom: none;
     }
     
     .main-navigation ul ul {
         position: static;
         box-shadow: none;
-        background: rgba(26, 58, 92, 0.95);
+        background: rgba(0, 0, 0, 0.2);
         margin-top: 10px;
+        padding: 10px 0;
+    }
+    
+    .main-navigation ul ul li {
+        padding: 10px 0;
     }
     
     .main-navigation li:hover > ul,
@@ -517,6 +603,8 @@ body {
     
     .cta-button {
         margin-top: 15px;
+        display: block;
+        text-align: center;
     }
     
     .hero-content h1 {

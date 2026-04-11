@@ -7,7 +7,14 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<section class="hero-section">
+<?php 
+$hero_image = get_theme_mod('hero_image');
+$hero_style = '';
+if ($hero_image) {
+    $hero_style = sprintf('style="background-image: linear-gradient(rgba(26, 58, 92, 0.7), rgba(26, 58, 92, 0.7)), url(%s);"', esc_url($hero_image));
+}
+?>
+<section class="hero-section" <?php echo $hero_style; ?>>
     <div class="hero-content">
         <h1><?php echo get_theme_mod('hero_title', 'IHRE KANZLEI IN POTSDAM'); ?></h1>
         <p class="hero-subtitle"><?php echo get_theme_mod('hero_text', 'FÜR RECHT, DAS VERTRAUEN SCHAFFT. KOMPETENT & LOKAL.'); ?></p>

@@ -11,6 +11,28 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.13] - 2026-04-11
+
+### Behoben
+- **Mobile-Menü funktioniert jetzt!** 📱
+  - Toggle-Button hinzugefügt (Hamburger-Menü)
+  - Menü klappt auf Mobile korrekt auf/zu
+  - ESC-Taste schließt Menü
+  - Menü schließt automatisch nach Link-Klick
+  - Toggle-Button nur auf Mobile sichtbar
+
+### Geändert
+- **Hero-Image jetzt dynamisch**
+  - Kein hardcodierter Pfad mehr
+  - Upload über Customizer: Design → Anpassen → Hero-Bereich
+  - Fallback auf Navy-Farbe wenn kein Bild hochgeladen
+
+### Hinzugefügt
+- Mobile-Toggle-Button im Header
+- JavaScript für Mobile-Menü (Toggle, ESC-Support, Auto-Close)
+- CSS für Hamburger-Icon-Animation
+- Responsive Mobile-Navigation
+
 ## [1.0.12] - 2026-04-11
 
 ### Behoben

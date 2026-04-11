@@ -8,6 +8,34 @@
     // DOM Ready
     $(document).ready(function() {
         
+        // Mobile Navigation Toggle
+        $('.menu-toggle').on('click', function() {
+            var nav = $('.main-navigation');
+            var isOpen = $(this).attr('aria-expanded') === 'true';
+            
+            $(this).attr('aria-expanded', !isOpen);
+            nav.toggleClass('is-open');
+            $('body').toggleClass('menu-open');
+        });
+        
+        // Menü schließen beim Klick auf einen Link
+        $('.main-navigation a').on('click', function() {
+            if ($(window).width() <= 768) {
+                $('.main-navigation').removeClass('is-open');
+                $('.menu-toggle').attr('aria-expanded', 'false');
+                $('body').removeClass('menu-open');
+            }
+        });
+        
+        // Menü schließen bei ESC-Taste
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape' && $('.main-navigation').hasClass('is-open')) {
+                $('.main-navigation').removeClass('is-open');
+                $('.menu-toggle').attr('aria-expanded', 'false');
+                $('body').removeClass('menu-open');
+            }
+        });
+        
         // Smooth Scrolling für Anker-Links
         $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
             if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && 
@@ -22,15 +50,6 @@
                     }, 800);
                 }
             }
-        });
-        
-        // Mobile Navigation Toggle
-        var mobileMenuButton = '<button class="mobile-menu-toggle" aria-label="Menü">☰</button>';
-        $('.header-container').prepend(mobileMenuButton);
-        
-        $('.mobile-menu-toggle').on('click', function() {
-            $('.main-navigation').toggleClass('active');
-            $(this).toggleClass('active');
         });
         
         // Service Cards Hover-Effekt
