@@ -11,6 +11,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.15] - 2026-04-11
+
+### Behoben
+- **Menü-Kontrast verbessert** - Kein blau auf blau mehr! 🎨
+  - Alle Menü-Links explizit weiß (.main-navigation a)
+  - Dropdown-Links weiß mit expliziter Farbdefinition
+  - Hover-Effekt Gold mit stärkerem Hintergrund (20% statt 10%)
+  - text-decoration: none für alle Links
+
 ## [1.0.14] - 2026-04-11
 
 ### Geändert
