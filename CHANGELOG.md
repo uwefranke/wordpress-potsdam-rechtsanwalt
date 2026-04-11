@@ -11,6 +11,30 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.9] - 2026-04-11
+
+### Behoben
+- **Dropdown-Menü funktioniert jetzt!** ⭐
+  - CSS für hierarchische Menüs hinzugefügt
+  - `.sub-menu` Styles für Untermenüs
+  - Hover-States für Dropdowns
+  - Dropdown-Indikator (▾) bei Menüs mit Kindern
+  - Position: absolute für schwebende Untermenüs
+  - Box-Shadow für bessere Sichtbarkeit
+
+### Geändert
+- Navigation CSS komplett überarbeitet:
+  - `.main-navigation > ul` statt `.main-navigation ul` (spezifischer)
+  - Separate Styles für Top-Level und Dropdown-Items
+  - Responsive Dropdown-Styles für Mobile
+  - Untermenüs auf Mobile: static statt absolute
+
+### Hinzugefügt
+- **menu-debug.php** - Diagnose-Tool für Menü-Probleme
+  - Zeigt alle Menüs und Zuweisungen
+  - Prüft hierarchische Struktur
+  - Debug-Ausgabe aller Menü-Items
+
 ## [1.0.8] - 2026-04-11
 
 ### Hinzugefügt
