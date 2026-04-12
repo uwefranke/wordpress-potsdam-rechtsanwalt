@@ -10,6 +10,20 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.32] - 2026-04-12
+
+### Geändert
+- **Seiten-Titel auf Startseite ausgeblendet** 🚫
+  - Titel wird nur auf Unterseiten angezeigt
+  - Startseite nutzt Hero-Section als "Titel"
+  - Besseres Layout ohne redundanten Titel
+  - Prüfung mit `is_front_page()` in page.php
+
+### Technisch
+- Conditional Title Display: `<?php if (!is_front_page()) : ?>`
+- Hero-Section ersetzt Titel auf Startseite
+- Unterseiten (Impressum, Datenschutz, etc.) zeigen Titel normal
+
 ## [1.0.31] - 2026-04-12
 
 ### Hinzugefügt

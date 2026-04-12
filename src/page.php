@@ -21,7 +21,9 @@ get_header();
                 while (have_posts()) : the_post();
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                        <h1><?php the_title(); ?></h1>
+                        <?php if (!is_front_page()) : ?>
+                            <h1><?php the_title(); ?></h1>
+                        <?php endif; ?>
                         
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="post-thumbnail">
