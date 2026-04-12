@@ -10,6 +10,18 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.22] - 2026-04-12
+
+### Behoben
+- **QR-Code jetzt scanbar** 🐞
+  - vCard-Format korrigiert: `\r\n` (CRLF) statt `\n` (LF)
+  - Adress-Parsing repariert: `"\n"` statt `'\n'` (war nicht funktional)
+  - ADR-Feld vervollständigt: `;;street;city;state;zip;country;;;;`
+  - Doppelte Kommas in Adressen werden entfernt
+  - vCard 3.0 Standard-konform
+  - **Problem:** QR-Code war leer beim Scannen
+  - **Lösung:** Korrekte vCard-Kodierung mit CRLF-Zeilenumbrüchen
+
 ## [1.0.21] - 2026-04-12
 
 ### Hinzugefügt

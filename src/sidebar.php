@@ -117,18 +117,22 @@
             $phone = get_theme_mod('contact_phone', '+49 331 123456');
             $fax = get_theme_mod('contact_fax', '');
             $email = get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de');
-            $address = str_replace('\n', ', ', get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam'));
+            $address_raw = get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam');
             
-            // vCard 3.0 Format
-            $vcard = "BEGIN:VCARD\n";
-            $vcard .= "VERSION:3.0\n";
-            $vcard .= "FN:" . $name . "\n";
-            $vcard .= "TEL;TYPE=WORK,VOICE:" . $phone . "\n";
+            // Adresse für vCard formatieren (Zeilenumbrüche durch Komma ersetzen)
+            $address = str_replace(array("\r\n", "\n", "\r"), ', ', $address_raw);
+            $address = trim(preg_replace('/,\s*,/', ',', $address)); // Doppelte Kommas entfernen
+            
+            // vCard 3.0 Format mit korrekten Zeilenumbrüchen (CRLF)
+            $vcard = "BEGIN:VCARD\r\n";
+            $vcard .= "VERSION:3.0\r\n";
+            $vcard .= "FN:" . $name . "\r\n";
+            $vcard .= "TEL;TYPE=WORK,VOICE:" . $phone . "\r\n";
             if ($fax) {
-                $vcard .= "TEL;TYPE=WORK,FAX:" . $fax . "\n";
+                $vcard .= "TEL;TYPE=WORK,FAX:" . $fax . "\r\n";
             }
-            $vcard .= "EMAIL:" . $email . "\n";
-            $vcard .= "ADR;TYPE=WORK:;;" . $address . "\n";
+            $vcard .= "EMAIL:" . $email . "\r\n";
+            $vcard .= "ADR;TYPE=WORK:;;" . $address . ";;;;\r\n"; // ADR Format: ;;street;city;state;zip;country
             $vcard .= "END:VCARD";
             
             // QR-Code URL generieren (nutzt Plugin wenn verfügbar)
