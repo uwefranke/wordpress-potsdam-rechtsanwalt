@@ -8,8 +8,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ## [Unreleased]
 
 ### In Planung
-- Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
+
+## [1.0.18] - 2026-04-12
+
+### Hinzugefügt
+- **Öffnungszeiten im Customizer editierbar** ⏰
+  - Neue Section "Öffnungszeiten" im Customizer
+  - Textfelder für Mo-Do, Freitag und Sa & So
+  - Default: "Nach Vereinbarung" für alle Tage
+  - Einfache Anpassung ohne Code-Änderung
 
 ## [1.0.17] - 2026-04-12
 

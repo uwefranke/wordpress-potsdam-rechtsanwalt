@@ -135,5 +135,44 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'section'  => 'layout_options',
         'type'     => 'checkbox',
     ));
+    
+    // Öffnungszeiten
+    $wp_customize->add_section('opening_hours', array(
+        'title'    => __('Öffnungszeiten', 'potsdam-rechtsanwalt'),
+        'priority' => 70,
+    ));
+    
+    $wp_customize->add_setting('hours_mon_thu', array(
+        'default'   => 'Nach Vereinbarung',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('hours_mon_thu', array(
+        'label'    => __('Montag - Donnerstag', 'potsdam-rechtsanwalt'),
+        'section'  => 'opening_hours',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('hours_friday', array(
+        'default'   => 'Nach Vereinbarung',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('hours_friday', array(
+        'label'    => __('Freitag', 'potsdam-rechtsanwalt'),
+        'section'  => 'opening_hours',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('hours_weekend', array(
+        'default'   => 'Nach Vereinbarung',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('hours_weekend', array(
+        'label'    => __('Samstag & Sonntag', 'potsdam-rechtsanwalt'),
+        'section'  => 'opening_hours',
+        'type'     => 'text',
+    ));
 }
 add_action('customize_register', 'potsdam_rechtsanwalt_customizer');

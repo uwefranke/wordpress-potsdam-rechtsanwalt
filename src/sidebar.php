@@ -100,15 +100,15 @@
         <table style="width: 100%; font-size: 14px;">
             <tr>
                 <td><strong>Mo - Do:</strong></td>
-                <td style="text-align: right;">09:00 - 18:00</td>
+                <td style="text-align: right;"><?php echo esc_html(get_theme_mod('hours_mon_thu', 'Nach Vereinbarung')); ?></td>
             </tr>
             <tr>
                 <td><strong>Freitag:</strong></td>
-                <td style="text-align: right;">09:00 - 16:00</td>
+                <td style="text-align: right;"><?php echo esc_html(get_theme_mod('hours_friday', 'Nach Vereinbarung')); ?></td>
             </tr>
             <tr>
                 <td><strong>Sa & So:</strong></td>
-                <td style="text-align: right;">Nach Vereinbarung</td>
+                <td style="text-align: right;"><?php echo esc_html(get_theme_mod('hours_weekend', 'Nach Vereinbarung')); ?></td>
             </tr>
         </table>
     </div>
