@@ -20,7 +20,9 @@ if ($hero_image) {
         <p class="hero-subtitle"><?php echo get_theme_mod('hero_text', 'FÜR RECHT, DAS VERTRAUEN SCHAFFT. KOMPETENT & LOKAL.'); ?></p>
         <div class="hero-buttons">
             <a href="#rechtsgebiete" class="btn btn-primary">UNSERE LEISTUNGEN</a>
+            <?php if (get_theme_mod('show_appointment_button', true)) : ?>
             <a href="#kontakt" class="btn btn-secondary">TERMIN VEREINBAREN</a>
+            <?php endif; ?>
         </div>
     </div>
 </section>

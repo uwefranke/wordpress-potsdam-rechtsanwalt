@@ -11,6 +11,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.17] - 2026-04-12
+
+### Geändert
+- **Termin-Buttons vollständig steuerbar** 🎛️
+  - Header-CTA "TERMIN VEREINBAREN" nutzt jetzt show_appointment_button
+  - Hero-Button "TERMIN VEREINBAREN" nutzt jetzt show_appointment_button
+  - "UNSERE LEISTUNGEN" Button bleibt immer sichtbar (reine Navigation)
+  - Konsistente Steuerung aller Termin-CTAs über eine Customizer-Option
+
 ## [1.0.16] - 2026-04-12
 
 ### Hinzugefügt

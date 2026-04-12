@@ -34,7 +34,9 @@
                 'fallback_cb'    => 'potsdam_rechtsanwalt_fallback_menu',
             ));
             ?>
+            <?php if (get_theme_mod('show_appointment_button', true)) : ?>
             <a href="#kontakt" class="cta-button">TERMIN VEREINBAREN</a>
+            <?php endif; ?>
         </nav>
     </div>
 </header>
