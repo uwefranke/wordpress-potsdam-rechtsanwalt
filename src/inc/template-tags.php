@@ -128,17 +128,15 @@ function potsdam_display_service_cards() {
     );
     
     for ($i = 1; $i <= $count; $i++) {
-        // Customizer-Werte holen oder Default verwenden
-        $title = get_theme_mod("service_{$i}_title");
-        $description = get_theme_mod("service_{$i}_description");
-        $link = get_theme_mod("service_{$i}_link");
+        // Default-Werte für dieses Rechtsgebiet (falls vorhanden)
+        $default_title = isset($default_services[$i]) ? $default_services[$i]['title'] : '';
+        $default_desc = isset($default_services[$i]) ? $default_services[$i]['description'] : '';
+        $default_link = isset($default_services[$i]) ? $default_services[$i]['link'] : '';
         
-        // Falls leer, Default-Werte verwenden (wenn vorhanden)
-        if (empty($title) && isset($default_services[$i])) {
-            $title = $default_services[$i]['title'];
-            $description = $default_services[$i]['description'];
-            $link = $default_services[$i]['link'];
-        }
+        // Customizer-Werte holen MIT Default als Fallback
+        $title = get_theme_mod("service_{$i}_title", $default_title);
+        $description = get_theme_mod("service_{$i}_description", $default_desc);
+        $link = get_theme_mod("service_{$i}_link", $default_link);
         
         // Nur anzeigen wenn Titel vorhanden
         if (empty($title)) {

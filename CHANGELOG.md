@@ -10,6 +10,20 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.37] - 2026-04-12
+
+### Behoben
+- **Default-Werte werden jetzt korrekt als Fallback verwendet** 🐛🐛
+  - Problem: Defaults funktionierten immer noch nicht direkt nach Installation
+  - Ursache: `get_theme_mod()` wurde OHNE zweiten Default-Parameter aufgerufen
+  - WordPress gibt `false` zurück wenn Setting nie gespeichert wurde (nicht `''`)
+  - Lösung: Defaults direkt als zweiten Parameter übergeben: `get_theme_mod('key', $default)`
+  - **JETZT funktioniert es endgültig!**
+
+### Technisch
+- template-tags.php: `get_theme_mod("service_{$i}_title", $default_title)` statt nur `get_theme_mod("service_{$i}_title")`
+- Korrekte WordPress-API-Nutzung implementiert
+
 ## [1.0.36] - 2026-04-12
 
 ### Behoben
