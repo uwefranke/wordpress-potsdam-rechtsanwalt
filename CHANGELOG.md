@@ -10,6 +10,28 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.24] - 2026-04-12
+
+### Behoben
+- **Telefonnummern-Normalisierung für vCard** 📞
+  - Automatische Konvertierung: `0331 / 74 09 860` → `+493317409860`
+  - Deutsche 0-Vorwahl wird zu +49 (international)
+  - Leerzeichen, Schrägstriche, Bindestriche werden entfernt
+  - E.164-Format für maximale Kompatibilität
+  - **Problem:** Smartphones erkannten deutsche Nummern nicht
+  - **Lösung:** Internationale Formatierung (RFC 3966)
+  
+- **Adress-Parsing verbessert** 🏠
+  - Intelligentes Parsing: "Straße, PLZ Stadt Bundesland"
+  - Korrekte ADR-Felder: Street;City;State;ZIP;Country
+  - Regex-basierte Extraktion von PLZ, Stadt, Bundesland
+  - "Germany" als Standard-Land hinzugefügt
+  - **Beispiel:** "Schornsteinfegergasse 5, Potsdam Brandenburg 14482" wird korrekt getrennt
+
+### Geändert
+- vCard nutzt jetzt strukturierte Adress-Komponenten statt einem String
+- Telefon/Fax-Felder werden vor vCard-Generierung sanitisiert
+
 ## [1.0.23] - 2026-04-12
 
 ### Behoben

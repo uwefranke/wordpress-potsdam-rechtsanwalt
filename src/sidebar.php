@@ -114,14 +114,56 @@
         <?php if (get_theme_mod('show_qr_code', true)) : 
             // vCard-Daten generieren
             $name = get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange');
-            $phone = get_theme_mod('contact_phone', '+49 331 123456');
-            $fax = get_theme_mod('contact_fax', '');
+            $phone_raw = get_theme_mod('contact_phone', '+49 331 123456');
+            $fax_raw = get_theme_mod('contact_fax', '');
             $email = get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de');
             $address_raw = get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam');
             
-            // Adresse für vCard formatieren (Zeilenumbrüche durch Komma ersetzen)
+            // Telefonnummern für vCard normalisieren (E.164-Format)
+            // Entfernt Leerzeichen, Schrägstriche, Bindestriche
+            // Wandelt deutsche 0-Vorwahl in +49 um
+            $phone = preg_replace('/[\s\/\-().]/', '', $phone_raw); // Entferne Formatierung
+            if (substr($phone, 0, 1) === '0' && substr($phone, 0, 2) !== '00') {
+                $phone = '+49' . substr($phone, 1); // 0331 -> +49331
+            }
+            
+            $fax = '';
+            if ($fax_raw) {
+                $fax = preg_replace('/[\s\/\-().]/', '', $fax_raw);
+                if (substr($fax, 0, 1) === '0' && substr($fax, 0, 2) !== '00') {
+                    $fax = '+49' . substr($fax, 1);
+                }
+            }
+            
+            // Adresse für vCard formatieren
+            // vCard ADR-Format: ;;Straße;Stadt;Bundesland;PLZ;Land
             $address = str_replace(array("\r\n", "\n", "\r"), ', ', $address_raw);
             $address = trim(preg_replace('/,\s*,/', ',', $address)); // Doppelte Kommas entfernen
+            
+            // Versuche Adresse zu parsen
+            $street = '';
+            $city = '';
+            $state = '';
+            $zip = '';
+            
+            // Einfaches Parsing: "Straße, PLZ Stadt" oder "Straße, Stadt PLZ"
+            if (preg_match('/^([^,]+),\s*(.*)\s+(\d{5})(.*)$/u', $address, $matches)) {
+                $street = trim($matches[1]);
+                $rest = trim($matches[2]);
+                $zip = trim($matches[3]);
+                $after = trim($matches[4]);
+                
+                // Stadt ist vor PLZ, Bundesland danach
+                if (!empty($rest)) {
+                    $city = $rest;
+                }
+                if (!empty($after)) {
+                    $state = $after;
+                }
+            } else {
+                // Fallback: Alles als Straße
+                $street = $address;
+            }
             
             // vCard 3.0 Format mit korrekten Zeilenumbrüchen (CRLF)
             $vcard = "BEGIN:VCARD\r\n";
@@ -132,7 +174,9 @@
                 $vcard .= "TEL;TYPE=WORK,FAX:" . $fax . "\r\n";
             }
             $vcard .= "EMAIL:" . $email . "\r\n";
-            $vcard .= "ADR;TYPE=WORK:;;" . $address . ";;;;\r\n"; // ADR Format: ;;street;city;state;zip;country
+            
+            // ADR-Format: PO-Box;Extended;Street;City;State;ZIP;Country
+            $vcard .= "ADR;TYPE=WORK:;;" . $street . ";" . $city . ";" . $state . ";" . $zip . ";Germany\r\n";
             $vcard .= "END:VCARD";
             
             // QR-Code URL generieren (nutzt Plugin wenn verfügbar)
