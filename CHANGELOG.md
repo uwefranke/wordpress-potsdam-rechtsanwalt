@@ -10,6 +10,25 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.38] - 2026-04-12
+
+### Behoben
+- **Alle Karten im Vollbild-Modus jetzt gleich groß** 📏
+  - Problem: Karten mit unterschiedlich viel Text hatten unterschiedliche Höhen
+  - CSS Grid macht Items nur innerhalb einer Zeile gleich hoch
+  - Lösung: `min-height` auf Karten gesetzt + Flex-Layout optimiert
+  - Basis: 320px, bei 1200px+: 360px, bei 1600px+: 400px
+  - `display: flex` auf `.service-card-link` für korrektes Stretching
+
+### Geändert
+- `.service-card-link`: `display: block` → `display: flex`
+- `.service-card`: `height: 100%` → `width: 100%` + `min-height`
+- `.services-grid`: `align-items: stretch` explizit gesetzt
+
+### Technisch
+- Flex-Parent/Child-Beziehung korrekt für gleichmäßige Höhe
+- Responsive min-height für verschiedene Bildschirmgrößen
+
 ## [1.0.37] - 2026-04-12
 
 ### Behoben
