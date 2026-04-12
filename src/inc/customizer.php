@@ -382,5 +382,36 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
             'type'        => 'text',
         ));
     }
+    
+    // Footer
+    $wp_customize->add_section('footer_content', array(
+        'title'       => __('Footer', 'potsdam-rechtsanwalt'),
+        'description' => __('Bearbeiten Sie den Footer-Bereich "Über uns"', 'potsdam-rechtsanwalt'),
+        'priority'    => 60,
+    ));
+    
+    // Footer Titel
+    $wp_customize->add_setting('footer_about_title', array(
+        'default'   => 'Über uns',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('footer_about_title', array(
+        'label'    => __('Überschrift', 'potsdam-rechtsanwalt'),
+        'section'  => 'footer_content',
+        'type'     => 'text',
+    ));
+    
+    // Footer Text
+    $wp_customize->add_setting('footer_about_text', array(
+        'default'   => 'Ihre kompetenten Rechtsanwälte in Potsdam. Wir bieten professionelle Rechtsberatung in allen wichtigen Rechtsgebieten mit persönlichem Service und langjähriger Erfahrung.',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('footer_about_text', array(
+        'label'    => __('Beschreibungstext', 'potsdam-rechtsanwalt'),
+        'section'  => 'footer_content',
+        'type'     => 'textarea',
+    ));
 }
 add_action('customize_register', 'potsdam_rechtsanwalt_customizer');

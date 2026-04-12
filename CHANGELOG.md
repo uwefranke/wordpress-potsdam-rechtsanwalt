@@ -10,6 +10,25 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.41] - 2026-04-12
+
+### Hinzugefügt
+- **Footer-Text im Customizer editierbar** ⚙️
+  - Neue Customizer-Section "Footer"
+  - Editierbar: Überschrift (Standard: "Über uns")
+  - Editierbar: Beschreibungstext (Standard: "Ihre kompetenten Rechtsanwälte...")
+  - footer.php nutzt jetzt get_theme_mod() statt hardcoded Text
+  - Widget-Support bleibt erhalten (Footer 1-3)
+
+### Geändert
+- footer.php: Dynamischer Text aus Customizer
+- customizer.php: +30 Zeilen neue Footer Section
+
+### Technisch
+- footer_about_title: Customizer Setting (default: "Über uns")
+- footer_about_text: Customizer Setting (default: Standard-Text)
+- Fallback auf Defaults wenn nicht gespeichert
+
 ## [1.0.40] - 2026-04-12
 
 ### Behoben

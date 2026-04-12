@@ -6,8 +6,8 @@
             <?php if (is_active_sidebar('footer-1')) : ?>
                 <?php dynamic_sidebar('footer-1'); ?>
             <?php else : ?>
-                <h4>Über uns</h4>
-                <p>Ihre kompetenten Rechtsanwälte in Potsdam. Wir bieten professionelle Rechtsberatung in allen wichtigen Rechtsgebieten mit persönlichem Service und langjähriger Erfahrung.</p>
+                <h4><?php echo esc_html(get_theme_mod('footer_about_title', 'Über uns')); ?></h4>
+                <p><?php echo esc_html(get_theme_mod('footer_about_text', 'Ihre kompetenten Rechtsanwälte in Potsdam. Wir bieten professionelle Rechtsberatung in allen wichtigen Rechtsgebieten mit persönlichem Service und langjähriger Erfahrung.')); ?></p>
             <?php endif; ?>
         </div>
         
