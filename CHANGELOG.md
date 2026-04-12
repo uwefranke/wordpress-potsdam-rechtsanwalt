@@ -10,6 +10,23 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.23] - 2026-04-12
+
+### Behoben
+- **QR-Code Encoding-Problem gelöst** 🔧
+  - `esc_attr()` und `esc_html()` entfernt - beschädigten vCard-Zeilenumbrüche!
+  - Kaya Plugin: Nur manuelle Quote-Escapierung statt esc_attr()
+  - QR Code Generator Plugin: Kein esc_html() mehr
+  - Shortcodes escapen automatisch - doppeltes Escaping verhinderte Funktion
+  - **Problem:** esc_attr() wandelt `\r\n` in HTML-Entities um
+  - **Lösung:** Minimales Escaping nur für Anführungszeichen
+
+### Hinzugefügt
+- **Debug-Modus** für vCard-Daten
+  - URL-Parameter: `?debug_vcard` (nur für Admins)
+  - Zeigt rohe vCard-Daten unter QR-Code an
+  - Hilft bei Troubleshooting
+
 ## [1.0.22] - 2026-04-12
 
 ### Behoben

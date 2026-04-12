@@ -140,7 +140,16 @@
         ?>
         <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
             <p style="font-size: 12px; color: #888; margin-bottom: 10px;">Kontakt speichern:</p>
-            <?php if (strpos($qr_url, '<') === 0) : ?>
+            
+            <?php 
+            // Debug: vCard-Daten anzeigen (zum Testen)
+            if (isset($_GET['debug_vcard']) && current_user_can('manage_options')) {
+                echo '<pre style="text-align: left; font-size: 10px; background: #f5f5f5; padding: 10px; margin: 10px 0; max-width: 200px; margin: 0 auto; overflow-x: auto;">';
+                echo esc_html($vcard);
+                echo '</pre>';
+            }
+            
+            if (strpos($qr_url, '<') === 0) : ?>
                 <!-- Plugin gibt HTML/Shortcode zurück -->
                 <?php echo $qr_url; ?>
             <?php else : ?>

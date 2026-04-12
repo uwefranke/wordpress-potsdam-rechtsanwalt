@@ -21,16 +21,20 @@ if (!function_exists('potsdam_generate_qrcode_url')) {
      * @return string URL oder Data-URI des QR-Codes
      */
     function potsdam_generate_qrcode_url($vcard, $size = 200) {
+        // Debug-Modus (auskommentieren um vCard-Daten zu sehen)
+        // error_log('vCard-Daten: ' . $vcard);
+        
         // Methode 1: Plugin "Kaya QR Code Generator" (kaya-qr-code-generator)
         if (shortcode_exists('kaya_qrcode')) {
-            // Nutze Kaya Plugin-Shortcode mit content-Parameter
-            return do_shortcode('[kaya_qrcode content="' . esc_attr($vcard) . '"]');
+            // WICHTIG: Kein esc_attr() - beschädigt vCard-Zeilenumbrüche!
+            // Shortcode escaped automatisch
+            return do_shortcode('[kaya_qrcode content="' . str_replace('"', '&quot;', $vcard) . '"]');
         }
         
         // Methode 2: Plugin "QR Code Generator" (qr-code-generator-for-wordpress)
         if (shortcode_exists('qrcode')) {
-            // Nutze Plugin-Shortcode
-            return do_shortcode('[qrcode]' . esc_html($vcard) . '[/qrcode]');
+            // Nutze Plugin-Shortcode ohne esc_html (beschädigt vCard)
+            return do_shortcode('[qrcode]' . $vcard . '[/qrcode]');
         }
         
         // Methode 3: Plugin "WP QR Code Generator"
