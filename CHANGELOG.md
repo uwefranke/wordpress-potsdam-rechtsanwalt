@@ -10,6 +10,28 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.42] - 2026-04-13
+
+### Behoben
+- **Hero-Bereich auf Handys optimiert** 📱
+  - Problem: Hero zu klein (220px) oder passte nicht richtig auf Mobile
+  - Fixe height → min-height für flexible Höhe je nach Inhalt
+  - Mehr Padding auf mobilen Geräten (40px statt fest)
+  - Bessere Font-Größen: 24px statt 28px auf sehr kleinen Screens
+  - Buttons kleiner auf Mobile (14px, padding 12px/28px)
+  - line-height optimiert für bessere Lesbarkeit
+
+### Geändert
+- Hero: height → min-height (280px - 350px je nach Screen)
+- Mobile (480px): 24px Titel, 14px Text, mehr Padding
+- Tablet (768px): 36px Titel, 16px Text, 300px min-height
+- .hero-content mit max-width und line-height
+
+### Technisch
+- min-height passt sich an Content an
+- Padding verhindert Text am Rand
+- Responsive Font-Sizes für alle Breakpoints
+
 ## [1.0.41] - 2026-04-12
 
 ### Hinzugefügt
