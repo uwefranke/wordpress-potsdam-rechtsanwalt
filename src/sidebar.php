@@ -146,22 +146,33 @@
             $state = '';
             $zip = '';
             
-            // Einfaches Parsing: "Straße, PLZ Stadt" oder "Straße, Stadt PLZ"
-            if (preg_match('/^([^,]+),\s*(.*)\s+(\d{5})(.*)$/u', $address, $matches)) {
+            // Parsing-Varianten:
+            // 1. "Straße, Stadt Bundesland PLZ" (häufigstes Format)
+            // 2. "Straße, PLZ Stadt"
+            // 3. "Straße, Stadt PLZ"
+            
+            if (preg_match('/^([^,]+),\s*(.*?)\s+(\d{5})$/u', $address, $matches)) {
                 $street = trim($matches[1]);
-                $rest = trim($matches[2]);
+                $rest = trim($matches[2]); // z.B. "Potsdam Brandenburg"
                 $zip = trim($matches[3]);
-                $after = trim($matches[4]);
                 
-                // Stadt ist vor PLZ, Bundesland danach
-                if (!empty($rest)) {
+                // Trenne Stadt und Bundesland
+                // Letztes Wort vor PLZ ist normalerweise Bundesland
+                $parts = preg_split('/\s+/', $rest);
+                if (count($parts) > 1) {
+                    $state = array_pop($parts); // Letztes Wort = Bundesland
+                    $city = implode(' ', $parts); // Rest = Stadt
+                } else {
+                    // Nur ein Wort = Stadt, kein Bundesland
                     $city = $rest;
                 }
-                if (!empty($after)) {
-                    $state = $after;
-                }
+            } elseif (preg_match('/^([^,]+),\s*(\d{5})\s+(.*)$/u', $address, $matches)) {
+                // Format: "Straße, PLZ Stadt"
+                $street = trim($matches[1]);
+                $zip = trim($matches[2]);
+                $city = trim($matches[3]);
             } else {
-                // Fallback: Alles als Straße
+                // Fallback: Alles als Straße (keine Trennung möglich)
                 $street = $address;
             }
             

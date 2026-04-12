@@ -10,6 +10,23 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.25] - 2026-04-12
+
+### Behoben
+- **Adress-Parsing Stadt/Bundesland-Trennung** 📍
+  - Letztes Wort vor PLZ wird als Bundesland erkannt
+  - Korrekte Trennung: "Potsdam Brandenburg" → Stadt: "Potsdam", State: "Brandenburg"
+  - **Vorher:** `ADR:;;Straße;Potsdam Brandenburg;;14482;Germany` (falsch)
+  - **Jetzt:** `ADR:;;Straße;Potsdam;Brandenburg;14482;Germany` (richtig)
+  - Unterstützt mehrere Formate:
+    * "Straße, Stadt Bundesland PLZ" (Standard)
+    * "Straße, PLZ Stadt" (Alternative)
+    * "Straße, Stadt PLZ" (ohne Bundesland)
+
+### Geändert
+- Adress-Parsing nutzt `array_pop()` für intelligente Wort-Trennung
+- Regex optimiert für häufigste Adress-Formate
+
 ## [1.0.24] - 2026-04-12
 
 ### Behoben
