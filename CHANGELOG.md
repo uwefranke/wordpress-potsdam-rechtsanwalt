@@ -10,6 +10,24 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.35] - 2026-04-12
+
+### Behoben
+- **Default-Werte für Rechtsgebiete funktionieren jetzt sofort** 🐛
+  - Problem: Rechtsgebiete wurden nur angezeigt, wenn jedes Feld einzeln bearbeitet und gespeichert wurde
+  - Ursache: `get_theme_mod()` verwendete Default-Werte nicht, wenn Option nie gespeichert wurde
+  - Lösung: Default-Werte direkt in `potsdam_display_service_cards()` implementiert
+  - Die 4 Standard-Rechtsgebiete erscheinen jetzt sofort nach Theme-Installation
+
+### Geändert
+- ZIP-Package-Script korrigiert (korrekte Ordnerstruktur für WordPress)
+- Debug-Code entfernt
+
+### Technisch
+- **template-tags.php:** Default-Services-Array in Funktion statt nur im Customizer
+- **create-theme-package.ps1:** Theme-Ordner wird jetzt korrekt IM ZIP erstellt
+- Fallback-Logik: Wenn `get_theme_mod()` leer → Default-Array verwenden
+
 ## [1.0.34] - 2026-04-13
 
 ### Hinzugefügt

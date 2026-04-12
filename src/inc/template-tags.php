@@ -91,6 +91,30 @@ function potsdam_breadcrumbs() {
 function potsdam_display_service_cards() {
     $count = get_theme_mod('services_count', 4);
     
+    // Default-Werte für die 4 Rechtsgebiete (falls noch nicht im Customizer gespeichert)
+    $default_services = array(
+        1 => array(
+            'title' => 'Miet- / Wohnungseigentumsrecht',
+            'description' => 'Umfassende Beratung bei Wohnungs- und Gewerbemietrecht, Kündigungen, Mietminderungen und WEG-Recht.',
+            'link' => '/miet-wohnungseigentumsrecht',
+        ),
+        2 => array(
+            'title' => 'Grundstücks- / Immobilienrecht',
+            'description' => 'Kaufverträge, Förderdarlehen (ILB/IBB), Nachbarschaftsrecht und alle immobilienrechtlichen Angelegenheiten.',
+            'link' => '/grundstuecks-immobilienrecht',
+        ),
+        3 => array(
+            'title' => 'Baurecht',
+            'description' => 'Bauverträge (BGB/VOB), Baumängel, Gewährleistung, Architektenrecht und bauplanungsrechtliche Fragen.',
+            'link' => '/baurecht',
+        ),
+        4 => array(
+            'title' => 'BU / Erwerbsminderungsrente',
+            'description' => 'Durchsetzung von Ansprüchen bei Berufsunfähigkeit und Erwerbsminderung gegenüber Versicherungen und Behörden.',
+            'link' => '/bu-erwerbsminderungsrente',
+        ),
+    );
+    
     // Standard-Icons (können später auch im Customizer editierbar gemacht werden)
     $default_icons = array(
         1 => '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10h6M9 14h6M9 18h6M3 10v9a2 2 0 002 2h14a2 2 0 002-2v-9M3 5a2 2 0 012-2h14a2 2 0 012 2v5H3z"></path></svg>',
@@ -104,9 +128,17 @@ function potsdam_display_service_cards() {
     );
     
     for ($i = 1; $i <= $count; $i++) {
-        $title = get_theme_mod("service_{$i}_title", '');
-        $description = get_theme_mod("service_{$i}_description", '');
-        $link = get_theme_mod("service_{$i}_link", '');
+        // Customizer-Werte holen oder Default verwenden
+        $title = get_theme_mod("service_{$i}_title");
+        $description = get_theme_mod("service_{$i}_description");
+        $link = get_theme_mod("service_{$i}_link");
+        
+        // Falls leer, Default-Werte verwenden (wenn vorhanden)
+        if (empty($title) && isset($default_services[$i])) {
+            $title = $default_services[$i]['title'];
+            $description = $default_services[$i]['description'];
+            $link = $default_services[$i]['link'];
+        }
         
         // Nur anzeigen wenn Titel vorhanden
         if (empty($title)) {
@@ -114,7 +146,7 @@ function potsdam_display_service_cards() {
         }
         
         // Link formatieren (relative oder absolute URL)
-        $url = (strpos($link, 'http') === 0) ? $link : esc_url(home_url($link));
+        $url = !empty($link) && (strpos($link, 'http') === 0) ? $link : esc_url(home_url($link));
         $icon = isset($default_icons[$i]) ? $default_icons[$i] : $default_icons[1];
         ?>
         

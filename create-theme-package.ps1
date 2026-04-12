@@ -23,16 +23,17 @@ if (Test-Path $zipPath) {
 }
 
 Write-Host "Erstelle temporaeres Verzeichnis..." -ForegroundColor Gray
-$tempDir = Join-Path $env:TEMP $themeName
+$tempDir = Join-Path $env:TEMP "theme-package-temp"
+$themeSubDir = Join-Path $tempDir $themeName
 if (Test-Path $tempDir) {
     Remove-Item $tempDir -Recurse -Force
 }
-New-Item -ItemType Directory -Path $tempDir | Out-Null
+New-Item -ItemType Directory -Path $themeSubDir -Force | Out-Null
 
 # Alle Theme-Dateien aus src/ kopieren
 Write-Host "Kopiere Theme-Dateien aus src/..." -ForegroundColor Gray
 Get-ChildItem -Path $themeDir | ForEach-Object {
-    $destination = Join-Path $tempDir $_.Name
+    $destination = Join-Path $themeSubDir $_.Name
     if ($_.PSIsContainer) {
         Copy-Item -Path $_.FullName -Destination $destination -Recurse -Force
         Write-Host "  Ordner: $($_.Name)" -ForegroundColor DarkGray
@@ -45,7 +46,7 @@ Get-ChildItem -Path $themeDir | ForEach-Object {
 # ZIP-Datei erstellen
 Write-Host ""
 Write-Host "Erstelle ZIP-Archiv..." -ForegroundColor Green
-Compress-Archive -Path "$tempDir\*" -DestinationPath $zipPath -CompressionLevel Optimal
+Compress-Archive -Path $themeSubDir -DestinationPath $zipPath -CompressionLevel Optimal
 
 # Temporaeres Verzeichnis loeschen
 Write-Host "Raeume auf..." -ForegroundColor Gray
