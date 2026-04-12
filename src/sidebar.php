@@ -114,7 +114,15 @@
         
         <p style="margin-bottom: <?php echo get_theme_mod('show_qr_code', true) ? '20px' : '0'; ?>;">
             <strong>Adresse:</strong><br>
-            <?php echo nl2br(esc_html(get_theme_mod('contact_address', 'Musterstraße 123\n14467 Potsdam'))); ?>
+            <?php 
+            $street = get_theme_mod('contact_street', 'Schornsteinfegergasse');
+            $housenumber = get_theme_mod('contact_housenumber', '5');
+            $zip = get_theme_mod('contact_zip', '14482');
+            $city = get_theme_mod('contact_city', 'Potsdam');
+            
+            echo esc_html($street . ' ' . $housenumber) . '<br>';
+            echo esc_html($zip . ' ' . $city);
+            ?>
         </p>
         
         <?php if (get_theme_mod('show_qr_code', true)) : 
@@ -125,7 +133,14 @@
             $phone_raw = get_theme_mod('contact_phone', '+49 331 123456');
             $fax_raw = get_theme_mod('contact_fax', '');
             $email = get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de');
-            $address_raw = get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam');
+            
+            // Adresse aus strukturierten Feldern
+            $street = get_theme_mod('contact_street', 'Schornsteinfegergasse');
+            $housenumber = get_theme_mod('contact_housenumber', '5');
+            $zip = get_theme_mod('contact_zip', '14482');
+            $city = get_theme_mod('contact_city', 'Potsdam');
+            $state = get_theme_mod('contact_state', 'Brandenburg');
+            $country = get_theme_mod('contact_country', 'Deutschland');
             
             // Telefonnummern für vCard normalisieren (E.164-Format)
             // Entfernt Leerzeichen, Schrägstriche, Bindestriche
@@ -141,47 +156,6 @@
                 if (substr($fax, 0, 1) === '0' && substr($fax, 0, 2) !== '00') {
                     $fax = '+49' . substr($fax, 1);
                 }
-            }
-            
-            // Adresse für vCard formatieren
-            // vCard ADR-Format: ;;Straße;Stadt;Bundesland;PLZ;Land
-            $address = str_replace(array("\r\n", "\n", "\r"), ', ', $address_raw);
-            $address = trim(preg_replace('/,\s*,/', ',', $address)); // Doppelte Kommas entfernen
-            
-            // Versuche Adresse zu parsen
-            $street = '';
-            $city = '';
-            $state = '';
-            $zip = '';
-            
-            // Parsing-Varianten:
-            // 1. "Straße, Stadt Bundesland PLZ" (häufigstes Format)
-            // 2. "Straße, PLZ Stadt"
-            // 3. "Straße, Stadt PLZ"
-            
-            if (preg_match('/^([^,]+),\s*(.*?)\s+(\d{5})$/u', $address, $matches)) {
-                $street = trim($matches[1]);
-                $rest = trim($matches[2]); // z.B. "Potsdam Brandenburg"
-                $zip = trim($matches[3]);
-                
-                // Trenne Stadt und Bundesland
-                // Letztes Wort vor PLZ ist normalerweise Bundesland
-                $parts = preg_split('/\s+/', $rest);
-                if (count($parts) > 1) {
-                    $state = array_pop($parts); // Letztes Wort = Bundesland
-                    $city = implode(' ', $parts); // Rest = Stadt
-                } else {
-                    // Nur ein Wort = Stadt, kein Bundesland
-                    $city = $rest;
-                }
-            } elseif (preg_match('/^([^,]+),\s*(\d{5})\s+(.*)$/u', $address, $matches)) {
-                // Format: "Straße, PLZ Stadt"
-                $street = trim($matches[1]);
-                $zip = trim($matches[2]);
-                $city = trim($matches[3]);
-            } else {
-                // Fallback: Alles als Straße (keine Trennung möglich)
-                $street = $address;
             }
             
             // vCard 3.0 Format mit korrekten Zeilenumbrüchen (CRLF)
@@ -207,7 +181,9 @@
             $vcard .= "EMAIL:" . $email . "\r\n";
             
             // ADR-Format: PO-Box;Extended;Street;City;State;ZIP;Country
-            $vcard .= "ADR;TYPE=WORK:;;" . $street . ";" . $city . ";" . $state . ";" . $zip . ";Germany\r\n";
+            // Straße inkl. Hausnummer für bessere Kompatibilität
+            $full_street = trim($street . ' ' . $housenumber);
+            $vcard .= "ADR;TYPE=WORK:;;" . $full_street . ";" . $city . ";" . $state . ";" . $zip . ";" . $country . "\r\n";
             $vcard .= "END:VCARD";
             
             // QR-Code URL generieren (nutzt Plugin wenn verfügbar)

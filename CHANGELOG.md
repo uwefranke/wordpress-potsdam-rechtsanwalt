@@ -10,6 +10,45 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.31] - 2026-04-12
+
+### Hinzugefügt
+- **Strukturierte Adress-Felder im Customizer** 🏠
+  - `contact_street` - Straßenname (z.B. "Schornsteinfegergasse")
+  - `contact_housenumber` - Hausnummer (z.B. "5")
+  - `contact_zip` - Postleitzahl (z.B. "14482")
+  - `contact_city` - Stadt (z.B. "Potsdam")
+  - `contact_state` - Bundesland (z.B. "Brandenburg", optional)
+  - `contact_country` - Land (z.B. "Deutschland")
+  - Keine Parsing-Fehler mehr bei vCard-Generierung!
+
+### Geändert
+- **vCard-Generierung radikal vereinfacht** ✨
+  - Kein komplexes Regex-Parsing mehr nötig
+  - Direkte Verwendung strukturierter Felder
+  - 100% zuverlässige Adress-Formatierung
+  - ~40 Zeilen Code entfernt
+- **Adress-Anzeige einheitlich** 📍
+  - Sidebar: Strukturierte Anzeige
+  - Footer: Strukturierte Anzeige
+  - `potsdam_get_formatted_address()`: Nutzt neue Felder
+  - Format: "Straße Hausnummer<br>PLZ Stadt"
+
+### Entfernt
+- Customizer-Feld `contact_address` (textarea, ersetzt durch 6 strukturierte Felder)
+- Kompletter Adress-Parsing-Code aus sidebar.php (~40 Zeilen)
+- Regex-Pattern für "Straße, Stadt Bundesland PLZ" Erkennung
+
+### Migration
+- Bestehende Installationen: Adress-Felder im Customizer neu ausfüllen
+- Alte `contact_address` Werte werden nicht automatisch migriert
+- Empfehlung: Felder manuell übertragen
+
+### Technisch
+- vCard ADR-Feld: `;;Straße Hausnr;Stadt;Bundesland;PLZ;Land`
+- Bessere Datenhygiene durch strukturierte Eingabe
+- Validierung einzelner Felder möglich (z.B. PLZ-Format)
+
 ## [1.0.30] - 2026-04-12
 
 ### Hinzugefügt

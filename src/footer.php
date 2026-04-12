@@ -42,7 +42,15 @@
                 </p>
                 <p>
                     <strong>Adresse:</strong><br>
-                    <?php echo nl2br(get_theme_mod('contact_address', 'Musterstraße 123<br>14467 Potsdam')); ?>
+                    <?php 
+                    $street = get_theme_mod('contact_street', 'Schornsteinfegergasse');
+                    $housenumber = get_theme_mod('contact_housenumber', '5');
+                    $zip = get_theme_mod('contact_zip', '14482');
+                    $city = get_theme_mod('contact_city', 'Potsdam');
+                    
+                    echo esc_html($street . ' ' . $housenumber) . '<br>';
+                    echo esc_html($zip . ' ' . $city);
+                    ?>
                 </p>
             <?php endif; ?>
         </div>

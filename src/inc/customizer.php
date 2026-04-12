@@ -115,15 +115,72 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'type'     => 'text',
     ));
     
-    $wp_customize->add_setting('contact_address', array(
-        'default'   => 'Musterstraße 123, 14467 Potsdam',
+    // Adresse strukturiert
+    $wp_customize->add_setting('contact_street', array(
+        'default'   => 'Schornsteinfegergasse',
         'transport' => 'refresh',
     ));
     
-    $wp_customize->add_control('contact_address', array(
-        'label'    => __('Adresse', 'potsdam-rechtsanwalt'),
+    $wp_customize->add_control('contact_street', array(
+        'label'    => __('Straße', 'potsdam-rechtsanwalt'),
         'section'  => 'contact_info',
-        'type'     => 'textarea',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_housenumber', array(
+        'default'   => '5',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_housenumber', array(
+        'label'    => __('Hausnummer', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_zip', array(
+        'default'   => '14482',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_zip', array(
+        'label'    => __('Postleitzahl', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_city', array(
+        'default'   => 'Potsdam',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_city', array(
+        'label'    => __('Stadt', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_state', array(
+        'default'   => 'Brandenburg',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_state', array(
+        'label'       => __('Bundesland', 'potsdam-rechtsanwalt'),
+        'description' => __('Optional - für vCard-Kompatibilität', 'potsdam-rechtsanwalt'),
+        'section'     => 'contact_info',
+        'type'        => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_country', array(
+        'default'   => 'Deutschland',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_country', array(
+        'label'    => __('Land', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
     ));
     
     $wp_customize->add_setting('show_qr_code', array(

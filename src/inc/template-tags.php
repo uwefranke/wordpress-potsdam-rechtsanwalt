@@ -26,8 +26,12 @@ function potsdam_get_service_icon($type) {
  * Formatierte Adresse ausgeben
  */
 function potsdam_get_formatted_address() {
-    $address = get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam');
-    return nl2br(esc_html($address));
+    $street = get_theme_mod('contact_street', 'Schornsteinfegergasse');
+    $housenumber = get_theme_mod('contact_housenumber', '5');
+    $zip = get_theme_mod('contact_zip', '14482');
+    $city = get_theme_mod('contact_city', 'Potsdam');
+    
+    return esc_html($street . ' ' . $housenumber) . '<br>' . esc_html($zip . ' ' . $city);
 }
 
 /**
