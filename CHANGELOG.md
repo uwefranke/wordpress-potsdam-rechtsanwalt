@@ -10,6 +10,21 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.36] - 2026-04-12
+
+### Behoben
+- **Responsive Design für große Bildschirme** 💻
+  - Problem: Bei Vollbild (1920px+) waren Karten zu breit, Text "ertrank" in leerem Raum
+  - Lösung: Grid auf maximal 4 Spalten begrenzt bei großen Bildschirmen
+  - Ab 1200px: 4 Spalten fix + größere Schrift (24px Titel, 16px Text)
+  - Ab 1600px: Noch mehr Abstand + größere Schrift (26px Titel, 17px Text)
+  - Bessere Paddings für ausgewogenes Layout
+
+### Technisch
+- Media Query @media (min-width: 1200px) hinzugefügt
+- Media Query @media (min-width: 1600px) hinzugefügt
+- Grid-Template-Columns: repeat(4, 1fr) statt auto-fit
+
 ## [1.0.35] - 2026-04-12
 
 ### Behoben
