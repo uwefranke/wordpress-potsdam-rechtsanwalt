@@ -79,9 +79,15 @@
     <div class="widget contact-info-widget" style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px;">
         <h3>Kontaktdaten</h3>
         
-        <?php if (get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange')) : ?>
+        <?php 
+        $display_title = get_theme_mod('contact_title', 'Rechtsanwalt');
+        $display_firstname = get_theme_mod('contact_firstname', 'Matthias');
+        $display_lastname = get_theme_mod('contact_lastname', 'Lange');
+        $display_fullname = trim($display_title . " " . $display_firstname . " " . $display_lastname);
+        
+        if ($display_fullname) : ?>
         <p style="margin-bottom: 15px;">
-            <strong><?php echo esc_html(get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange')); ?></strong>
+            <strong><?php echo esc_html($display_fullname); ?></strong>
         </p>
         <?php endif; ?>
         
@@ -113,7 +119,9 @@
         
         <?php if (get_theme_mod('show_qr_code', true)) : 
             // vCard-Daten generieren
-            $name = get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange');
+            $title = get_theme_mod('contact_title', 'Rechtsanwalt');
+            $firstname = get_theme_mod('contact_firstname', 'Matthias');
+            $lastname = get_theme_mod('contact_lastname', 'Lange');
             $phone_raw = get_theme_mod('contact_phone', '+49 331 123456');
             $fax_raw = get_theme_mod('contact_fax', '');
             $email = get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de');
@@ -179,7 +187,19 @@
             // vCard 3.0 Format mit korrekten Zeilenumbrüchen (CRLF)
             $vcard = "BEGIN:VCARD\r\n";
             $vcard .= "VERSION:3.0\r\n";
-            $vcard .= "FN:" . $name . "\r\n";
+            
+            // N: Strukturierter Name (Nachname;Vorname;Weitere Namen;Präfix;Suffix)
+            $vcard .= "N:" . $lastname . ";" . $firstname . ";;;\r\n";
+            
+            // FN: Vollständiger Anzeigename (wie er erscheinen soll)
+            $fullname = trim($title . " " . $firstname . " " . $lastname);
+            $vcard .= "FN:" . $fullname . "\r\n";
+            
+            // TITLE: Berufsbezeichnung
+            if (!empty($title)) {
+                $vcard .= "TITLE:" . $title . "\r\n";
+            }
+            
             $vcard .= "TEL;TYPE=WORK,VOICE:" . $phone . "\r\n";
             if ($fax) {
                 $vcard .= "TEL;TYPE=WORK,FAX:" . $fax . "\r\n";
@@ -244,9 +264,13 @@
                 <?php
                 // Data-URI für vCard-Download
                 $vcard_data_uri = 'data:text/vcard;charset=utf-8,' . rawurlencode($vcard);
+                
+                // Dynamischer Dateiname basierend auf Namen
+                $filename_slug = sanitize_title($firstname . '-' . $lastname);
+                $filename = 'kontakt-' . $filename_slug . '.vcf';
                 ?>
                 <a href="<?php echo $vcard_data_uri; ?>" 
-                   download="kontakt-rechtsanwalt-matthias-lange.vcf"
+                   download="<?php echo esc_attr($filename); ?>"
                    style="display: inline-block; padding: 8px 16px; background: #1a3a5c; color: white; text-decoration: none; border-radius: 4px; font-size: 13px;">
                     📥 Kontakt herunterladen (.vcf)
                 </a>

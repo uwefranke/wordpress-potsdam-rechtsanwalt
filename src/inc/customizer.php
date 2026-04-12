@@ -47,13 +47,37 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'priority' => 40,
     ));
     
-    $wp_customize->add_setting('contact_name', array(
-        'default'   => 'Rechtsanwalt Matthias Lange',
+    // Name strukturiert für vCard (N: und FN: Felder)
+    $wp_customize->add_setting('contact_title', array(
+        'default'   => 'Rechtsanwalt',
         'transport' => 'refresh',
     ));
     
-    $wp_customize->add_control('contact_name', array(
-        'label'    => __('Name / Kanzleiname', 'potsdam-rechtsanwalt'),
+    $wp_customize->add_control('contact_title', array(
+        'label'       => __('Titel / Berufsbezeichnung', 'potsdam-rechtsanwalt'),
+        'description' => __('z.B. "Rechtsanwalt", "Dr.", "Prof. Dr."', 'potsdam-rechtsanwalt'),
+        'section'     => 'contact_info',
+        'type'        => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_firstname', array(
+        'default'   => 'Matthias',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_firstname', array(
+        'label'    => __('Vorname', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_lastname', array(
+        'default'   => 'Lange',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_lastname', array(
+        'label'    => __('Nachname', 'potsdam-rechtsanwalt'),
         'section'  => 'contact_info',
         'type'     => 'text',
     ));

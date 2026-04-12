@@ -10,6 +10,30 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.30] - 2026-04-12
+
+### Hinzugefügt
+- **Strukturierte Namen-Felder im Customizer** 📋
+  - `contact_title` - Titel/Berufsbezeichnung (z.B. "Rechtsanwalt")
+  - `contact_firstname` - Vorname (z.B. "Matthias")
+  - `contact_lastname` - Nachname (z.B. "Lange")
+  - Bessere Sortierung in Smartphone-Adressbüchern
+
+### Geändert
+- **vCard 3.0 jetzt RFC-konform strukturiert** ✅
+  - `N:` Feld (strukturiert): `Lange;Matthias;;;`
+  - `FN:` Feld (Anzeigename): `Rechtsanwalt Matthias Lange`
+  - `TITLE:` Feld (Berufsbezeichnung): `Rechtsanwalt`
+  - vCard-Download-Dateiname dynamisch: `kontakt-matthias-lange.vcf`
+  - Kontaktdaten-Widget zeigt zusammengesetzten Namen
+
+### Entfernt
+- Customizer-Feld `contact_name` (ersetzt durch 3 strukturierte Felder)
+
+### Migration
+- Bestehende Installationen: Customizer-Felder neu ausfüllen
+- Titel, Vorname, Nachname werden jetzt getrennt gespeichert
+
 ## [1.0.29] - 2026-04-12
 
 ### Behoben
