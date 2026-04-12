@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.26] - 2026-04-12
+
+### Geändert
+- **Debug-Modus erweitert** 🔍
+  - Zeigt verwendete QR-Code-Generierungsmethode (Plugin oder Fallback)
+  - Zeigt QR-Code Output (erste 300 Zeichen)
+  - Direkter Google Chart API Test-Link zum Vergleich
+  - Bessere visuelle Darstellung (gelber Hinweis-Kasten)
+  - Hilft bei Diagnose wenn QR-Code leer ist
+
 ## [1.0.25] - 2026-04-12
 
 ### Behoben

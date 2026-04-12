@@ -199,9 +199,37 @@
             <?php 
             // Debug: vCard-Daten anzeigen (zum Testen)
             if (isset($_GET['debug_vcard']) && current_user_can('manage_options')) {
-                echo '<pre style="text-align: left; font-size: 10px; background: #f5f5f5; padding: 10px; margin: 10px 0; max-width: 200px; margin: 0 auto; overflow-x: auto;">';
+                echo '<div style="text-align: left; font-size: 11px; background: #fff3cd; padding: 15px; margin: 10px 0; border: 2px solid #ffc107; max-width: 90%;">';
+                echo '<strong style="font-size: 13px;">🔍 DEBUG-MODUS</strong><br><br>';
+                
+                // Zeige verwendete QR-Code-Methode
+                echo '<strong>QR-Code-Methode:</strong> ';
+                if (shortcode_exists('kaya_qrcode')) {
+                    echo '✅ Kaya QR Code Generator Plugin<br>';
+                } elseif (shortcode_exists('qrcode')) {
+                    echo '✅ QR Code Generator Plugin<br>';
+                } elseif (function_exists('wpqr_generate_code')) {
+                    echo '✅ WP QR Code Generator Plugin<br>';
+                } else {
+                    echo '⚠️ Google Chart API (Fallback - extern)<br>';
+                }
+                
+                echo '<br><strong>vCard-Daten:</strong><br>';
+                echo '<pre style="font-size: 10px; background: #f5f5f5; padding: 10px; margin: 5px 0; overflow-x: auto;">';
                 echo esc_html($vcard);
                 echo '</pre>';
+                
+                echo '<br><strong>QR-Code Output (erste 300 Zeichen):</strong><br>';
+                $qr_preview = strlen($qr_url) > 300 ? substr($qr_url, 0, 300) . '...' : $qr_url;
+                echo '<pre style="font-size: 9px; background: #f5f5f5; padding: 10px; margin: 5px 0; overflow-x: auto; word-wrap: break-word; white-space: pre-wrap;">';
+                echo esc_html($qr_preview);
+                echo '</pre>';
+                
+                echo '<br><strong>Test mit Google Chart API:</strong><br>';
+                $test_url = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' . urlencode($vcard) . '&choe=UTF-8';
+                echo '<a href="' . esc_url($test_url) . '" target="_blank" style="color: #0073aa; text-decoration: underline;">→ QR-Code in neuem Tab öffnen</a><br>';
+                
+                echo '</div>';
             }
             
             if (strpos($qr_url, '<') === 0) : ?>
