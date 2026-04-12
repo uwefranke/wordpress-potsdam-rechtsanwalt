@@ -1,5 +1,6 @@
 <aside class="sidebar" id="kontakt">
     
+    <?php if (get_theme_mod('show_contact_form', true)) : ?>
     <!-- Kontaktformular -->
     <div class="widget contact-widget">
         <h3>Kontaktieren Sie uns</h3>
@@ -63,13 +64,16 @@
             <button type="submit" class="btn">Nachricht senden</button>
         </form>
     </div>
+    <?php endif; ?>
     
+    <?php if (get_theme_mod('show_appointment_button', true)) : ?>
     <!-- Terminvereinbarung Button -->
     <div class="widget appointment-widget">
         <a href="<?php echo esc_url(home_url('/termin')); ?>" class="btn btn-appointment">
             Online-Termin vereinbaren
         </a>
     </div>
+    <?php endif; ?>
     
     <!-- Kontaktinformationen -->
     <div class="widget contact-info-widget" style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px;">

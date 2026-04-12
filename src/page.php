@@ -11,6 +11,13 @@ get_header();
         <main class="main-content">
             <div class="content-area">
                 <?php
+                // Rank Math Breadcrumbs
+                if (function_exists('rank_math_the_breadcrumbs')) {
+                    echo '<div class="breadcrumbs" style="margin-bottom: 20px; font-size: 14px; color: #888;">';
+                    rank_math_the_breadcrumbs();
+                    echo '</div>';
+                }
+                
                 while (have_posts()) : the_post();
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

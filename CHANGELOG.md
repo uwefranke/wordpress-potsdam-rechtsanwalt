@@ -11,6 +11,24 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 - Erweiterte Customizer-Optionen
 - Zusätzliche Farbschemata
 
+## [1.0.16] - 2026-04-12
+
+### Hinzugefügt
+- **Rank Math Breadcrumbs-Integration** 🍞
+  - Automatische Breadcrumbs auf allen Seiten, Beiträgen und Archiven
+  - Nutzt rank_math_the_breadcrumbs() wenn Rank Math Plugin aktiv
+  - Graues Styling (14px, color: #888) für dezente Darstellung
+  
+- **Customizer Layout-Optionen** ⚙️
+  - Neue Section "Layout-Optionen" im Customizer
+  - Kontaktformular deaktivierbar (show_contact_form)
+  - Termin-Button deaktivierbar (show_appointment_button)
+  - Beide Optionen standardmäßig aktiviert
+
+### Geändert
+- sidebar.php nutzt jetzt get_theme_mod() für bedingte Anzeige
+- Bessere Code-Organisation mit conditional wrappers
+
 ## [1.0.15] - 2026-04-11
 
 ### Behoben

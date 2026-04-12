@@ -107,5 +107,33 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'section'  => 'social_media',
         'type'     => 'url',
     ));
+    
+    // Layout-Optionen
+    $wp_customize->add_section('layout_options', array(
+        'title'    => __('Layout-Optionen', 'potsdam-rechtsanwalt'),
+        'priority' => 60,
+    ));
+    
+    $wp_customize->add_setting('show_contact_form', array(
+        'default'   => true,
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('show_contact_form', array(
+        'label'    => __('Kontaktformular anzeigen', 'potsdam-rechtsanwalt'),
+        'section'  => 'layout_options',
+        'type'     => 'checkbox',
+    ));
+    
+    $wp_customize->add_setting('show_appointment_button', array(
+        'default'   => true,
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('show_appointment_button', array(
+        'label'    => __('Termin-Button anzeigen', 'potsdam-rechtsanwalt'),
+        'section'  => 'layout_options',
+        'type'     => 'checkbox',
+    ));
 }
 add_action('customize_register', 'potsdam_rechtsanwalt_customizer');

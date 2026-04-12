@@ -12,6 +12,13 @@ get_header();
             <div class="content-area">
                 
                 <?php
+                // Rank Math Breadcrumbs
+                if (function_exists('rank_math_the_breadcrumbs')) {
+                    echo '<div class="breadcrumbs" style="margin-bottom: 20px; font-size: 14px; color: #888;">';
+                    rank_math_the_breadcrumbs();
+                    echo '</div>';
+                }
+                
                 // Archive-Titel
                 the_archive_title('<h1>', '</h1>');
                 the_archive_description('<div class="archive-description" style="margin-bottom: 40px;">', '</div>');
