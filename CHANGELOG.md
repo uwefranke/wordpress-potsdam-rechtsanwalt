@@ -10,6 +10,27 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.40] - 2026-04-12
+
+### Behoben
+- **Horizontales Scrolling bei großen Bildschirmen entfernt** 💻
+  - Problem: max-width auf Grid verursachte Overflow über Viewport
+  - Lösung: Fixe Maximalbreite pro Karte statt Container-max-width
+  - minmax(300px, 350px) bei 1200px+
+  - minmax(320px, 380px) bei 1600px+
+  - justify-content: center für Zentrierung
+  - Karten bleiben proportional, Grid passt sich an Viewport an
+
+### Geändert
+- Grid: max-width entfernt → minmax mit festen Maximalwerten
+- justify-content: center für zentrierte Karten
+- Karten-Breite auf 350px/380px max begrenzt (statt 1fr)
+
+### Technisch
+- minmax(min, max) mit festem max verhindert zu breite Karten
+- auto-fit passt Spaltenanzahl automatisch an
+- Kein Container-Overflow mehr
+
 ## [1.0.39] - 2026-04-12
 
 ### Behoben
