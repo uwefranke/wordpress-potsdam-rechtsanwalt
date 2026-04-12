@@ -47,6 +47,17 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'priority' => 40,
     ));
     
+    $wp_customize->add_setting('contact_name', array(
+        'default'   => 'Rechtsanwalt Matthias Lange',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_name', array(
+        'label'    => __('Name / Kanzleiname', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
+    ));
+    
     $wp_customize->add_setting('contact_phone', array(
         'default'   => '+49 331 123456',
         'transport' => 'refresh',
@@ -54,6 +65,17 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     
     $wp_customize->add_control('contact_phone', array(
         'label'    => __('Telefonnummer', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('contact_fax', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('contact_fax', array(
+        'label'    => __('Fax', 'potsdam-rechtsanwalt'),
         'section'  => 'contact_info',
         'type'     => 'text',
     ));
@@ -78,6 +100,18 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'label'    => __('Adresse', 'potsdam-rechtsanwalt'),
         'section'  => 'contact_info',
         'type'     => 'textarea',
+    ));
+    
+    $wp_customize->add_setting('show_qr_code', array(
+        'default'   => true,
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('show_qr_code', array(
+        'label'    => __('QR-Code mit Kontaktdaten anzeigen', 'potsdam-rechtsanwalt'),
+        'section'  => 'contact_info',
+        'type'     => 'checkbox',
+        'description' => __('Zeigt einen vCard-QR-Code mit allen Kontaktdaten.', 'potsdam-rechtsanwalt'),
     ));
     
     // Social Media

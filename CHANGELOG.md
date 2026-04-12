@@ -10,6 +10,26 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.19] - 2026-04-12
+
+### Hinzugefügt
+- **Erweiterte Kontaktdaten** 📇
+  - Name/Kanzleiname im Customizer (Default: "Rechtsanwalt Matthias Lange")
+  - Fax-Nummer optional (nur angezeigt wenn ausgefüllt)
+  - Telefonnummer jetzt klickbar (tel: Link)
+  
+- **QR-Code mit vCard-Kontaktdaten** 📱
+  - Automatisch generierter QR-Code mit allen Kontaktdaten
+  - vCard 3.0 Format (kompatibel mit allen Smartphones)
+  - Deaktivierbar über Customizer-Checkbox
+  - Nutzt api.qrserver.com (DSGVO-konform, keine Speicherung)
+  - 150px Größe, responsive, lazy loading
+  - Text "Kontakt speichern" über QR-Code
+
+### Geändert
+- Kontaktdaten-Widget neu strukturiert mit Name prominent dargestellt
+- E-Mail und Telefon-Links für bessere Mobile-UX
+
 ## [1.0.18] - 2026-04-12
 
 ### Hinzugefügt

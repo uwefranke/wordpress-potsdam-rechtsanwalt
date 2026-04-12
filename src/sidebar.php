@@ -78,20 +78,67 @@
     <!-- Kontaktinformationen -->
     <div class="widget contact-info-widget" style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px;">
         <h3>Kontaktdaten</h3>
+        
+        <?php if (get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange')) : ?>
+        <p style="margin-bottom: 15px;">
+            <strong><?php echo esc_html(get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange')); ?></strong>
+        </p>
+        <?php endif; ?>
+        
         <p style="margin-bottom: 15px;">
             <strong>Telefon:</strong><br>
-            <?php echo get_theme_mod('contact_phone', '+49 331 123456'); ?>
-        </p>
-        <p style="margin-bottom: 15px;">
-            <strong>E-Mail:</strong><br>
-            <a href="mailto:<?php echo get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de'); ?>" style="color: #d4af37;">
-                <?php echo get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de'); ?>
+            <a href="tel:<?php echo esc_attr(str_replace(' ', '', get_theme_mod('contact_phone', '+49 331 123456'))); ?>" style="color: var(--color-navy); text-decoration: none;">
+                <?php echo esc_html(get_theme_mod('contact_phone', '+49 331 123456')); ?>
             </a>
         </p>
-        <p>
-            <strong>Adresse:</strong><br>
-            <?php echo nl2br(get_theme_mod('contact_address', 'Musterstraße 123<br>14467 Potsdam')); ?>
+        
+        <?php if (get_theme_mod('contact_fax')) : ?>
+        <p style="margin-bottom: 15px;">
+            <strong>Fax:</strong><br>
+            <?php echo esc_html(get_theme_mod('contact_fax')); ?>
         </p>
+        <?php endif; ?>
+        
+        <p style="margin-bottom: 15px;">
+            <strong>E-Mail:</strong><br>
+            <a href="mailto:<?php echo esc_attr(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>" style="color: #d4af37;">
+                <?php echo esc_html(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>
+            </a>
+        </p>
+        
+        <p style="margin-bottom: <?php echo get_theme_mod('show_qr_code', true) ? '20px' : '0'; ?>;">
+            <strong>Adresse:</strong><br>
+            <?php echo nl2br(esc_html(get_theme_mod('contact_address', 'Musterstraße 123\n14467 Potsdam'))); ?>
+        </p>
+        
+        <?php if (get_theme_mod('show_qr_code', true)) : 
+            // vCard-Daten generieren
+            $name = get_theme_mod('contact_name', 'Rechtsanwalt Matthias Lange');
+            $phone = get_theme_mod('contact_phone', '+49 331 123456');
+            $fax = get_theme_mod('contact_fax', '');
+            $email = get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de');
+            $address = str_replace('\n', ', ', get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam'));
+            
+            // vCard im Format: BEGIN:VCARD\nVERSION:3.0\nFN:Name\nTEL:Phone\n...
+            $vcard = "BEGIN:VCARD\n";
+            $vcard .= "VERSION:3.0\n";
+            $vcard .= "FN:" . $name . "\n";
+            $vcard .= "TEL;TYPE=WORK,VOICE:" . $phone . "\n";
+            if ($fax) {
+                $vcard .= "TEL;TYPE=WORK,FAX:" . $fax . "\n";
+            }
+            $vcard .= "EMAIL:" . $email . "\n";
+            $vcard .= "ADR;TYPE=WORK:;;" . $address . "\n";
+            $vcard .= "END:VCARD";
+            
+            // QR-Code URL (api.qrserver.com - kostenlos, kein API-Key nötig)
+            $qr_url = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($vcard);
+        ?>
+        <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="font-size: 12px; color: #888; margin-bottom: 10px;">Kontakt speichern:</p>
+            <img src="<?php echo esc_url($qr_url); ?>" alt="QR-Code Kontaktdaten" style="max-width: 150px; height: auto; border-radius: 4px;" loading="lazy">
+        </div>
+        <?php endif; ?>
     </div>
     
     <!-- Öffnungszeiten -->
