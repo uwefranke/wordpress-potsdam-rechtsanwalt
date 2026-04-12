@@ -10,6 +10,27 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.39] - 2026-04-12
+
+### Behoben
+- **Karten jetzt gleich breit bei großer Auflösung** 📏
+  - Problem: Bei repeat(4, 1fr) wurden Karten unterschiedlich breit bei <4 Elementen
+  - Ursache: Grid versuchte 4 Spalten zu füllen, auch wenn nur 2-3 Karten vorhanden
+  - Lösung: Zurück zu auto-fit + max-width auf Grid-Container
+  - 1200px+: max-width 1400px
+  - 1600px+: max-width 1600px
+  - Grid zentriert mit margin-left/right: auto
+
+### Geändert
+- Grid: repeat(4, 1fr) → repeat(auto-fit, minmax(280px, 1fr))
+- max-width auf .services-grid für begrenzte Container-Breite
+- Grid automatisch zentriert
+
+### Technisch
+- auto-fit passt Spaltenanzahl an verfügbare Items an
+- max-width verhindert zu breite Karten
+- Karten bleiben proportional bei unterschiedlichen Anzahlen
+
 ## [1.0.38] - 2026-04-12
 
 ### Behoben
