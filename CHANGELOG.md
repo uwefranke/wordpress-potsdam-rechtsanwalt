@@ -10,6 +10,24 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.28] - 2026-04-12
+
+### Hinzugefügt
+- **vCard-Download-Button** 📥
+  - Alternativer Download-Link (.vcf) falls QR-Code nicht funktioniert
+  - Direkt ins Adressbuch importierbar (iOS/Android/Desktop)
+  - Data-URI-basiert, keine Server-Datei nötig
+  - Button-Design: Navy (#1a3a5c) passend zum Theme
+
+### Entfernt
+- Google Chart API Fallback (Service wurde abgeschaltet, 404-Fehler)
+- Google Chart API Test-Link aus Debug-Modus
+
+### Geändert
+- Debug-Modus: Hinweis auf abgeschaltete Google API
+- Debug-Modus: Empfehlung Browser-Konsole zu prüfen
+- QR-Code Fallback zeigt jetzt Plugin-Installations-Hinweis statt defekter Google API
+
 ## [1.0.27] - 2026-04-12
 
 ### Behoben

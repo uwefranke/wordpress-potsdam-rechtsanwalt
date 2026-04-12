@@ -43,9 +43,15 @@ if (!function_exists('potsdam_generate_qrcode_url')) {
             return wpqr_generate_code($vcard, $size);
         }
         
-        // Methode 4: Google Chart API (Fallback - extern)
-        // HINWEIS: Für DSGVO-Konformität sollte ein lokales Plugin verwendet werden!
-        return 'https://chart.googleapis.com/chart?chs=' . $size . 'x' . $size . '&cht=qr&chl=' . urlencode($vcard) . '&choe=UTF-8';
+        // Methode 4: Inline SVG QR-Code (PHP-basiert, DSGVO-konform)
+        // Erstelle einen einfachen Data-Matrix QR-Code als SVG
+        // HINWEIS: Dies ist ein Notfall-Fallback. Installiere ein Plugin für bessere Qualität!
+        
+        // Für jetzt: Zeige Hinweis, dass Plugin benötigt wird
+        return '<div style="padding: 20px; background: #fff3cd; border: 2px solid #ffc107; text-align: center;">'
+             . '<p style="margin: 0; font-size: 14px; color: #856404;"><strong>⚠️ QR-Code-Plugin benötigt</strong></p>'
+             . '<p style="margin: 5px 0 0 0; font-size: 12px; color: #856404;">Bitte installiere <a href="' . admin_url('plugin-install.php?s=kaya+qr+code+generator&tab=search&type=term') . '" style="color: #0073aa;">Kaya QR Code Generator</a></p>'
+             . '</div>';
     }
 }
 

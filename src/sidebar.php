@@ -224,9 +224,9 @@
                 echo esc_html($qr_url);
                 echo '</pre>';
                 
-                echo '<br><strong>Test mit Google Chart API:</strong><br>';
-                $test_url = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' . urlencode($vcard) . '&choe=UTF-8';
-                echo '<a href="' . esc_url($test_url) . '" target="_blank" style="color: #0073aa; text-decoration: underline;">→ QR-Code in neuem Tab öffnen</a><br>';
+                echo '<br><strong>💡 Hinweis:</strong> Google Chart API wurde abgeschaltet (404-Fehler).<br>';
+                echo 'QR-Code wird vom Plugin per JavaScript clientseitig generiert.<br>';
+                echo 'Prüfe Browser-Konsole (F12) auf JavaScript-Fehler.<br>';
                 
                 echo '</div>';
             }
@@ -238,6 +238,22 @@
                 <!-- Plugin gibt URL/Data-URI zurück -->
                 <img src="<?php echo esc_url($qr_url); ?>" alt="QR-Code Kontaktdaten" style="max-width: 150px; height: auto; border-radius: 4px;" loading="lazy">
             <?php endif; ?>
+            
+            <!-- Alternativer Download-Link für vCard (falls QR-Code nicht funktioniert) -->
+            <div style="margin-top: 15px;">
+                <?php
+                // Data-URI für vCard-Download
+                $vcard_data_uri = 'data:text/vcard;charset=utf-8,' . rawurlencode($vcard);
+                ?>
+                <a href="<?php echo $vcard_data_uri; ?>" 
+                   download="kontakt-rechtsanwalt-matthias-lange.vcf"
+                   style="display: inline-block; padding: 8px 16px; background: #1a3a5c; color: white; text-decoration: none; border-radius: 4px; font-size: 13px;">
+                    📥 Kontakt herunterladen (.vcf)
+                </a>
+                <p style="font-size: 11px; color: #666; margin-top: 8px; margin-bottom: 0;">
+                    Alternative: vCard-Datei direkt ins Adressbuch importieren
+                </p>
+            </div>
         </div>
         <?php endif; ?>
     </div>
