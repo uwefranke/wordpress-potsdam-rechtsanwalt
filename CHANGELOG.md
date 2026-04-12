@@ -10,6 +10,21 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.21] - 2026-04-12
+
+### Hinzugefügt
+- **Kaya QR Code Generator Plugin-Unterstützung** ⭐
+  - Primäre Empfehlung: "Kaya QR Code Generator"
+  - Shortcode-Integration: `[kaya_qrcode content="..."]`
+  - Automatische Erkennung via `shortcode_exists('kaya_qrcode')`
+  - Keine Dependencies, leichtgewichtig
+  - Widgets + Shortcode-Generator verfügbar
+
+### Geändert
+- Plugin-Priorität: Kaya → QR Code Generator → WP QR Code Generator → Fallback
+- Admin-Notice zeigt jetzt beide Plugin-Optionen (Kaya + QR Code Generator)
+- qrcode-generator.php erweitert um Kaya-Support
+
 ## [1.0.20] - 2026-04-12
 
 ### Geändert

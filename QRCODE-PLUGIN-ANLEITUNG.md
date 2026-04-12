@@ -6,30 +6,56 @@ Für 100% DSGVO-konforme, lokale QR-Code-Generierung empfehlen wir die Installat
 
 ---
 
-## ✅ Empfohlenes Plugin
+## ✅ Empfohlene Plugins
 
-### **QR Code Generator** (WordPress.org)
+### ⭐ **Kaya QR Code Generator** (Unsere Top-Empfehlung!)
+
+**Rating:** ⭐⭐⭐⭐⭐ (5.0/5)  
+**Aktive Installationen:** 3,000+  
+**Plugin-Link:** https://wordpress.org/plugins/kaya-qr-code-generator/
+
+#### Vorteile:
+- ✅ **100% lokal** - keine externen API-Aufrufe
+- ✅ **DSGVO-konform** - keine Daten verlassen den Server
+- ✅ **Kostenlos** - keine Premium-Version nötig
+- ✅ **Keine Dependencies** - ultra-leichtgewichtig
+- ✅ **Widgets + Shortcodes** - flexible Integration
+- ✅ **Shortcode-Generator** - einfache Bedienung
+- ✅ **Automatische Integration** - unser Theme erkennt das Plugin automatisch
+
+#### Shortcodes:
+```php
+// Statischer Inhalt
+[kaya_qrcode content="Mein QR-Code-Inhalt"]
+
+// Dynamischer Inhalt
+[kaya_qrcode_dynamic][example_shortcode][/kaya_qrcode_dynamic]
+```
+
+---
+
+### **QR Code Generator** (Alternative)
 
 **Rating:** ⭐⭐⭐⭐⭐ (4.5/5)  
 **Aktive Installationen:** 10,000+  
 **Plugin-Link:** https://wordpress.org/plugins/qr-code-generator-for-wordpress/
 
-### Vorteile:
+#### Vorteile:
 - ✅ **100% lokal** - keine externen API-Aufrufe
-- ✅ **DSGVO-konform** - keine Daten verlassen den Server
+- ✅ **DSGVO-konform** - keine Daten verlassen den Server  
 - ✅ **Kostenlos** - keine Premium-Version nötig
 - ✅ **Leichtgewichtig** - keine Performance-Probleme
 - ✅ **Automatische Integration** - unser Theme erkennt das Plugin automatisch
 
 ---
 
-## 📥 Installation
+## 📥 Installation (Kaya QR Code Generator)
 
 ### Methode 1: WordPress-Admin (empfohlen)
 
 1. **WordPress-Admin** öffnen
 2. **Plugins → Installieren** klicken
-3. Nach "**QR Code Generator**" suchen
+3. Nach "**Kaya QR Code Generator**" suchen
 4. Plugin **installieren** und **aktivieren**
 5. **Fertig!** Das Theme nutzt nun automatisch das Plugin
 
@@ -86,18 +112,26 @@ Wenn kein Plugin installiert ist, zeigt das Theme einen **Hinweis im WordPress-A
 
 Unser Theme ist kompatibel mit:
 
-### 1. QR Code Generator
+### 1. Kaya QR Code Generator (⭐ Top-Empfehlung)
+- **Shortcode:** `[kaya_qrcode content="..."]`
+- **Funktion:** Automatisch erkannt via `shortcode_exists('kaya_qrcode')`
+- **Besonderheit:** Widget-Support + Shortcode-Generator im Editor
+- **Empfehlung:** ⭐⭐⭐⭐⭐
+
+### 2. QR Code Generator
 - **Shortcode:** `[qrcode]content[/qrcode]`
 - **Funktion:** Automatisch erkannt
 - **Empfehlung:** ⭐⭐⭐⭐⭐
 
-### 2. WP QR Code Generator  
+### 3. WP QR Code Generator  
 - **Funktion:** `wpqr_generate_code($data, $size)`
 - **Erkennung:** Automatisch
 - **Empfehlung:** ⭐⭐⭐⭐
 
-### 3. Andere QR-Code-Plugins
-Wenn dein bevorzugtes Plugin nicht automatisch erkannt wird, kannst du die Datei `inc/qrcode-generator.php` anpassen.
+### 4. Google Chart API (Fallback)
+- Nur wenn **kein** Plugin installiert
+- Nicht DSGVO-konform (extern)
+- Admin-Warnung wird angezeigt
 
 ---
 
@@ -106,15 +140,18 @@ Wenn dein bevorzugtes Plugin nicht automatisch erkannt wird, kannst du die Datei
 ### Automatische Plugin-Erkennung
 
 ```php
-// Theme prüft automatisch ob Plugin verfügbar ist
-if (shortcode_exists('qrcode')) {
-    // Nutze QR Code Generator Plugin
+// Theme prüft automatisch ob Plugin verfügbar ist (Prioritätsreihenfolge)
+if (shortcode_exists('kaya_qrcode')) {
+    // 1. Nutze Kaya QR Code Generator (⭐ Beste Wahl)
+    return do_shortcode('[kaya_qrcode content="' . $vcard . '"]');
+} elseif (shortcode_exists('qrcode')) {
+    // 2. Nutze QR Code Generator Plugin
     return do_shortcode('[qrcode]' . $vcard . '[/qrcode]');
 } elseif (function_exists('wpqr_generate_code')) {
-    // Nutze WP QR Code Generator
+    // 3. Nutze WP QR Code Generator
     return wpqr_generate_code($vcard, 200);
 } else {
-    // Fallback: Google Chart API
+    // 4. Fallback: Google Chart API
     return 'https://chart.googleapis.com/...';
 }
 ```
@@ -157,13 +194,14 @@ END:VCARD
 
 ## 📊 Performance-Vergleich
 
-| Methode | Ladezeit | DSGVO | Offline |
-|---------|----------|-------|---------|
-| **QR Code Generator Plugin** | ~50ms | ✅ Ja | ✅ Ja |
-| **WP QR Code Generator** | ~60ms | ✅ Ja | ✅ Ja |
-| **Google Chart API** | ~200ms | ❌ Nein | ❌ Nein |
+| Methode | Ladezeit | DSGVO | Offline | Widgets |
+|---------|----------|-------|---------|----------|
+| **Kaya QR Code Generator** | ~40ms | ✅ Ja | ✅ Ja | ✅ Ja |
+| **QR Code Generator Plugin** | ~50ms | ✅ Ja | ✅ Ja | ❌ Nein |
+| **WP QR Code Generator** | ~60ms | ✅ Ja | ✅ Ja | ❌ Nein |
+| **Google Chart API** | ~200ms | ❌ Nein | ❌ Nein | ❌ Nein |
 
-**Empfehlung:** Plugin-Nutzung für beste Performance und Datenschutz.
+**Empfehlung:** Kaya QR Code Generator für beste Performance, Datenschutz und Features.
 
 ---
 
@@ -173,8 +211,11 @@ END:VCARD
 # 1. Theme hochladen und aktivieren
 wp theme activate potsdam-rechtsanwalt
 
-# 2. QR Code Generator Plugin installieren
-wp plugin install qr-code-generator-for-wordpress --activate
+# 2. Kaya QR Code Generator Plugin installieren (⭐ Empfohlen)
+wp plugin install kaya-qr-code-generator --activate
+
+# Alternative: QR Code Generator
+# wp plugin install qr-code-generator-for-wordpress --activate
 
 # 3. Kontaktdaten im Customizer eintragen
 # WordPress-Admin → Design → Anpassen → Kontakt-Informationen
@@ -197,20 +238,29 @@ Falls du **kein Plugin installierst** und die Google Chart API nutzt, musst du d
 
 ---
 
-## 🎁 Weitere Plugin-Optionen
+## 🎁 Plugin-Optionen
 
-### Alternative Plugins (falls gewünscht):
+### Top-Empfehlung:
 
-1. **Simple QR Code Generator**  
+1. **Kaya QR Code Generator** ⭐⭐⭐⭐⭐  
+   https://wordpress.org/plugins/kaya-qr-code-generator/  
+   *Leichtgewichtig, Widgets, Shortcode-Generator*
+
+### Alternativen:
+
+2. **QR Code Generator**  
+   https://wordpress.org/plugins/qr-code-generator-for-wordpress/
+
+3. **Simple QR Code Generator**  
    https://wordpress.org/plugins/simple-qr-code-generator/
 
-2. **QR Code Widget**  
+4. **QR Code Widget**  
    https://wordpress.org/plugins/qr-code-widget/
 
-3. **WP QR Code Maker**  
+5. **WP QR Code Maker**  
    https://wordpress.org/plugins/wp-qr-code-maker/
 
-Alle werden automatisch vom Theme erkannt (falls sie Standard-Funktionen nutzen).
+Die meisten werden automatisch vom Theme erkannt (falls sie Standard-Funktionen nutzen).
 
 ---
 
@@ -223,9 +273,11 @@ Alle werden automatisch vom Theme erkannt (falls sie Standard-Funktionen nutzen)
 - Bessere Performance ✅  
 - Keine Abhängigkeit von externen Services ✅
 
+**Beste Wahl:** Kaya QR Code Generator (⭐)
+
 ### Kostet das Plugin etwas?
 
-**Nein**, "QR Code Generator" ist 100% **kostenlos**.
+**Nein**, sowohl "Kaya QR Code Generator" als auch "QR Code Generator" sind 100% **kostenlos**.
 
 ### Funktioniert es ohne Internet?
 
@@ -241,10 +293,11 @@ Alle werden automatisch vom Theme erkannt (falls sie Standard-Funktionen nutzen)
 ## 🔗 Nützliche Links
 
 - **Theme-Repository:** https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt
+- **Kaya QR Code Generator:** https://wordpress.org/plugins/kaya-qr-code-generator/
 - **QR Code Generator Plugin:** https://wordpress.org/plugins/qr-code-generator-for-wordpress/
 - **vCard Spezifikation:** https://www.rfc-editor.org/rfc/rfc6350
 - **DSGVO-Infos:** https://dsgvo-gesetz.de/
 
 ---
 
-**TL;DR:** Installiere "QR Code Generator" Plugin für lokale, DSGVO-konforme QR-Codes! 🚀
+**TL;DR:** Installiere "Kaya QR Code Generator" Plugin für lokale, DSGVO-konforme QR-Codes! 🚀
