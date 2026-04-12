@@ -219,10 +219,9 @@
                 echo esc_html($vcard);
                 echo '</pre>';
                 
-                echo '<br><strong>QR-Code Output (erste 300 Zeichen):</strong><br>';
-                $qr_preview = strlen($qr_url) > 300 ? substr($qr_url, 0, 300) . '...' : $qr_url;
-                echo '<pre style="font-size: 9px; background: #f5f5f5; padding: 10px; margin: 5px 0; overflow-x: auto; word-wrap: break-word; white-space: pre-wrap;">';
-                echo esc_html($qr_preview);
+                echo '<br><strong>QR-Code Output (vollständig):</strong><br>';
+                echo '<pre style="font-size: 9px; background: #f5f5f5; padding: 10px; margin: 5px 0; overflow-x: auto; word-wrap: break-word; white-space: pre-wrap; max-height: 400px;">';
+                echo esc_html($qr_url);
                 echo '</pre>';
                 
                 echo '<br><strong>Test mit Google Chart API:</strong><br>';

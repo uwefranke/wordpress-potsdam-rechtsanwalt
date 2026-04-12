@@ -10,6 +10,19 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.27] - 2026-04-12
+
+### Behoben
+- **Kaya QR Code Generator vCard-Übergabe** 🔧
+  - Zeilenumbrüche (\r\n) werden jetzt als HTML-Entities (&amp;#13;&amp;#10;) escapiert
+  - vCard-Daten bleiben beim Übergeben an Kaya Plugin erhalten
+  - **Problem:** HTML-Attribute können keine echten Zeilenumbrüche enthalten
+  - **Lösung:** Entity-Encoding für Shortcode-Attribut `content="..."`
+
+### Geändert
+- Debug-Modus zeigt jetzt vollständigen QR-Code-Output (nicht nur 300 Zeichen)
+- Bessere Diagnose bei leerem QR-Code
+
 ## [1.0.26] - 2026-04-12
 
 ### Geändert

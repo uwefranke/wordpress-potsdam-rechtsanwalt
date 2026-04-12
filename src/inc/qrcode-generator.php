@@ -26,9 +26,10 @@ if (!function_exists('potsdam_generate_qrcode_url')) {
         
         // Methode 1: Plugin "Kaya QR Code Generator" (kaya-qr-code-generator)
         if (shortcode_exists('kaya_qrcode')) {
-            // WICHTIG: Kein esc_attr() - beschädigt vCard-Zeilenumbrüche!
-            // Shortcode escaped automatisch
-            return do_shortcode('[kaya_qrcode content="' . str_replace('"', '&quot;', $vcard) . '"]');
+            // WICHTIG: vCard-Zeilenumbrüche müssen für HTML-Attribut escapiert werden
+            // \r\n → &#13;&#10; für korrekte Übergabe im Shortcode-Attribut
+            $vcard_escaped = str_replace(array("\r", "\n", '"'), array('&#13;', '&#10;', '&quot;'), $vcard);
+            return do_shortcode('[kaya_qrcode content="' . $vcard_escaped . '"]');
         }
         
         // Methode 2: Plugin "QR Code Generator" (qr-code-generator-for-wordpress)
