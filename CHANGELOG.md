@@ -10,6 +10,25 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.20] - 2026-04-12
+
+### Geändert
+- **QR-Code jetzt Plugin-kompatibel** 🔌
+  - Unterstützt WordPress-Plugin "QR Code Generator" (lokal, DSGVO-konform)
+  - Unterstützt "WP QR Code Generator" Plugin
+  - Automatische Erkennung installierter Plugins
+  - Fallback auf Google Chart API nur wenn kein Plugin installiert
+  - Admin-Hinweis wenn externes API genutzt wird
+  
+### Hinzugefügt
+- qrcode-generator.php mit Plugin-Detection-Logik
+- Admin-Notice mit Plugin-Empfehlung für DSGVO-Konformität
+- Flexibles Rendering (HTML-Shortcode oder URL/Data-URI)
+
+### EMPFEHLUNG
+**Installiere:** "QR Code Generator" Plugin für 100% lokale QR-Code-Generierung  
+Plugin-Link: https://wordpress.org/plugins/qr-code-generator-for-wordpress/
+
 ## [1.0.19] - 2026-04-12
 
 ### Hinzugefügt

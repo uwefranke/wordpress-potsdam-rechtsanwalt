@@ -119,7 +119,7 @@
             $email = get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de');
             $address = str_replace('\n', ', ', get_theme_mod('contact_address', 'Musterstraße 123, 14467 Potsdam'));
             
-            // vCard im Format: BEGIN:VCARD\nVERSION:3.0\nFN:Name\nTEL:Phone\n...
+            // vCard 3.0 Format
             $vcard = "BEGIN:VCARD\n";
             $vcard .= "VERSION:3.0\n";
             $vcard .= "FN:" . $name . "\n";
@@ -131,12 +131,18 @@
             $vcard .= "ADR;TYPE=WORK:;;" . $address . "\n";
             $vcard .= "END:VCARD";
             
-            // QR-Code URL (api.qrserver.com - kostenlos, kein API-Key nötig)
-            $qr_url = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($vcard);
+            // QR-Code URL generieren (nutzt Plugin wenn verfügbar)
+            $qr_url = potsdam_generate_qrcode_url($vcard, 200);
         ?>
         <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
             <p style="font-size: 12px; color: #888; margin-bottom: 10px;">Kontakt speichern:</p>
-            <img src="<?php echo esc_url($qr_url); ?>" alt="QR-Code Kontaktdaten" style="max-width: 150px; height: auto; border-radius: 4px;" loading="lazy">
+            <?php if (strpos($qr_url, '<') === 0) : ?>
+                <!-- Plugin gibt HTML/Shortcode zurück -->
+                <?php echo $qr_url; ?>
+            <?php else : ?>
+                <!-- Plugin gibt URL/Data-URI zurück -->
+                <img src="<?php echo esc_url($qr_url); ?>" alt="QR-Code Kontaktdaten" style="max-width: 150px; height: auto; border-radius: 4px;" loading="lazy">
+            <?php endif; ?>
         </div>
         <?php endif; ?>
     </div>
