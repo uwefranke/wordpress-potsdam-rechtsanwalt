@@ -10,6 +10,31 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.33] - 2026-04-12
+
+### Behoben
+- **Hero-Section und Rechtsgebiete bei statischer Startseite** 🏠
+  - Hero-Section wird jetzt auch angezeigt, wenn eine Seite als Startseite festgelegt ist
+  - Rechtsgebiets-Karten erscheinen auf statischer Startseite
+  - **Problem:** WordPress nutzt page.php statt index.php bei statischen Seiten
+  - **Lösung:** Hero + Rechtsgebiete in page.php mit `is_front_page()` Prüfung
+
+### Geändert
+- Breadcrumbs nur noch auf Unterseiten (nicht auf Startseite)
+- Template-Logik vereinheitlicht zwischen index.php und page.php
+- Startseite funktioniert jetzt identisch bei "Neueste Beiträge" und "Statische Seite" Einstellung
+
+### Technisch
+- page.php: Hero-Section mit `<?php if (is_front_page()) : ?>` Bedingung
+- page.php: Rechtsgebiete-Section mit gleicher Bedingung
+- Unterseiten behalten normales Layout (Titel, Breadcrumbs)
+
+### Kontext
+- WordPress Admin → Einstellungen → Lesen → "Startseite" 
+- Wenn "Statische Seite" ausgewählt: page.php wird verwendet
+- Wenn "Neueste Beiträge" ausgewählt: index.php wird verwendet
+- Beide Templates zeigen jetzt Hero + Rechtsgebiete
+
 ## [1.0.32] - 2026-04-12
 
 ### Geändert
