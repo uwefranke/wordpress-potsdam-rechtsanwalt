@@ -10,6 +10,54 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.34] - 2026-04-13
+
+### Hinzugefügt
+- **Customizer-Felder für Rechtsgebiete** ⚙️
+  - Neue Section "Rechtsgebiete" im WordPress Customizer
+  - Variable Anzahl von Karten (1-8) über Dropdown auswählbar
+  - Pro Rechtsgebiet editierbar: Titel, Beschreibung, Link
+  - 8 vordefinierte SVG-Icons (Miet, Immobilien, Bau, BU, Verkehr, Vertrag, Zeit, Tag)
+  - Default-Werte für die 4 bestehenden Rechtsgebiete vorausgefüllt
+
+### Geändert
+- **Template-Vereinfachung** 🧹
+  - ~130 Zeilen hardcoded HTML durch dynamische Generierung ersetzt
+  - Neue Helper-Funktion `potsdam_display_service_cards()` in template-tags.php
+  - page.php und index.php nutzen jetzt Funktionsaufruf statt hardcoded Karten
+  - Karten werden nur angezeigt wenn Titel vorhanden (keine leeren Karten)
+
+### Technisch
+- **src/inc/customizer.php:**
+  - +113 Zeilen neue Services Section
+  - 25 neue Settings (services_count + 8x3 Felder)
+  - for-Loop 1-8 für service_{i}_title, service_{i}_description, service_{i}_link
+  
+- **src/inc/template-tags.php:**
+  - +62 Zeilen neue Funktion potsdam_display_service_cards()
+  - 8 inline SVG-Icons als Array
+  - URL-Handling: Relative Pfade → home_url(), absolute URLs direkt
+  - Conditional Output: Nur Karten mit Titel werden generiert
+  
+- **src/page.php:** 67 Zeilen hardcoded HTML → 1 Zeile <?php potsdam_display_service_cards(); ?>
+- **src/index.php:** Gleiche Vereinfachung wie page.php
+
+### Anleitung
+1. WordPress Admin → Design → Customizer → **Rechtsgebiete**
+2. **Anzahl der Rechtsgebiete:** 1-8 auswählen
+3. Pro Rechtsgebiet bearbeiten:
+   - **Titel:** Name des Rechtsgebiets
+   - **Beschreibung:** Kurzer Erklärungstext
+   - **Link:** Relative URL (/mietrecht) oder absolute (https://example.com)
+4. Icons werden automatisch zugeordnet (1-8)
+5. Änderungen speichern
+
+### Kontext
+- User-Anfrage: "wo kann ich den inhalt der Karten bearbeiten"
+- Hardcoded Rechtsgebiete waren nicht im Customizer editierbar
+- Jetzt: Volle Kontrolle über Anzahl, Texte und Links
+- Icons aktuell fix (8 vordefinierte SVGs)
+
 ## [1.0.33] - 2026-04-12
 
 ### Behoben

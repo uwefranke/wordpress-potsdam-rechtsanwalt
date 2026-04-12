@@ -289,5 +289,98 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'section'  => 'opening_hours',
         'type'     => 'text',
     ));
+    
+    // Rechtsgebiete
+    $wp_customize->add_section('services', array(
+        'title'       => __('Rechtsgebiete', 'potsdam-rechtsanwalt'),
+        'description' => __('Bearbeiten Sie die Rechtsgebiets-Karten auf der Startseite.', 'potsdam-rechtsanwalt'),
+        'priority'    => 50,
+    ));
+    
+    // Anzahl der Rechtsgebiete
+    $wp_customize->add_setting('services_count', array(
+        'default'   => 4,
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('services_count', array(
+        'label'       => __('Anzahl Rechtsgebiete', 'potsdam-rechtsanwalt'),
+        'description' => __('Wie viele Rechtsgebiets-Karten sollen angezeigt werden? (1-8)', 'potsdam-rechtsanwalt'),
+        'section'     => 'services',
+        'type'        => 'number',
+        'input_attrs' => array(
+            'min'  => 1,
+            'max'  => 8,
+            'step' => 1,
+        ),
+    ));
+    
+    // Standardwerte für die 4 vorhandenen Rechtsgebiete
+    $default_services = array(
+        1 => array(
+            'title' => 'Miet- / Wohnungseigentumsrecht',
+            'description' => 'Umfassende Beratung bei Wohnungs- und Gewerbemietrecht, Kündigungen, Mietminderungen und WEG-Recht.',
+            'link' => '/miet-wohnungseigentumsrecht',
+        ),
+        2 => array(
+            'title' => 'Grundstücks- / Immobilienrecht',
+            'description' => 'Kaufverträge, Förderdarlehen (ILB/IBB), Nachbarschaftsrecht und alle immobilienrechtlichen Angelegenheiten.',
+            'link' => '/grundstuecks-immobilienrecht',
+        ),
+        3 => array(
+            'title' => 'Baurecht',
+            'description' => 'Bauverträge (BGB/VOB), Baumängel, Gewährleistung, Architektenrecht und bauplanungsrechtliche Fragen.',
+            'link' => '/baurecht',
+        ),
+        4 => array(
+            'title' => 'BU / Erwerbsminderungsrente',
+            'description' => 'Durchsetzung von Ansprüchen bei Berufsunfähigkeit und Erwerbsminderung gegenüber Versicherungen und Behörden.',
+            'link' => '/bu-erwerbsminderungsrente',
+        ),
+    );
+    
+    // Felder für bis zu 8 Rechtsgebiete
+    for ($i = 1; $i <= 8; $i++) {
+        $default_title = isset($default_services[$i]) ? $default_services[$i]['title'] : '';
+        $default_desc = isset($default_services[$i]) ? $default_services[$i]['description'] : '';
+        $default_link = isset($default_services[$i]) ? $default_services[$i]['link'] : '';
+        
+        // Titel
+        $wp_customize->add_setting("service_{$i}_title", array(
+            'default'   => $default_title,
+            'transport' => 'refresh',
+        ));
+        
+        $wp_customize->add_control("service_{$i}_title", array(
+            'label'    => sprintf(__('Rechtsgebiet %d - Titel', 'potsdam-rechtsanwalt'), $i),
+            'section'  => 'services',
+            'type'     => 'text',
+        ));
+        
+        // Beschreibung
+        $wp_customize->add_setting("service_{$i}_description", array(
+            'default'   => $default_desc,
+            'transport' => 'refresh',
+        ));
+        
+        $wp_customize->add_control("service_{$i}_description", array(
+            'label'    => sprintf(__('Rechtsgebiet %d - Beschreibung', 'potsdam-rechtsanwalt'), $i),
+            'section'  => 'services',
+            'type'     => 'textarea',
+        ));
+        
+        // Link
+        $wp_customize->add_setting("service_{$i}_link", array(
+            'default'   => $default_link,
+            'transport' => 'refresh',
+        ));
+        
+        $wp_customize->add_control("service_{$i}_link", array(
+            'label'       => sprintf(__('Rechtsgebiet %d - Link', 'potsdam-rechtsanwalt'), $i),
+            'description' => __('Relativer Pfad (z.B. /baurecht) oder vollständige URL', 'potsdam-rechtsanwalt'),
+            'section'     => 'services',
+            'type'        => 'text',
+        ));
+    }
 }
 add_action('customize_register', 'potsdam_rechtsanwalt_customizer');
