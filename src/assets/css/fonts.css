@@ -12,7 +12,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('fonts/open-sans-300.woff2') format('woff2');
+    src: url('../fonts/open-sans-300.woff2') format('woff2');
 }
 
 /* Open Sans - Regular 400 */
@@ -21,7 +21,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('fonts/open-sans.woff2') format('woff2');
+    src: url('../fonts/open-sans.woff2') format('woff2');
 }
 
 /* Open Sans - SemiBold 600 */
@@ -30,7 +30,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url('fonts/open-sans-600.woff2') format('woff2');
+    src: url('../fonts/open-sans-600.woff2') format('woff2');
 }
 
 /* Playfair Display - Regular 400 */
@@ -39,7 +39,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('fonts/playfair-display.woff2') format('woff2');
+    src: url('../fonts/playfair-display.woff2') format('woff2');
 }
 
 /* Playfair Display - SemiBold 600 */
@@ -48,7 +48,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url('fonts/playfair-display-600.woff2') format('woff2');
+    src: url('../fonts/playfair-display-600.woff2') format('woff2');
 }
 
 /* Playfair Display - Bold 700 */
@@ -57,5 +57,5 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('fonts/playfair-display-700.woff2') format('woff2');
+    src: url('../fonts/playfair-display-700.woff2') format('woff2');
 }

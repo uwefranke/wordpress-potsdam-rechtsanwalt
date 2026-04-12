@@ -10,6 +10,20 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.29] - 2026-04-12
+
+### Behoben
+- **Font-Pfade korrigiert** 🔠
+  - 404-Fehler bei allen Font-Dateien behoben
+  - Pfade von `url('fonts/...')` auf `url('../fonts/...')` korrigiert
+  - Betroffen: Open Sans (300/400/600) + Playfair Display (400/600/700)
+  - **Ursache:** fonts.css liegt in `assets/css/`, Fonts in `assets/fonts/`
+  - **Problem:** Fehlende Fonts könnten auch Kaya QR-Plugin JavaScript beeinträchtigt haben
+
+### Technisch
+- Alle 6 @font-face Regeln in fonts.css aktualisiert
+- Relative Pfade jetzt korrekt: `../fonts/dateiname.woff2`
+
 ## [1.0.28] - 2026-04-12
 
 ### Hinzugefügt
