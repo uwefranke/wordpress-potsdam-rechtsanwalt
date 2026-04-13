@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.2] - 2026-04-13
+
+### Behoben
+- **Cookie-Einstellungen Link robuster** 🔧
+  - Inline-Script statt onclick-Attribut
+  - Event-Listener mit Fallback
+  - Funktioniert auch wenn cookie-consent.js spät lädt
+  - Fallback: Cookie löschen + Seite neu laden
+
 ## [1.3.1] - 2026-04-13
 
 ### Hinzugefügt

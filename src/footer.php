@@ -73,7 +73,26 @@
         <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. Alle Rechte vorbehalten. | 
         <a href="<?php echo esc_url(home_url('/impressum')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Impressum</a> | 
         <a href="<?php echo esc_url(home_url('/datenschutz')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Datenschutz</a> | 
-        <a href="#" onclick="event.preventDefault(); window.openCookieSettings();" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Cookie-Einstellungen</a></p>
+        <a href="#" id="cookie-settings-footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Cookie-Einstellungen</a></p>
+        
+        <script>
+        // Inline-Script für sofortige Verfügbarkeit
+        document.addEventListener('DOMContentLoaded', function() {
+            var link = document.getElementById('cookie-settings-footer-link');
+            if (link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (typeof window.openCookieSettings === 'function') {
+                        window.openCookieSettings();
+                    } else {
+                        // Fallback: Cookie löschen und neu laden
+                        document.cookie = 'potsdam-cookie-consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                        location.reload();
+                    }
+                });
+            }
+        });
+        </script>
     </div>
 </footer>
 
