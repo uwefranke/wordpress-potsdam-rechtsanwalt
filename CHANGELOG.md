@@ -10,6 +10,33 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.43] - 2026-04-13
+
+### Hinzugefügt
+- **Dark Mode mit System-Integration** 🌙
+  - Automatische Erkennung der System-Präferenz (prefers-color-scheme)
+  - Manueller Toggle-Switch (fixed Button rechts unten)
+  - localStorage-Persistenz über Seitenaufrufe hinweg
+  - Icons: 🌙 (Light Mode) / ☀️ (Dark Mode)
+  - Sofortige Initialisierung verhindert Flackern beim Laden
+  - MediaQuery-Listener reagiert auf System-Änderungen
+  - CSS-Variablen für nahtlosen Farbwechsel
+
+### Geändert
+- CSS: Erweiterte :root Variablen mit semantischen Farben (--bg-primary, --text-primary, etc.)
+- CSS: .dark-mode Klasse mit invertierten Farben
+- Dark Mode Gold: Helleres #f4d03f für besseren Kontrast
+- Toggle-Button: Fixed position (bottom: 30px, right: 30px)
+- Mobile: Kleinerer Toggle-Button (45px statt 50px)
+
+### Technisch
+- darkmode.js: 120 Zeilen JavaScript
+- STORAGE_KEY: 'potsdam-theme-mode'
+- DARK_CLASS: 'dark-mode'
+- getPreferredTheme(): localStorage > prefers-color-scheme > 'light'
+- Script im <head> geladen (nicht Footer) für sofortige Verfügbarkeit
+- matchMedia API für System-Präferenz-Erkennung
+
 ## [1.0.42] - 2026-04-13
 
 ### Behoben

@@ -90,6 +90,9 @@ function potsdam_rechtsanwalt_scripts() {
     // jQuery (ist bereits in WordPress enthalten)
     wp_enqueue_script('jquery');
     
+    // Dark Mode Script (im <head> laden, damit es sofort verfügbar ist und kein Flackern entsteht)
+    wp_enqueue_script('potsdam-darkmode', get_template_directory_uri() . '/assets/js/darkmode.js', array(), $theme_version, false);
+    
     // Custom JavaScript
     wp_enqueue_script('potsdam-rechtsanwalt-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), $theme_version, true);
 }

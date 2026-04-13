@@ -41,6 +41,11 @@
     </div>
 </header>
 
+<!-- Dark Mode Toggle Button -->
+<button class="dark-mode-toggle" aria-label="Dark Mode umschalten">
+    <span class="toggle-icon">🌙</span>
+</button>
+
 <?php
 // Fallback-Menü falls kein Menü definiert ist
 function potsdam_rechtsanwalt_fallback_menu() {
