@@ -1,3 +1,10 @@
+# Credentials & Secrets (AI Content Generator)
+.env
+*.env
+!.env.example
+.wp-credentials
+.openai-credentials
+
 # WordPress Theme Build Files
 *.zip
 *.tar.gz

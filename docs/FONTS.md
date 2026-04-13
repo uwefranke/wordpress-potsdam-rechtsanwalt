@@ -40,7 +40,7 @@ Die aktuell enthaltenen Font-Dateien in `src/assets/fonts/` sind funktionsfähig
 **Methode 2: PowerShell Script**
 
 ```powershell
-.\download-fonts.ps1
+.\scripts\download-fonts.ps1
 ```
 
 Dieses Script lädt die Fonts automatisch von Google herunter.

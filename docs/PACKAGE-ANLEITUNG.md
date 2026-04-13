@@ -11,7 +11,7 @@ Um das Theme in WordPress installieren zu können, muss es als ZIP-Datei verpack
 1. Öffnen Sie PowerShell im Theme-Verzeichnis
 2. Führen Sie aus:
    ```powershell
-   .\create-theme-package.ps1
+   .\scripts\create-theme-package.ps1
    ```
 
 Das Skript erstellt automatisch eine `potsdam-rechtsanwalt-theme.zip` im übergeordneten Verzeichnis.
@@ -77,7 +77,9 @@ Write-Host "ZIP erstellt: $outputPath"
    ✗ .git/
    ✗ .github/
    ✗ .gitignore
-   ✗ create-theme-package.ps1
+   ✗ scripts/
+      ✗ create-theme-package.ps1
+   ✗ config/
    ✗ PACKAGE-ANLEITUNG.md
    ✗ node_modules/
    ```

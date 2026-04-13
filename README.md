@@ -28,11 +28,14 @@ potsdam-rechtsanwalt/
 │       ├── release.yml          # Automatisches Release
 │       └── build.yml            # Build & Test
 │
+├── config/                      # Konfigurationsdateien (.env, .htaccess, etc.)
+├── docs/                        # Dokumentation
+├── scripts/                     # PowerShell Scripts
+│   └── create-theme-package.ps1    # Lokales Build-Skript
+├── setup-tools/                 # Einmalige Setup-Scripts
+├── src/                         # WordPress Theme Dateien
 ├── README.md                    # Diese Datei
-├── INSTALLATION.md              # Installations-Anleitung
-├── CHANGELOG.md                 # Versions-Historie
-├── RELEASE.md                   # Release-Anleitung
-└── create-theme-package.ps1    # Lokales Build-Skript
+└── CHANGELOG.md                 # Versions-Historie
 ```
 
 **Hinweis:** Alle Theme-Dateien befinden sich im `/src` Ordner. Die GitHub Workflows erstellen automatisch ein installationsfähiges ZIP-Paket daraus.
@@ -69,7 +72,7 @@ potsdam-rechtsanwalt/
 
 2. Build-Skript ausführen:
    ```powershell
-   .\create-theme-package.ps1
+   .\scripts\create-theme-package.ps1
    ```
 
 3. Die ZIP-Datei befindet sich im übergeordneten Verzeichnis

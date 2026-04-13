@@ -46,7 +46,10 @@ potsdam-rechtsanwalt/
 ├── 📄 THEME-STRUKTUR.md             WordPress-Struktur Erklärung
 ├── 📄 PACKAGE-ANLEITUNG.md          Paket-Erstellung
 ├── 📄 SCREENSHOT-INFO.md            Screenshot-Info
-└── 📄 create-theme-package.ps1      Lokales Build-Skript
+├── 📁 scripts/
+│   └── 📄 create-theme-package.ps1      Lokales Build-Skript
+├── 📁 config/
+├── 📁 docs/
 ```
 
 ## 🎯 Vorteile dieser Struktur
@@ -108,7 +111,7 @@ potsdam-rechtsanwalt-theme.zip
 ### Lokaler Build (PowerShell)
 
 ```powershell
-.\create-theme-package.ps1
+.\scripts\create-theme-package.ps1
 ```
 
 - Liest aus `src/`

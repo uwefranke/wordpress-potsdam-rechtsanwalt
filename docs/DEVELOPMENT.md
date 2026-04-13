@@ -75,7 +75,7 @@ potsdam-rechtsanwalt-theme.zip
 
    **Option B: Build-ZIP erstellen**
    ```powershell
-   .\create-theme-package.ps1
+   .\scripts\create-theme-package.ps1
    ```
 
 ### Datei hinzufügen
@@ -192,7 +192,9 @@ src/
 ├── CHANGELOG.md            # Versions-Historie
 ├── RELEASE.md              # Release-Kurzanleitung
 ├── THEME-STRUKTUR.md       # WordPress Theme-Struktur Erklärung
-└── create-theme-package.ps1 # Lokales Build-Skript
+├── scripts/
+│   └── create-theme-package.ps1 # Lokales Build-Skript
+├── config/
 ```
 
 ## Best Practices
