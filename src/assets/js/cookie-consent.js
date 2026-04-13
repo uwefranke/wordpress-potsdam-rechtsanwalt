@@ -46,8 +46,9 @@
         const currentCookie = getCookie(CONSENT_COOKIE);
         console.log('[Cookie Consent] showCookieBanner aufgerufen:', { forceShow, currentCookie, allCookies: document.cookie });
         
-        // Prüfen ob bereits Zustimmung erteilt (außer wenn forceShow = true)
-        if (!forceShow && currentCookie) {
+        // Prüfen ob bereits Zustimmung erteilt (außer wenn forceShow === true)
+        // WICHTIG: Explizit auf === true prüfen, da beim DOMContentLoaded ein Event-Objekt übergeben wird
+        if (forceShow !== true && currentCookie) {
             console.log('[Cookie Consent] Banner wird NICHT angezeigt (Cookie existiert)');
             return; // Banner nicht anzeigen
         }

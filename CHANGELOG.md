@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.9] - 2026-04-13
+
+### Behoben
+- **KRITISCHER BUG: Cookie wurde nicht gespeichert** ✅❗
+  - Problem: DOMContentLoaded übergibt Event-Objekt an showCookieBanner()
+  - Event-Objekt ist truthy, wurde als forceShow=true interpretiert
+  - Lösung: Explizites `forceShow !== true` statt `!forceShow`
+  - Banner erscheint jetzt nur noch beim ersten Besuch
+  - Cookie-Consent bleibt 365 Tage gespeichert
+
 ## [1.3.8] - 2026-04-13
 
 ### Behoben
