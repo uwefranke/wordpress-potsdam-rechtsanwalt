@@ -29,11 +29,17 @@
     
     /**
      * Theme anwenden
+     * @param {string} theme - 'dark', 'light' oder 'auto' (System-Präferenz)
+     * @param {boolean} isManual - Ob es eine manuelle Wahl ist (speichern in localStorage)
      */
-    function applyTheme(theme) {
+    function applyTheme(theme, isManual) {
         const html = document.documentElement;
         
-        if (theme === 'dark') {
+        if (isManual === false) {
+            // System-Präferenz: Keine Klasse setzen, Media Query entscheidet
+            html.classList.remove(DARK_CLASS);
+            html.classList.remove('light-mode');
+        } else if (theme === 'dark') {
             html.classList.add(DARK_CLASS);
             html.classList.remove('light-mode');
         } else {
@@ -58,7 +64,7 @@
         const newTheme = current === 'dark' ? 'light' : 'dark';
         
         localStorage.setItem(STORAGE_KEY, newTheme);
-        applyTheme(newTheme);
+        applyTheme(newTheme, true); // isManual = true
         
         return false;
     }
@@ -107,7 +113,7 @@
         // Nur reagieren wenn keine manuelle Präferenz gesetzt wurde
         const handleChange = function(e) {
             if (!localStorage.getItem(STORAGE_KEY)) {
-                applyTheme(e.matches ? 'dark' : 'light');
+                applyTheme(e.matches ? 'dark' : 'light', false); // isManual = false
             }
         };
         
@@ -126,7 +132,8 @@
     function init() {
         // Theme sofort anwenden (vor Page-Load für kein Flackern)
         const theme = getPreferredTheme();
-        applyTheme(theme);
+        const hasManualPreference = localStorage.getItem(STORAGE_KEY) !== null;
+        applyTheme(theme, hasManualPreference);
         
         // Nach DOM-Load Buttons initialisieren
         if (document.readyState === 'loading') {

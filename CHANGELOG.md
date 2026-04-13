@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.51] - 2026-04-13
+
+### Behoben
+- **System-Präferenz wird jetzt korrekt erkannt** 🔧
+  - applyTheme mit isManual Parameter
+  - Bei System-Präferenz werden KEINE Klassen gesetzt
+  - Media Query kann nun korrekt greifen
+  - Manuelle Wahl überschreibt weiterhin System-Präferenz
+
 ## [1.0.50] - 2026-04-13
 
 ### Behoben
