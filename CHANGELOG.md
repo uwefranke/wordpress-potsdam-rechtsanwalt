@@ -10,6 +10,14 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.1.3] - 2026-04-13
+
+### Geändert
+- **Homepage Browser-Titel optimiert** 📝
+  - Auf der Startseite wird jetzt nur der Website-Name angezeigt
+  - Seitentitel "Home" wird nicht mehr im Browser-Tab angezeigt
+  - Statt "Home - Potsdam Rechtsanwalt" jetzt nur "Potsdam Rechtsanwalt"
+
 ## [1.1.2] - 2026-04-13
 
 ### Hinzugefügt

@@ -146,3 +146,14 @@ function potsdam_rechtsanwalt_excerpt_more($more) {
     return '...';
 }
 add_filter('excerpt_more', 'potsdam_rechtsanwalt_excerpt_more');
+
+// Browser-Titel für Homepage anpassen (nur Website-Name, ohne "Home")
+function potsdam_rechtsanwalt_custom_document_title($title_parts) {
+    // Nur auf der Startseite
+    if (is_front_page() && is_home()) {
+        // Nur Website-Name, ohne Seitentitel
+        unset($title_parts['title']);
+    }
+    return $title_parts;
+}
+add_filter('document_title_parts', 'potsdam_rechtsanwalt_custom_document_title');
