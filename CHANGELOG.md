@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.7] - 2026-04-13
+
+### Behoben
+- **Cookie-Link funktioniert ENDLICH!** ✅
+  - Problem gefunden: showCookieBanner() zeigte Banner nicht bei bestehendem Cookie
+  - Lösung: forceShow-Parameter (true bei openCookieSettings())
+  - Banner erscheint jetzt auch nachträglich, wenn bereits Consent erteilt
+  - Cookie-Einstellungen können jederzeit geändert werden
+
 ## [1.3.6] - 2026-04-13
 
 ### Behoben

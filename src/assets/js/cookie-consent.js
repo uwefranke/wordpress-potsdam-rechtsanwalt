@@ -36,9 +36,9 @@
     /**
      * Cookie-Banner anzeigen
      */
-    function showCookieBanner() {
-        // Prüfen ob bereits Zustimmung erteilt
-        if (getCookie(CONSENT_COOKIE)) {
+    function showCookieBanner(forceShow = false) {
+        // Prüfen ob bereits Zustimmung erteilt (außer wenn forceShow = true)
+        if (!forceShow && getCookie(CONSENT_COOKIE)) {
             return; // Banner nicht anzeigen
         }
         
@@ -177,8 +177,8 @@
             existingBanner.remove();
         }
         
-        // Direkt Einstellungen anzeigen
-        showCookieBanner();
+        // Direkt Einstellungen anzeigen (forceShow = true, damit Banner auch bei bestehendem Cookie erscheint)
+        showCookieBanner(true);
         setTimeout(() => {
             const settingsBtn = document.getElementById('cookieSettings');
             if (settingsBtn) {
