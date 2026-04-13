@@ -16,7 +16,12 @@
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
+        // Wichtig: Expliziten Path setzen und sicherstellen dass Cookie persistent ist
         document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+        
+        // Debug: Prüfen ob Cookie gesetzt wurde
+        console.log('[Cookie Consent] Cookie gesetzt:', name + '=' + value, 'Expires:', date.toUTCString());
+        console.log('[Cookie Consent] Aktueller document.cookie:', document.cookie);
     }
     
     /**
@@ -37,10 +42,17 @@
      * Cookie-Banner anzeigen
      */
     function showCookieBanner(forceShow = false) {
+        // Debug logging
+        const currentCookie = getCookie(CONSENT_COOKIE);
+        console.log('[Cookie Consent] showCookieBanner aufgerufen:', { forceShow, currentCookie, allCookies: document.cookie });
+        
         // Prüfen ob bereits Zustimmung erteilt (außer wenn forceShow = true)
-        if (!forceShow && getCookie(CONSENT_COOKIE)) {
+        if (!forceShow && currentCookie) {
+            console.log('[Cookie Consent] Banner wird NICHT angezeigt (Cookie existiert)');
             return; // Banner nicht anzeigen
         }
+        
+        console.log('[Cookie Consent] Banner wird angezeigt');
         
         // Banner HTML erstellen
         const banner = document.createElement('div');
@@ -84,8 +96,10 @@
      * Cookies akzeptieren
      */
     function acceptCookies() {
+        console.log('[Cookie Consent] acceptCookies aufgerufen');
         setCookie(CONSENT_COOKIE, 'accepted', CONSENT_DURATION);
         hideBanner();
+        console.log('[Cookie Consent] Banner versteckt, Cookie sollte gesetzt sein');
     }
     
     /**
@@ -146,8 +160,13 @@
         
         document.getElementById('cookieAcceptSettings').addEventListener('click', acceptCookies);
         document.getElementById('cookieBack').addEventListener('click', () => {
-            hideBanner();
-            showCookieBanner();
+            // Eventuell vorhandenes Banner entfernen
+            const existingBanner = document.querySelector('.cookie-consent-banner');
+            if (existingBanner) {
+                existingBanner.remove();
+            }
+            // Banner erneut anzeigen mit forceShow, da wir aus den Einstellungen zurückkommen
+            showCookieBanner(true);
         });
     }
     

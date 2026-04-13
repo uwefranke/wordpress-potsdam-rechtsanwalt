@@ -10,6 +10,19 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.8] - 2026-04-13
+
+### Behoben
+- **Zurück-Button in Einstellungen** 🔧
+  - Zurück-Button nutzt jetzt forceShow=true (zeigt Banner auch bei Cookie)
+  - Verhindert dass Banner verschwindet beim Zurückklicken
+
+### Hinzugefügt
+- **Debug-Logging** 🔍
+  - Console-Logs zeigen Cookie-Status beim Laden
+  - Logs beim Setzen/Prüfen von Cookies
+  - Hilft bei Troubleshooting (kann später entfernt werden)
+
 ## [1.3.7] - 2026-04-13
 
 ### Behoben
