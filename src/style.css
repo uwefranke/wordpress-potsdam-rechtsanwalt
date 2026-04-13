@@ -4,7 +4,7 @@ Theme URI: http://www.potsdam-rechtsanwalt.de/
 Author: Uwe Franke
 Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.54
+Version: 1.0.55
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 8.4
@@ -109,6 +109,22 @@ html.dark-mode .sidebar {
 
 html.dark-mode .sidebar h3 {
     color: var(--color-gold);
+}
+
+/* Hero Section im Dark Mode */
+html.dark-mode .hero-section {
+    background: linear-gradient(rgba(26, 58, 92, 0.85), rgba(26, 58, 92, 0.9)), #2c5282;
+    color: #ffffff;
+}
+
+html.dark-mode .hero-content h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+html.dark-mode .hero-content p {
+    color: #e0e0e0;
+    opacity: 1;
 }
 
 /* Content Area im Dark Mode */
@@ -226,6 +242,17 @@ html.dark-mode p[style*="color:#666"] {
     html:not(.dark-mode):not(.light-mode) .content-area h2,
     html:not(.dark-mode):not(.light-mode) .content-area h3 {
         color: #f4d03f;
+    }
+    
+    /* Hero Section im System Dark Mode */
+    html:not(.dark-mode):not(.light-mode) .hero-section {
+        background: linear-gradient(rgba(26, 58, 92, 0.85), rgba(26, 58, 92, 0.9)), #2c5282;
+        color: #ffffff;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .hero-content h1,
+    html:not(.dark-mode):not(.light-mode) .hero-content p {
+        color: #ffffff;
     }
 }
 

@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.55] - 2026-04-13
+
+### Behoben
+- **Hero-Bereich im Dark Mode lesbar** 🌟
+  - Text jetzt weiß (#ffffff) statt dunkel
+  - Hintergrund-Gradient angepasst (dunkleres Overlay)
+  - Text-Shadow verstärkt für bessere Lesbarkeit
+  - Gilt für manuellen und System Dark Mode
+
 ## [1.0.54] - 2026-04-13
 
 ### Behoben
