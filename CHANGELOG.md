@@ -10,6 +10,13 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.44] - 2026-04-13
+
+### Behoben
+- **JavaScript-Fehler behoben** 🐛
+  - IIFE-Schließung in darkmode.js fehlte (})(); am Ende)
+  - Dark Mode Toggle funktioniert jetzt korrekt
+
 ## [1.0.43] - 2026-04-13
 
 ### Hinzugefügt
