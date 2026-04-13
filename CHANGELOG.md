@@ -10,6 +10,13 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.56] - 2026-04-13
+
+### Hinzugefügt
+- **Theme Screenshot hinzugefügt** 📸
+  - screenshot.png (1200x900px, 571 KB)
+  - Vorschaubild wird jetzt im WordPress Theme-Verzeichnis angezeigt
+
 ## [1.0.55] - 2026-04-13
 
 ### Behoben
