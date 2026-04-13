@@ -4,7 +4,7 @@ Theme URI: http://www.potsdam-rechtsanwalt.de/
 Author: Uwe Franke
 Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.3.9
+Version: 1.3.10
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 8.2
@@ -54,6 +54,20 @@ html.dark-mode {
 html.dark-mode body {
     background-color: #1a202c;
     color: #e0e0e0;
+}
+
+/* Alle Links im Dark Mode */
+html.dark-mode a {
+    color: var(--color-gold);
+}
+
+html.dark-mode a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+html.dark-mode a:visited {
+    color: #c9a434; /* Etwas dunkleres Gold für besuchte Links */
 }
 
 /* Dark Mode spezifische Anpassungen */

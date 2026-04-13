@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.10] - 2026-04-13
+
+### Behoben
+- **Dark Mode Link-Farben** 🔗
+  - Globale CSS-Regel für alle Links im Dark Mode
+  - Links: Helles Gold (#f4d03f)
+  - Hover: Weiß mit Unterstreichung
+  - Besuchte Links: Dunkleres Gold (#c9a434)
+  - Verhindert dunkelblau-Links auf dunklem Hintergrund
+
 ## [1.3.9] - 2026-04-13
 
 ### Behoben
