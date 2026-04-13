@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.48] - 2026-04-13
+
+### Behoben
+- **CSS-Spezifität für Dark Mode korrigiert** 🎨
+  - .dark-mode → :root.dark-mode (höhere Spezifität)
+  - CSS-Variablen werden jetzt korrekt überschrieben
+  - Dark Mode Farben werden jetzt tatsächlich angewendet
+  - Unnötige semantische Variablen entfernt
+
 ## [1.0.47] - 2026-04-13
 
 ### Behoben
