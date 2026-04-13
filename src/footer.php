@@ -73,7 +73,7 @@
         <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. Alle Rechte vorbehalten. | 
         <a href="<?php echo esc_url(home_url('/impressum')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Impressum</a> | 
         <a href="<?php echo esc_url(home_url('/datenschutz')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Datenschutz</a> | 
-        <a href="#" class="open-cookie-settings" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Cookie-Einstellungen</a></p>
+        <a href="#" onclick="event.preventDefault(); window.openCookieSettings(); return false;" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; cursor: pointer;">Cookie-Einstellungen</a></p>
     </div>
 </footer>
 

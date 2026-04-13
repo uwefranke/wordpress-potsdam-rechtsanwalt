@@ -10,6 +10,14 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.4] - 2026-04-13
+
+### Behoben
+- **Cookie-Link funktioniert JETZT** ✅
+  - Direkter onclick-Handler (wie console.log bestätigt: Funktion existiert)
+  - Umgeht alle Event-Delegation-Probleme
+  - Einfachste und robusteste Lösung
+
 ## [1.3.3] - 2026-04-13
 
 ### Behoben
