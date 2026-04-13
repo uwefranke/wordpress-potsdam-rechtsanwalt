@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.3] - 2026-04-13
+
+### Behoben
+- **Cookie-Link funktioniert jetzt garantiert** ✅
+  - Event-Delegation wie bei Dark Mode Toggle
+  - CSS-Klasse `.open-cookie-settings` statt Inline-Script
+  - useCapture=true für zuverlässiges Event-Handling
+  - Funktioniert unabhängig von Lade-Reihenfolge
+
 ## [1.3.2] - 2026-04-13
 
 ### Behoben

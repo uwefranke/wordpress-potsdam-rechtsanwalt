@@ -187,4 +187,13 @@
         }, 200);
     };
     
+    // Event-Listener für alle .open-cookie-settings Links
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('open-cookie-settings') || 
+            e.target.closest('.open-cookie-settings')) {
+            e.preventDefault();
+            window.openCookieSettings();
+        }
+    }, true);
+    
 })();
