@@ -31,10 +31,14 @@
      * Theme anwenden
      */
     function applyTheme(theme) {
+        const html = document.documentElement;
+        
         if (theme === 'dark') {
-            document.documentElement.classList.add(DARK_CLASS);
+            html.classList.add(DARK_CLASS);
+            html.classList.remove('light-mode');
         } else {
-            document.documentElement.classList.remove(DARK_CLASS);
+            html.classList.remove(DARK_CLASS);
+            html.classList.add('light-mode');
         }
         
         // Button-Status aktualisieren

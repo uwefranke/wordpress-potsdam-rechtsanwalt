@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.50] - 2026-04-13
+
+### Behoben
+- **Light Mode Klasse hinzugefügt** ☀️
+  - JavaScript setzt jetzt explizit .light-mode Klasse
+  - CSS: html.light-mode überschreibt System-Präferenz
+  - Behebt Problem bei dunklem System-Theme
+  - Toggle funktioniert jetzt zuverlässig in beide Richtungen
+
 ## [1.0.49] - 2026-04-13
 
 ### Behoben
