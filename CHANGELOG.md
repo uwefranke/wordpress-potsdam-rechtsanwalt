@@ -10,6 +10,13 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.49] - 2026-04-13
+
+### Behoben
+- **CSS-Selektor geändert für Dark Mode** 🔧
+  - :root.dark-mode → html.dark-mode (bessere Browser-Kompatibilität)
+  - Sollte nun in Chrome/Edge korrekt funktionieren
+
 ## [1.0.48] - 2026-04-13
 
 ### Behoben
