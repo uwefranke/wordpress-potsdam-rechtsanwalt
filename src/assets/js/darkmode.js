@@ -120,3 +120,4 @@
     // Sofort starten
     init();
 })();
+})();
