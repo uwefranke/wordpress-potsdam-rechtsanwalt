@@ -10,6 +10,25 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.0] - 2026-04-13
+
+### Hinzugefügt
+- **DSGVO-konformer Cookie-Consent-Banner** 🍪
+  - Informiert über technisch notwendige Cookies
+  - Einstellungs-Ansicht mit Cookie-Details
+  - Theme-Design (Navy & Gold)
+  - Responsive & Dark Mode Support
+  - Speichert Zustimmung für 365 Tage
+  - Neue Dateien:
+    - `assets/js/cookie-consent.js`
+    - `assets/css/cookie-consent.css`
+    - `COOKIE-CONSENT.md` (Dokumentation)
+
+### Sicherheit
+- Transparente Cookie-Nutzung für Besucher
+- Keine Tracking-Cookies ohne Zustimmung
+- Rechtssicher für Rechtsanwalts-Website
+
 ## [1.2.0] - 2026-04-13
 
 ### Geändert
