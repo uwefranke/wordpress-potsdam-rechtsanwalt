@@ -73,43 +73,11 @@
         <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. Alle Rechte vorbehalten. | 
         <a href="<?php echo esc_url(home_url('/impressum')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Impressum</a> | 
         <a href="<?php echo esc_url(home_url('/datenschutz')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Datenschutz</a> | 
-        <a href="#" id="footer-cookie-settings-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; cursor: pointer;">Cookie-Einstellungen</a></p>
+        <?php echo do_shortcode('[cookie_einstellungen text="Cookie-Einstellungen" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; cursor: pointer;"]'); ?></p>
     </div>
 </footer>
 
 <?php wp_footer(); ?>
-
-<script>
-// Cookie-Settings Link Event-Listener (direkt im Footer)
-(function() {
-    var link = document.getElementById('footer-cookie-settings-link');
-    if (link && typeof window.openCookieSettings === 'function') {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.openCookieSettings();
-            return false;
-        }, false);
-    } else {
-        // Fallback: Warte bis openCookieSettings verfügbar ist
-        var attempts = 0;
-        var interval = setInterval(function() {
-            var link = document.getElementById('footer-cookie-settings-link');
-            if (link && typeof window.openCookieSettings === 'function') {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.openCookieSettings();
-                    return false;
-                }, false);
-                clearInterval(interval);
-            }
-            attempts++;
-            if (attempts > 50) clearInterval(interval); // Nach 5 Sekunden aufgeben
-        }, 100);
-    }
-})();
-</script>
 
 </body>
 </html>

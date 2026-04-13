@@ -221,11 +221,13 @@ function potsdam_rechtsanwalt_cookie_settings_shortcode($atts) {
     $atts = shortcode_atts(array(
         'text'  => 'Cookie-Einstellungen',
         'class' => '',
+        'style' => '',
     ), $atts, 'cookie_einstellungen');
     
     $class = !empty($atts['class']) ? ' ' . esc_attr($atts['class']) : '';
+    $style = !empty($atts['style']) ? ' style="' . esc_attr($atts['style']) . '"' : '';
     
-    return '<a href="#" class="cookie-settings-link' . $class . '" onclick="event.preventDefault(); window.openCookieSettings();">' 
+    return '<a href="#" class="cookie-settings-link' . $class . '"' . $style . ' onclick="event.preventDefault(); window.openCookieSettings();">' 
            . esc_html($atts['text']) 
            . '</a>';
 }

@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.6] - 2026-04-13
+
+### Behoben
+- **Cookie-Link FINAL** ✅
+  - Nutzt [cookie_einstellungen] Shortcode direkt im Footer
+  - Shortcode generiert onclick zur Laufzeit (umgeht alle Template-Blocker)
+  - do_shortcode() wird von WordPress nach allen Blockern ausgeführt
+  - Shortcode hat style-Parameter für Footer-Styling
+
 ## [1.3.5] - 2026-04-13
 
 ### Behoben
