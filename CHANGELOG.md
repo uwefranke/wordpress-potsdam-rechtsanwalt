@@ -10,6 +10,14 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.1.0] - 2026-04-13
+
+### Hinweis
+- **Version 1.1.0 Release**
+  - Theme-Version auf 1.1.0 erhöht
+  - Alle Features aus v1.0.56 enthalten (Dark Mode, Screenshot)
+  - Empfehlung: Manuelles Theme-Update über ZIP-Download bei Cache-Problemen
+
 ## [1.0.56] - 2026-04-13
 
 ### Hinzugefügt
