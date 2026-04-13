@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.1.2] - 2026-04-13
+
+### Hinzugefügt
+- **Site Icon (Favicon) erstellt** 🎨
+  - SVG-Icon mit Waage-Symbol (Justitia)
+  - Navy-Blau & Gold Theme-Farben
+  - Initialen "ML" (Matthias Lange)
+  - Datei: `src/assets/images/site-icon.svg`
+  - PowerShell-Script zur PNG-Konvertierung
+
 ## [1.1.1] - 2026-04-13
 
 ### Hinzugefügt
