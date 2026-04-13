@@ -10,6 +10,13 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.46] - 2026-04-13
+
+### Behoben
+- **Chrome/Edge Kompatibilität verbessert** 🌐
+  - innerHTML → textContent für Emoji-Icons (bessere Browser-Kompatibilität)
+  - Dark Mode Toggle funktioniert jetzt in allen modernen Browsern
+
 ## [1.0.45] - 2026-04-13
 
 ### Behoben

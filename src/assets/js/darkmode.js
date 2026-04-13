@@ -61,10 +61,10 @@
             const icon = button.querySelector('.toggle-icon');
             if (icon) {
                 if (theme === 'dark') {
-                    icon.innerHTML = '☀️'; // Sonne-Icon wenn Dark aktiv
+                    icon.textContent = '☀️'; // Sonne-Icon wenn Dark aktiv
                     button.setAttribute('aria-label', 'Zum hellen Modus wechseln');
                 } else {
-                    icon.innerHTML = '🌙'; // Mond-Icon wenn Hell aktiv
+                    icon.textContent = '🌙'; // Mond-Icon wenn Hell aktiv
                     button.setAttribute('aria-label', 'Zum dunklen Modus wechseln');
                 }
             }
@@ -76,7 +76,15 @@
      */
     function initToggleButtons() {
         const buttons = document.querySelectorAll('.dark-mode-toggle');
+        if (buttons.length === 0) {
+            // Wenn Buttons noch nicht im DOM sind, nochmal versuchen
+            setTimeout(initToggleButtons, 100);
+            return;
+        }
+        
         buttons.forEach(button => {
+            // Vorherige Listener entfernen (falls vorhanden) und neu setzen
+            button.removeEventListener('click', toggleTheme);
             button.addEventListener('click', toggleTheme);
         });
     }
