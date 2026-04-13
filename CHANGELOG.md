@@ -10,6 +10,19 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.1.1] - 2026-04-13
+
+### Hinzugefügt
+- **Shortcodes für alle Customizer-Felder** 🎯
+  - `[kontakt field="phone"]` - Einzelne Kontaktfelder
+  - `[kontakt field="fullname"]` - Kombinierte Felder
+  - `[kontakt field="phone" link="yes"]` - Mit klickbaren Links
+  - `[rechtsgebiet number="1" field="title"]` - Rechtsgebiete
+  - `[hero field="title"]` - Hero-Bereich
+  - `[customizer field="beliebiges_feld"]` - Universeller Shortcode
+- **Dokumentation:** SHORTCODES-ANLEITUNG.md mit allen Beispielen
+- Neue Datei: `inc/shortcodes.php`
+
 ## [1.1.0] - 2026-04-13
 
 ### Hinweis
