@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.47] - 2026-04-13
+
+### Behoben
+- **Event-Delegation für bessere Browser-Kompatibilität** 🔧
+  - Event-Listener jetzt am document-Level mit useCapture
+  - event.preventDefault() und stopPropagation() hinzugefügt
+  - e.target.closest() für zuverlässige Button-Erkennung
+  - Arrow Functions durch normale Functions ersetzt (IE11 Kompatibilität)
+  - Fallback für ältere matchMedia API
+
 ## [1.0.46] - 2026-04-13
 
 ### Behoben

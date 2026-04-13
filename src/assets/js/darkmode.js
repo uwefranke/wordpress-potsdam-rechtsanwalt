@@ -44,12 +44,19 @@
     /**
      * Theme umschalten
      */
-    function toggleTheme() {
+    function toggleTheme(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
         const current = document.documentElement.classList.contains(DARK_CLASS) ? 'dark' : 'light';
         const newTheme = current === 'dark' ? 'light' : 'dark';
         
         localStorage.setItem(STORAGE_KEY, newTheme);
         applyTheme(newTheme);
+        
+        return false;
     }
     
     /**
@@ -72,21 +79,17 @@
     }
     
     /**
-     * Toggle-Buttons initialisieren
+     * Toggle-Buttons initialisieren mit Event-Delegation
      */
     function initToggleButtons() {
-        const buttons = document.querySelectorAll('.dark-mode-toggle');
-        if (buttons.length === 0) {
-            // Wenn Buttons noch nicht im DOM sind, nochmal versuchen
-            setTimeout(initToggleButtons, 100);
-            return;
-        }
-        
-        buttons.forEach(button => {
-            // Vorherige Listener entfernen (falls vorhanden) und neu setzen
-            button.removeEventListener('click', toggleTheme);
-            button.addEventListener('click', toggleTheme);
-        });
+        // Event-Delegation am document-Level für bessere Browser-Kompatibilität
+        document.addEventListener('click', function(e) {
+            // Prüfen ob das geklickte Element oder ein Parent der Toggle-Button ist
+            const button = e.target.closest('.dark-mode-toggle');
+            if (button) {
+                toggleTheme(e);
+            }
+        }, true); // useCapture = true für bessere Kompatibilität
     }
     
     /**
@@ -98,11 +101,19 @@
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         
         // Nur reagieren wenn keine manuelle Präferenz gesetzt wurde
-        mediaQuery.addEventListener('change', (e) => {
+        const handleChange = function(e) {
             if (!localStorage.getItem(STORAGE_KEY)) {
                 applyTheme(e.matches ? 'dark' : 'light');
             }
-        });
+        };
+        
+        // Moderne Browser
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange);
+        } else if (mediaQuery.addListener) {
+            // Fallback für ältere Browser
+            mediaQuery.addListener(handleChange);
+        }
     }
     
     /**
@@ -115,7 +126,7 @@
         
         // Nach DOM-Load Buttons initialisieren
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('DOMContentLoaded', function() {
                 initToggleButtons();
                 watchSystemPreference();
             });
