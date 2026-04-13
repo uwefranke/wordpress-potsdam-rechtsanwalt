@@ -157,3 +157,14 @@ function potsdam_rechtsanwalt_custom_document_title($title_parts) {
     return $title_parts;
 }
 add_filter('document_title_parts', 'potsdam_rechtsanwalt_custom_document_title');
+
+// Rank Math SEO Plugin Support - Homepage-Titel ohne "Home"
+function potsdam_rechtsanwalt_rankmath_title($title) {
+    if (is_front_page() && is_home()) {
+        // Entferne "Home - " oder " - Home" oder "Home | " etc.
+        $title = preg_replace('/^Home\s*[-|]\s*/', '', $title);
+        $title = preg_replace('/\s*[-|]\s*Home$/', '', $title);
+    }
+    return $title;
+}
+add_filter('rank_math/frontend/title', 'potsdam_rechtsanwalt_rankmath_title', 20);

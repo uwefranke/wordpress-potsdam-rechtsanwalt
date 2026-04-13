@@ -10,6 +10,14 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.1.4] - 2026-04-13
+
+### Behoben
+- **Rank Math SEO Plugin Kompatibilität** 🔧
+  - Homepage-Titel wird jetzt auch mit Rank Math PRO korrekt angezeigt
+  - "Home" wird automatisch aus dem Browser-Titel entfernt
+  - Funktioniert jetzt mit und ohne SEO-Plugins
+
 ## [1.1.3] - 2026-04-13
 
 ### Geändert
