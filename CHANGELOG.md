@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.5] - 2026-04-13
+
+### Behoben
+- **Cookie-Link funktioniert GARANTIERT** ✅
+  - Inline Event-Listener direkt nach wp_footer()
+  - Wartet auf Verfügbarkeit von window.openCookieSettings
+  - Umgeht WordPress/Plugin Event-Blocker
+  - Fallback mit setInterval (wartet bis Funktion existiert)
+
 ## [1.3.4] - 2026-04-13
 
 ### Behoben
