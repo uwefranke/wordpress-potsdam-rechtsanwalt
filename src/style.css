@@ -155,6 +155,30 @@ html.dark-mode .hero-content p {
     opacity: 1;
 }
 
+/* Buttons im Dark Mode */
+html.dark-mode .btn-primary {
+    background-color: var(--color-gold);
+    color: #000000;
+    border-color: var(--color-gold);
+}
+
+html.dark-mode .btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+html.dark-mode .btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+html.dark-mode .btn-secondary:hover {
+    background-color: #ffffff;
+    color: #1a202c;
+}
+
 /* Content Area im Dark Mode */
 html.dark-mode .content-area {
     background-color: #2d3748;
