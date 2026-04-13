@@ -64,6 +64,29 @@ Secure: automatisch bei HTTPS
 
 ## 📝 Anpassungen
 
+### Cookie-Einstellungen nachträglich ändern:
+
+**Automatisch im Footer:**
+Der Link "Cookie-Einstellungen" erscheint automatisch im Footer neben "Impressum" und "Datenschutz".
+
+**Manuell per Shortcode:**
+```
+[cookie_einstellungen]
+[cookie_einstellungen text="Cookies verwalten"]
+```
+
+**JavaScript (für eigene Buttons):**
+```javascript
+window.openCookieSettings();
+```
+
+**HTML-Link:**
+```html
+<a href="#" onclick="event.preventDefault(); window.openCookieSettings();">
+    Cookie-Einstellungen
+</a>
+```
+
 ### Link zur Datenschutzerklärung ändern:
 
 In `cookie-consent.js` Zeile ~44:

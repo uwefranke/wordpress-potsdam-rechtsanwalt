@@ -169,4 +169,22 @@
         showCookieBanner();
     }
     
+    // Globale Funktion für manuelles Öffnen der Cookie-Einstellungen
+    window.openCookieSettings = function() {
+        // Eventuell vorhandenen Banner entfernen
+        const existingBanner = document.querySelector('.cookie-consent-banner');
+        if (existingBanner) {
+            existingBanner.remove();
+        }
+        
+        // Direkt Einstellungen anzeigen
+        showCookieBanner();
+        setTimeout(() => {
+            const settingsBtn = document.getElementById('cookieSettings');
+            if (settingsBtn) {
+                settingsBtn.click();
+            }
+        }, 200);
+    };
+    
 })();

@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.1] - 2026-04-13
+
+### Hinzugefügt
+- **Cookie-Einstellungen nachträglich änderbar** ⚙️
+  - Link "Cookie-Einstellungen" automatisch im Footer
+  - Shortcode `[cookie_einstellungen]` für manuelle Platzierung
+  - JavaScript-Funktion `window.openCookieSettings()`
+  - Besucher können Cookie-Banner jederzeit wieder öffnen
+  - Dokumentation in SHORTCODES-ANLEITUNG.md erweitert
+
 ## [1.3.0] - 2026-04-13
 
 ### Hinzugefügt

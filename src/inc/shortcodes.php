@@ -206,3 +206,27 @@ function potsdam_rechtsanwalt_customizer_shortcode($atts) {
     return esc_html($value);
 }
 add_shortcode('customizer', 'potsdam_rechtsanwalt_customizer_shortcode');
+
+
+/**
+ * Shortcode: [cookie_einstellungen]
+ * 
+ * Erzeugt einen Link zum Öffnen der Cookie-Einstellungen
+ * 
+ * Parameter:
+ * - text: Link-Text (Standard: "Cookie-Einstellungen")
+ * - class: Zusätzliche CSS-Klasse
+ */
+function potsdam_rechtsanwalt_cookie_settings_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'text'  => 'Cookie-Einstellungen',
+        'class' => '',
+    ), $atts, 'cookie_einstellungen');
+    
+    $class = !empty($atts['class']) ? ' ' . esc_attr($atts['class']) : '';
+    
+    return '<a href="#" class="cookie-settings-link' . $class . '" onclick="event.preventDefault(); window.openCookieSettings();">' 
+           . esc_html($atts['text']) 
+           . '</a>';
+}
+add_shortcode('cookie_einstellungen', 'potsdam_rechtsanwalt_cookie_settings_shortcode');

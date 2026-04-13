@@ -81,6 +81,28 @@ Für **alle** Customizer-Felder (auch zukünftige):
 [customizer field="rechtsgebiet_1_title"]
 ```
 
+## 🍪 Cookie-Einstellungen Shortcode
+
+Erstellt einen Link, mit dem Besucher die Cookie-Einstellungen jederzeit öffnen können:
+
+```
+[cookie_einstellungen]
+[cookie_einstellungen text="Cookies verwalten"]
+[cookie_einstellungen text="Cookie-Präferenzen" class="custom-class"]
+```
+
+**Parameter:**
+- `text` - Link-Text (Standard: "Cookie-Einstellungen")
+- `class` - Zusätzliche CSS-Klasse für Styling
+
+**Verwendung:**
+```
+<p>Weitere Informationen in der [cookie_einstellungen text="Cookie-Richtlinie"].</p>
+```
+
+**Automatisch im Footer:**
+Der Link erscheint bereits automatisch im Footer neben "Impressum" und "Datenschutz".
+
 ## 📝 Verwendungsbeispiele
 
 ### Kontaktseite

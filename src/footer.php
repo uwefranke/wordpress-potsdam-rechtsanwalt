@@ -72,7 +72,8 @@
     <div class="footer-bottom">
         <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. Alle Rechte vorbehalten. | 
         <a href="<?php echo esc_url(home_url('/impressum')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Impressum</a> | 
-        <a href="<?php echo esc_url(home_url('/datenschutz')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Datenschutz</a></p>
+        <a href="<?php echo esc_url(home_url('/datenschutz')); ?>" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Datenschutz</a> | 
+        <a href="#" onclick="event.preventDefault(); window.openCookieSettings();" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Cookie-Einstellungen</a></p>
     </div>
 </footer>
 
@@ -88,6 +89,7 @@ function potsdam_rechtsanwalt_footer_fallback_menu() {
     echo '<li><a href="' . esc_url(home_url('/impressum')) . '">Impressum</a></li>';
     echo '<li><a href="' . esc_url(home_url('/datenschutz')) . '">Datenschutz</a></li>';
     echo '<li><a href="' . esc_url(home_url('/agb')) . '">AGB</a></li>';
+    echo '<li><a href="#" onclick="event.preventDefault(); window.openCookieSettings();">Cookie-Einstellungen</a></li>';
     echo '</ul>';
 }
 ?>
