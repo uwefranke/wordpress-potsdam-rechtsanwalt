@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.12] - 2026-04-13
+
+### Behoben
+- **Header-Hover-Effekt im Dark Mode** ✨
+  - Hover: Leicht transparent (rgba(255,255,255,0.8)) statt Gold
+  - Besser lesbar auf dunklem Navy-Hintergrund
+  - Subtiler, eleganter Effekt
+  - Keine Unterstreichung bei Header-Links
+
 ## [1.3.11] - 2026-04-13
 
 ### Behoben
