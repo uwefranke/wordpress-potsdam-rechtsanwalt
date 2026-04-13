@@ -10,6 +10,14 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.52] - 2026-04-13
+
+### Hinzugefügt
+- **Debug-Logging für Dark Mode** 🐞
+  - Console-Logs zeigen welche Präferenz aktiv ist
+  - Hilft beim Debugging von System-Theme-Erkennung
+  - Zeigt ob manuelle oder System-Präferenz verwendet wird
+
 ## [1.0.51] - 2026-04-13
 
 ### Behoben

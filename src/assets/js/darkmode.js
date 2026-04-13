@@ -16,15 +16,16 @@
     function getPreferredTheme() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
+            console.log('[Dark Mode] Manuelle Präferenz gefunden:', stored);
             return stored;
         }
         
         // System-Präferenz prüfen
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-        }
+        const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const systemTheme = systemPrefersDark ? 'dark' : 'light';
+        console.log('[Dark Mode] System-Präferenz:', systemTheme);
         
-        return 'light';
+        return systemTheme;
     }
     
     /**
@@ -35,16 +36,21 @@
     function applyTheme(theme, isManual) {
         const html = document.documentElement;
         
+        console.log('[Dark Mode] applyTheme:', theme, 'isManual:', isManual);
+        
         if (isManual === false) {
             // System-Präferenz: Keine Klasse setzen, Media Query entscheidet
             html.classList.remove(DARK_CLASS);
             html.classList.remove('light-mode');
+            console.log('[Dark Mode] Keine Klassen gesetzt - Media Query entscheidet');
         } else if (theme === 'dark') {
             html.classList.add(DARK_CLASS);
             html.classList.remove('light-mode');
+            console.log('[Dark Mode] Klasse gesetzt: dark-mode');
         } else {
             html.classList.remove(DARK_CLASS);
             html.classList.add('light-mode');
+            console.log('[Dark Mode] Klasse gesetzt: light-mode');
         }
         
         // Button-Status aktualisieren
