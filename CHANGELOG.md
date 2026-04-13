@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.11] - 2026-04-13
+
+### Behoben
+- **Header-Links im Dark Mode** 🎯
+  - Header-Links bleiben weiß (wie vorher)
+  - Hover: Gold
+  - Header hat dunklen Hintergrund in beiden Modi
+  - Verhindert unlesbares Gold-auf-dunkel im Header
+
 ## [1.3.10] - 2026-04-13
 
 ### Behoben
