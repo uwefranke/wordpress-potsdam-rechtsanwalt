@@ -10,6 +10,19 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.2.0] - 2026-04-13
+
+### Geändert
+- **setup-pages.php aus Theme entfernt** 🔒
+  - Sicherheitsrisiko behoben: Setup-Script nicht mehr im produktiven Theme
+  - Verschoben nach `setup-tools/` (nur im Git-Repository)
+  - Wird nicht mehr im Theme-Update-ZIP ausgeliefert
+  - GitHub Actions kopiert nur `src/*` Dateien
+
+### Sicherheit
+- Theme-ZIP enthält jetzt nur noch produktions-notwendige Dateien
+- Setup-Scripts müssen manuell installiert werden (bei Bedarf)
+
 ## [1.1.5] - 2026-04-13
 
 ### Behoben
