@@ -110,6 +110,7 @@ $script:Config = @{
         Language = $CONTENT_LANGUAGE
         Style = "Professionell aber verständlich"
         TargetAudience = "Mandanten in Potsdam"
+        TagCount = if ($CONTENT_TAG_COUNT) { [int]$CONTENT_TAG_COUNT } else { 5 }
     }
 }
 
@@ -367,10 +368,10 @@ Du bist ein erfahrener Rechtsanwalts-Ghostwriter, spezialisiert auf Mietrecht un
 Deine Aufgabe ist es, SEO-optimierte, rechtlich fundierte Blog-Artikel zu schreiben.
 
 Wichtige Anforderungen:
-- Zielgruppe: Laien (Mandanten in Potsdam)
+- Zielgruppe: Laien (Mandanten in Potsdam und Berlin)
 - Stil: Professionell aber verständlich, keine Fachsprache ohne Erklärung
 - Rechtlich korrekt, aber keine Rechtsberatung im Text
-- SEO-optimiert für lokale Suche (Potsdam, Brandenburg)
+- SEO-optimiert für lokale Suche (Potsdam, Berlin, Brandenburg)
 - Handlungsaufforderung: Kontakt für persönliche Beratung
 
 Struktur:
@@ -389,7 +390,7 @@ Schreibe einen informativen Blog-Artikel zum Thema: "$Topic"
 Der Artikel soll:
 - Verständlich für Nicht-Juristen sein
 - Konkrete Beispiele enthalten
-- Lokalen Bezug zu Potsdam haben (wo sinnvoll)
+- Lokalen Bezug zu Potsdam und Berlin haben (wo sinnvoll)
 - Mit einem Disclaimer enden: "Dieser Artikel ersetzt keine Rechtsberatung. Für eine individuelle Beratung kontaktieren Sie uns gerne."
 
 WICHTIG:
@@ -425,6 +426,78 @@ function New-MetaDescription {
     
     return $meta
 }
+
+function New-ArticleTags {
+    param(
+        [string]$Title,
+        [string]$Content
+    )
+    
+    Write-ColorOutput "🏷️  Generiere Tags..." -Color $Colors.Info
+    
+    $prompt = @"
+Erstelle $($Config.Content.TagCount) relevante WordPress-Tags (Schlagwörter) für folgenden Artikel.
+
+Titel: $Title
+
+Anforderungen:
+- Fokus auf Mietrecht, Rechtsthemen, Potsdam
+- Kurz und prägnant (1-3 Wörter pro Tag)
+- SEO-optimiert für lokale Suche
+- Keine Sonderzeichen oder Umlaute (nutze ae, oe, ue)
+- Nur die Tags ausgeben, getrennt durch Komma
+
+Beispiele: Mietrecht, Schimmelbefall, Mietminderung, Rechtsanwalt Potsdam, Mietvertrag
+
+Artikel-Anfang:
+$($Content.Substring(0, [Math]::Min(300, $Content.Length)))
+"@
+    
+    $tagsString = Invoke-AIRequest -SystemPrompt "Du bist ein SEO-Experte für Rechtsthemen." -UserPrompt $prompt
+    
+    if ($tagsString) {
+        # Split und bereinigen
+        $tags = $tagsString -split ',' | ForEach-Object { 
+            $_.Trim() -replace '[^a-zA-Z0-9äöüß\s-]', '' 
+        } | Where-Object { $_ -and $_.Length -gt 2 } | Select-Object -First $Config.Content.TagCount
+        
+        Write-ColorOutput "   ✅ Tags generiert: $($tags -join ', ')" -Color $Colors.Success
+        return $tags
+    }
+    
+    Write-ColorOutput "   ⚠️  Keine Tags generiert" -Color $Colors.Warning
+    return @()
+}
+
+function Get-WordPressTagId {
+    param([string]$TagName)
+    
+    try {
+        $headers = Get-WordPressHeaders
+        
+        # Prüfe ob Tag existiert
+        $encodedName = [System.Web.HttpUtility]::UrlEncode($TagName)
+        $searchUrl = "$($Config.WordPress.Url)/wp-json/wp/v2/tags?search=$encodedName"
+        $existingTags = Invoke-RestMethod -Uri $searchUrl -Headers $headers -ErrorAction Stop
+        
+        # Wenn Tag existiert, gib ID zurück
+        $exactMatch = $existingTags | Where-Object { $_.name -eq $TagName }
+        if ($exactMatch) {
+            return $exactMatch[0].id
+        }
+        
+        # Tag existiert nicht, erstelle neu
+        $newTagData = @{ name = $TagName } | ConvertTo-Json
+        $createUrl = "$($Config.WordPress.Url)/wp-json/wp/v2/tags"
+        $newTag = Invoke-RestMethod -Uri $createUrl -Method Post -Headers $headers -Body $newTagData -ErrorAction Stop
+        
+        return $newTag.id
+    }
+    catch {
+        Write-ColorOutput "   ⚠️  Tag '$TagName' konnte nicht erstellt werden" -Color $Colors.Warning
+        return $null
+    }
+}
 #endregion
 
 #region WordPress Functions
@@ -434,10 +507,24 @@ function Publish-WordPressPost {
         [string]$Content,
         [string]$Excerpt = "",
         [int]$CategoryId,
+        [array]$Tags = @(),
         [string]$Status = "draft"
     )
     
     Write-ColorOutput "📤 Veröffentliche in WordPress..." -Color $Colors.Info
+    
+    # Tag-Namen in IDs konvertieren
+    $tagIds = @()
+    if ($Tags -and $Tags.Count -gt 0) {
+        Write-ColorOutput "   🏷️  Verarbeite Tags..." -Color $Colors.Debug
+        foreach ($tagName in $Tags) {
+            $tagId = Get-WordPressTagId -TagName $tagName
+            if ($tagId) {
+                $tagIds += $tagId
+            }
+        }
+        Write-ColorOutput "   ✅ $($tagIds.Count) Tags verarbeitet" -Color $Colors.Debug
+    }
     
     $postData = @{
         title = $Title
@@ -445,7 +532,14 @@ function Publish-WordPressPost {
         excerpt = $Excerpt
         status = $Status
         categories = @($CategoryId)
-    } | ConvertTo-Json
+    }
+    
+    # Tags hinzufügen wenn vorhanden
+    if ($tagIds.Count -gt 0) {
+        $postData['tags'] = $tagIds
+    }
+    
+    $postData = $postData | ConvertTo-Json
     
     try {
         $headers = Get-WordPressHeaders
@@ -459,6 +553,9 @@ function Publish-WordPressPost {
         Write-ColorOutput "   📝 ID: $($response.id)" -Color $Colors.Debug
         Write-ColorOutput "   🔗 Link: $($response.link)" -Color $Colors.Debug
         Write-ColorOutput "   📊 Status: $($response.status)" -Color $Colors.Debug
+        if ($Tags -and $Tags.Count -gt 0) {
+            Write-ColorOutput "   🏷️  Tags: $($Tags -join ', ')" -Color $Colors.Debug
+        }
         
         return $response
     }
@@ -552,12 +649,16 @@ function Start-ContentGeneration {
         # Meta-Description erstellen
         $meta = New-MetaDescription -Content $content
         
+        # Tags generieren
+        $tags = New-ArticleTags -Title $topic -Content $content
+        
         # In WordPress veröffentlichen
         $post = Publish-WordPressPost `
             -Title $topic `
             -Content $content `
             -Excerpt $meta `
             -CategoryId $Config.WordPress.DefaultCategory `
+            -Tags $tags `
             -Status $Status
         
         if ($post) {
