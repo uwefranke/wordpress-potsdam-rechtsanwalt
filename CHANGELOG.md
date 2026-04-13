@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.54] - 2026-04-13
+
+### Behoben
+- **Haupttext im Dark Mode jetzt lesbar** 📝
+  - Body-Textfarbe hell (#e0e0e0) im Dark Mode
+  - Content Area Textfarbe hell für p, li, div, span
+  - Links in Gold mit Weiß beim Hover
+  - Gilt auch für System-Präferenz Dark Mode
+
 ## [1.0.53] - 2026-04-13
 
 ### Behoben

@@ -4,7 +4,7 @@ Theme URI: http://www.potsdam-rechtsanwalt.de/
 Author: Uwe Franke
 Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.53
+Version: 1.0.54
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 8.4
@@ -48,6 +48,12 @@ html.dark-mode {
     --color-white: #1a202c;
     --color-light-gray: #2d3748;
     --color-dark-gray: #cbd5e0;
+}
+
+/* Body im Dark Mode */
+html.dark-mode body {
+    background-color: #1a202c;
+    color: #e0e0e0;
 }
 
 /* Dark Mode spezifische Anpassungen */
@@ -115,6 +121,21 @@ html.dark-mode .content-area h3 {
     color: var(--color-gold);
 }
 
+html.dark-mode .content-area p,
+html.dark-mode .content-area li,
+html.dark-mode .content-area div,
+html.dark-mode .content-area span {
+    color: #e0e0e0;
+}
+
+html.dark-mode .content-area a {
+    color: var(--color-gold);
+}
+
+html.dark-mode .content-area a:hover {
+    color: #fff;
+}
+
 /* Formulare im Dark Mode */
 html.dark-mode .form-group input,
 html.dark-mode .form-group textarea,
@@ -160,6 +181,12 @@ html.dark-mode p[style*="color:#666"] {
         --color-dark-gray: #cbd5e0;
     }
     
+    /* Body im System Dark Mode */
+    html:not(.dark-mode):not(.light-mode) body {
+        background-color: #1a202c;
+        color: #e0e0e0;
+    }
+    
     /* System Dark Mode spezifische Anpassungen */
     html:not(.dark-mode):not(.light-mode) .site-footer {
         background-color: #1a1a1a;
@@ -187,6 +214,18 @@ html.dark-mode p[style*="color:#666"] {
     
     html:not(.dark-mode):not(.light-mode) .content-area {
         background-color: #2d3748;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .content-area p,
+    html:not(.dark-mode):not(.light-mode) .content-area li,
+    html:not(.dark-mode):not(.light-mode) .content-area div,
+    html:not(.dark-mode):not(.light-mode) .content-area span {
+        color: #e0e0e0;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .content-area h2,
+    html:not(.dark-mode):not(.light-mode) .content-area h3 {
+        color: #f4d03f;
     }
 }
 
