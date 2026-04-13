@@ -10,6 +10,18 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.0.53] - 2026-04-13
+
+### Behoben
+- **Dark Mode Lesbarkeit verbessert** 🎨
+  - Footer-Text jetzt hell (#b0b0b0) statt weiß auf hellem Grund
+  - Widget-Hintergründe dunkel (#2d3748) im Dark Mode
+  - Überschriften in Gold (#f4d03f) für besseren Kontrast
+  - Formular-Felder dunkel mit heller Schrift
+  - Links und Texte in Widgets lesbar
+  - Navy-Farbe heller (#6ba3d8) für bessere Sichtbarkeit
+  - Hardcoded inline-styles überschrieben mit !important
+
 ## [1.0.52] - 2026-04-13
 
 ### Hinzugefügt

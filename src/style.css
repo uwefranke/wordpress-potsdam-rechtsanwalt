@@ -4,7 +4,7 @@ Theme URI: http://www.potsdam-rechtsanwalt.de/
 Author: Uwe Franke
 Author URI: https://github.com/uwefranke
 Description: Ein elegantes, professionelles WordPress-Theme für Rechtsanwälte in Potsdam. Modernes zweispaltiges Layout mit Sidebar, Hero-Bereich und Service-Grid.
-Version: 1.0.52
+Version: 1.0.53
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 8.4
@@ -41,8 +41,8 @@ html.light-mode {
 
 /* Dark Mode Variablen */
 html.dark-mode {
-    --color-navy: #2c5282;
-    --color-anthracite: #e8e8e8;
+    --color-navy: #6ba3d8;
+    --color-anthracite: #1a1a1a;
     --color-gold: #f4d03f;
     --color-beige: #2d3748;
     --color-white: #1a202c;
@@ -50,16 +50,143 @@ html.dark-mode {
     --color-dark-gray: #cbd5e0;
 }
 
+/* Dark Mode spezifische Anpassungen */
+html.dark-mode .site-footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+html.dark-mode .footer-section h4 {
+    color: var(--color-gold);
+}
+
+html.dark-mode .footer-section p,
+html.dark-mode .footer-section a {
+    color: #b0b0b0 !important;
+}
+
+html.dark-mode .footer-section a:hover {
+    color: var(--color-gold) !important;
+}
+
+html.dark-mode .footer-bottom {
+    color: #808080 !important;
+}
+
+/* Widgets im Dark Mode */
+html.dark-mode .widget {
+    background: #2d3748 !important;
+}
+
+html.dark-mode .widget h3 {
+    color: var(--color-gold);
+}
+
+html.dark-mode .widget p,
+html.dark-mode .widget td,
+html.dark-mode .widget strong {
+    color: #e0e0e0 !important;
+}
+
+html.dark-mode .widget a {
+    color: var(--color-gold) !important;
+}
+
+html.dark-mode .widget a:hover {
+    color: #fff !important;
+}
+
+/* Sidebar im Dark Mode */
+html.dark-mode .sidebar {
+    background-color: #2d3748;
+}
+
+html.dark-mode .sidebar h3 {
+    color: var(--color-gold);
+}
+
+/* Content Area im Dark Mode */
+html.dark-mode .content-area {
+    background-color: #2d3748;
+}
+
+html.dark-mode .content-area h2,
+html.dark-mode .content-area h3 {
+    color: var(--color-gold);
+}
+
+/* Formulare im Dark Mode */
+html.dark-mode .form-group input,
+html.dark-mode .form-group textarea,
+html.dark-mode .form-group select {
+    background-color: #1a202c;
+    border-color: #4a5568;
+    color: #e0e0e0;
+}
+
+html.dark-mode .form-group input:focus,
+html.dark-mode .form-group textarea:focus,
+html.dark-mode .form-group select:focus {
+    border-color: var(--color-gold);
+    background-color: #2d3748;
+}
+
+html.dark-mode .form-group label {
+    color: #cbd5e0;
+}
+
+/* Buttons mit hardcoded Farben überschreiben */
+html.dark-mode a[style*="background: #1a3a5c"],
+html.dark-mode a[style*="background:#1a3a5c"] {
+    background: var(--color-gold) !important;
+    color: #1a202c !important;
+}
+
+/* Kleine Texte in Widgets */
+html.dark-mode p[style*="color: #666"],
+html.dark-mode p[style*="color:#666"] {
+    color: #a0a0a0 !important;
+}
+
 /* System-Präferenz respektieren (nur wenn KEINE manuelle Wahl getroffen) */
 @media (prefers-color-scheme: dark) {
     html:not(.dark-mode):not(.light-mode) {
-        --color-navy: #2c5282;
-        --color-anthracite: #e8e8e8;
+        --color-navy: #6ba3d8;
+        --color-anthracite: #1a1a1a;
         --color-gold: #f4d03f;
         --color-beige: #2d3748;
         --color-white: #1a202c;
         --color-light-gray: #2d3748;
         --color-dark-gray: #cbd5e0;
+    }
+    
+    /* System Dark Mode spezifische Anpassungen */
+    html:not(.dark-mode):not(.light-mode) .site-footer {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .footer-section p,
+    html:not(.dark-mode):not(.light-mode) .footer-section a {
+        color: #b0b0b0 !important;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .widget {
+        background: #2d3748 !important;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .widget p,
+    html:not(.dark-mode):not(.light-mode) .widget td,
+    html:not(.dark-mode):not(.light-mode) .widget strong {
+        color: #e0e0e0 !important;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .sidebar {
+        background-color: #2d3748;
+    }
+    
+    html:not(.dark-mode):not(.light-mode) .content-area {
+        background-color: #2d3748;
     }
 }
 
