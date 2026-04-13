@@ -156,9 +156,9 @@ function potsdam_rechtsanwalt_custom_document_title($title_parts) {
     }
     return $title_parts;
 }
-add_filter('document_title_parts', 'potsdam_rechtsanwalt_custom_document_title');
+add_filter('document_title_parts', 'potsdam_rechtsanwalt_custom_document_title', 999);
 
-// Rank Math SEO Plugin Support - Homepage-Titel ohne "Home"
+// Rank Math SEO Plugin Support - Homepage-Titel ohne "Home" (sehr hohe Priority)
 function potsdam_rechtsanwalt_rankmath_title($title) {
     if (is_front_page() && is_home()) {
         // Entferne "Home - " oder " - Home" oder "Home | " etc.
@@ -167,4 +167,43 @@ function potsdam_rechtsanwalt_rankmath_title($title) {
     }
     return $title;
 }
-add_filter('rank_math/frontend/title', 'potsdam_rechtsanwalt_rankmath_title', 20);
+add_filter('rank_math/frontend/title', 'potsdam_rechtsanwalt_rankmath_title', 999);
+
+// Alternativ: wp_title Filter für ältere Plugins
+add_filter('wp_title', 'potsdam_rechtsanwalt_rankmath_title', 999);
+
+// Pre-get document title Filter (läuft vor allen anderen)
+add_filter('pre_get_document_title', function($title) {
+    if (is_front_page() && is_home()) {
+        return get_bloginfo('name');
+    }
+    return $title;
+}, 999);
+
+// Letzter Ausweg: Output Buffer für Homepage-Titel
+function potsdam_rechtsanwalt_fix_homepage_title() {
+    if (is_front_page() && is_home()) {
+        ob_start(function($buffer) {
+            // Ersetze "Home - " im <title> Tag
+            $site_name = get_bloginfo('name');
+            $buffer = preg_replace(
+                '/<title>Home\s*[-|]\s*([^<]+)<\/title>/i',
+                '<title>$1</title>',
+                $buffer
+            );
+            // Auch in Meta-Tags
+            $buffer = preg_replace(
+                '/(property="og:title"\s+content=")Home\s*[-|]\s*([^"]+)(")/i',
+                '$1$2$3',
+                $buffer
+            );
+            $buffer = preg_replace(
+                '/(name="twitter:title"\s+content=")Home\s*[-|]\s*([^"]+)(")/i',
+                '$1$2$3',
+                $buffer
+            );
+            return $buffer;
+        });
+    }
+}
+add_action('template_redirect', 'potsdam_rechtsanwalt_fix_homepage_title', 1);

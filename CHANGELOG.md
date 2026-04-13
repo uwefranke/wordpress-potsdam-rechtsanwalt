@@ -10,6 +10,15 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.1.5] - 2026-04-13
+
+### Behoben
+- **Robuste Homepage-Titel-Korrektur** 🔨
+  - Output-Buffering für zuverlässige Titel-Änderung
+  - Entfernt "Home" aus <title>, og:title und twitter:title
+  - Funktioniert garantiert auch mit Rank Math PRO
+  - Mehrere Filter-Ebenen (Priority 999) als Fallback
+
 ## [1.1.4] - 2026-04-13
 
 ### Behoben
