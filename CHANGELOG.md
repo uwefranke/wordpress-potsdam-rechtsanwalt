@@ -10,6 +10,11 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.14] - 2026-04-18
+
+### Hinzugefügt
+- **shortaddress-Shortcode** – Gibt Straße, Hausnummer, PLZ und Stadt aus, ohne Bundesland und Land (`[kontakt field="shortaddress"]`)
+
 ## [1.3.12] - 2026-04-13
 
 ### Behoben
