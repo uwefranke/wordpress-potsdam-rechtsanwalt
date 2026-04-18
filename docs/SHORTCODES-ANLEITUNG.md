@@ -40,8 +40,19 @@ Alle Customizer-Felder können im WordPress-Editor als Shortcodes verwendet werd
 ### HTML-Formatierung
 
 ```
-[kontakt field="fulladdress" format="html"]  → Adresse mit <br> Zeilenumbrüchen
+[kontakt field="shortaddress" format="html"]  → Adresse mit <br> Zeilenumbrüchen
 ```
+
+### Spam-Schutz (Verschleierung)
+
+```
+[kontakt field="phone" obfuscate="yes"]             → Telefon als HTML-Entities
+[kontakt field="email" obfuscate="yes"]             → E-Mail als HTML-Entities
+[kontakt field="phone" link="yes" obfuscate="yes"]  → Klickbarer Link, verschleiert
+[kontakt field="email" link="yes" obfuscate="yes"]  → Klickbarer Link, verschleiert
+```
+
+Im Browser wird der Text normal angezeigt, im HTML-Quelltext steht z.B. `&#105;&#110;&#102;&#111;&#64;...` – schwer lesbar für Spam-Bots.
 
 ## 🏛️ Rechtsgebiete-Shortcodes
 

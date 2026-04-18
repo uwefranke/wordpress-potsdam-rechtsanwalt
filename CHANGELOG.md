@@ -10,6 +10,11 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.16] - 2026-04-18
+
+### Hinzugefügt
+- **obfuscate="yes" Parameter** – E-Mail und Telefon werden als HTML-Entities verschleiert (Spam-Schutz); funktioniert auch kombiniert mit `link="yes"`
+
 ## [1.3.15] - 2026-04-18
 
 ### Behoben

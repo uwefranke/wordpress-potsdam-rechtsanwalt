@@ -22,17 +22,20 @@ if (!defined('ABSPATH')) {
  * Optionale Parameter:
  * - link="yes" - Telefon/E-Mail als klickbarer Link
  * - format="html" - Zeilenumbrüche mit <br>
+ * - obfuscate="yes" - E-Mail/Telefon als HTML-Entities verschleiern (Spam-Schutz)
  */
 function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
     $atts = shortcode_atts(array(
-        'field'  => '',
-        'link'   => 'no',
-        'format' => 'text',
+        'field'      => '',
+        'link'       => 'no',
+        'format'     => 'text',
+        'obfuscate'  => 'no',
     ), $atts, 'kontakt');
     
     $field = strtolower($atts['field']);
     $link = ($atts['link'] === 'yes' || $atts['link'] === 'true');
     $format_html = ($atts['format'] === 'html');
+    $obfuscate = ($atts['obfuscate'] === 'yes' || $atts['obfuscate'] === 'true');
     
     // Einzelfelder
     $values = array(
@@ -94,12 +97,26 @@ function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
     if ($link) {
         if ($field === 'phone') {
             $clean_phone = str_replace(array(' ', '-', '(', ')'), '', $output);
-            $output = '<a href="tel:' . esc_attr($clean_phone) . '">' . esc_html($output) . '</a>';
+            $href = 'tel:' . $clean_phone;
+            $label = esc_html($output);
+            if ($obfuscate) {
+                $href = potsdam_rechtsanwalt_obfuscate($href);
+                $label = potsdam_rechtsanwalt_obfuscate($output);
+            }
+            $output = '<a href="' . $href . '">' . $label . '</a>';
         } elseif ($field === 'email') {
-            $output = '<a href="mailto:' . esc_attr($output) . '">' . esc_html($output) . '</a>';
+            $href = 'mailto:' . $output;
+            $label = esc_html($output);
+            if ($obfuscate) {
+                $href = potsdam_rechtsanwalt_obfuscate($href);
+                $label = potsdam_rechtsanwalt_obfuscate($output);
+            }
+            $output = '<a href="' . $href . '">' . $label . '</a>';
         } else {
             $output = esc_html($output);
         }
+    } elseif ($obfuscate && in_array($field, array('phone', 'email'), true)) {
+        $output = potsdam_rechtsanwalt_obfuscate($output);
     } else {
         $output = $format_html ? wp_kses_post($output) : esc_html($output);
     }
@@ -107,6 +124,19 @@ function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
     return $output;
 }
 add_shortcode('kontakt', 'potsdam_rechtsanwalt_kontakt_shortcode');
+
+/**
+ * Hilfsfunktion: String als HTML-Entities verschleiern
+ */
+function potsdam_rechtsanwalt_obfuscate($string) {
+    $result = '';
+    $chars = preg_split('//u', $string, -1, PREG_SPLIT_NO_EMPTY);
+    foreach ($chars as $char) {
+        $unpacked = unpack('N', mb_convert_encoding($char, 'UCS-4BE', 'UTF-8'));
+        $result .= '&#' . $unpacked[1] . ';';
+    }
+    return $result;
+}
 
 
 /**
