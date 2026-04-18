@@ -26,6 +26,7 @@ Alle Customizer-Felder können im WordPress-Editor als Shortcodes verwendet werd
 ```
 [kontakt field="fullname"]       → Rechtsanwalt Matthias Lange
 [kontakt field="address"]        → Schornsteinfegergasse 5
+[kontakt field="shortaddress"]   → Schornsteinfegergasse 5, 14482 Potsdam
 [kontakt field="fulladdress"]    → Schornsteinfegergasse 5, 14482 Potsdam, Brandenburg, Deutschland
 ```
 

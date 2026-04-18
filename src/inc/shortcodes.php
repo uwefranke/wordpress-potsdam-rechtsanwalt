@@ -60,6 +60,11 @@ function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
             $output = $values['street'] . ' ' . $values['housenumber'];
             break;
             
+        case 'shortaddress':
+            $separator = $format_html ? '<br>' : ', ';
+            $output = $values['street'] . ' ' . $values['housenumber'] . $separator . $values['zip'] . ' ' . $values['city'];
+            break;
+            
         case 'fulladdress':
             $parts = array(
                 $values['street'] . ' ' . $values['housenumber'],
