@@ -101,7 +101,7 @@ function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
             $output = esc_html($output);
         }
     } else {
-        $output = esc_html($output);
+        $output = $format_html ? wp_kses_post($output) : esc_html($output);
     }
     
     return $output;

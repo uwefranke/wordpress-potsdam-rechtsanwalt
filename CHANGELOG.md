@@ -10,6 +10,11 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.15] - 2026-04-18
+
+### Behoben
+- **shortaddress format="html"** – `<br>`-Tag wurde als Text angezeigt statt als HTML gerendert; Fix: bei `format="html"` wird `wp_kses_post()` statt `esc_html()` verwendet
+
 ## [1.3.14] - 2026-04-18
 
 ### Hinzugefügt
