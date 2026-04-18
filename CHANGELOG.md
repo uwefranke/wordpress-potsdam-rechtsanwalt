@@ -10,6 +10,11 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.19] - 2026-04-18
+
+### Geändert
+- **Mail-Einstellungen Section** – Mail-Absender in eigene Customizer-Section verschoben (besseres Rendering)
+
 ## [1.3.18] - 2026-04-18
 
 ### Hinzugefügt

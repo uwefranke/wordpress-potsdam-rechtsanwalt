@@ -115,16 +115,22 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'type'     => 'text',
     ));
     
-    // Mail-Absender-Einstellungen
+    // Neue Section: Mail-Einstellungen
+    $wp_customize->add_section('mail_settings', array(
+        'title'       => __('Mail-Einstellungen', 'potsdam-rechtsanwalt'),
+        'description' => __('Absender für automatische WordPress-Mails', 'potsdam-rechtsanwalt'),
+        'priority'    => 41,
+    ));
+    
     $wp_customize->add_setting('mail_from_address', array(
         'default'   => 'info@potsdam-rechtsanwalt.de',
         'transport' => 'refresh',
     ));
     
     $wp_customize->add_control('mail_from_address', array(
-        'label'       => __('Absender-E-Mail (WordPress-Mails)', 'potsdam-rechtsanwalt'),
-        'description' => __('E-Mail-Adresse für automatische WordPress-Emails (z.B. Passwort-Reset, Kommentare)', 'potsdam-rechtsanwalt'),
-        'section'     => 'contact_info',
+        'label'       => __('Absender-E-Mail', 'potsdam-rechtsanwalt'),
+        'description' => __('E-Mail-Adresse für WordPress-Systemmail', 'potsdam-rechtsanwalt'),
+        'section'     => 'mail_settings',
         'type'        => 'email',
     ));
     
@@ -134,9 +140,9 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     ));
     
     $wp_customize->add_control('mail_from_name', array(
-        'label'       => __('Absender-Name (WordPress-Mails)', 'potsdam-rechtsanwalt'),
-        'description' => __('Name, der im "From:" Header der automatischen Mails angezeigt wird', 'potsdam-rechtsanwalt'),
-        'section'     => 'contact_info',
+        'label'       => __('Absender-Name', 'potsdam-rechtsanwalt'),
+        'description' => __('Anzeigename im "From:" Header', 'potsdam-rechtsanwalt'),
+        'section'     => 'mail_settings',
         'type'        => 'text',
     ));
     
