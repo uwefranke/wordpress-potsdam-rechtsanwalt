@@ -10,6 +10,16 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.18] - 2026-04-18
+
+### Hinzugefügt
+- **Mail-Absender** – Neue Customizer-Felder für Absender-E-Mail und Absender-Name von automatischen WordPress-Mails (z.B. Passwort-Reset, Kommentare); automatische Filter in `mail-settings.php`
+
+## [1.3.18] - 2026-04-18
+
+### Hinzugefügt
+- **Mail-Absender** – Neue Customizer-Felder für Absender-E-Mail und Absender-Name von automatischen WordPress-Mails (z.B. Passwort-Reset, Kommentare); automatische Filter in `mail-settings.php`
+
 ## [1.3.17] - 2026-04-18
 
 ### Geändert

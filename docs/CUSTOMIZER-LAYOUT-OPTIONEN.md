@@ -1,5 +1,21 @@
 # Layout-Optionen - Customizer-Anleitung
 
+## 📧 Mail-Absender für WordPress-Systemmail
+
+**Pfad:** WordPress-Admin → Design → Anpassen → Kontakt-Informationen
+
+Ab Version **1.3.18** können Sie den Absender für automatische WordPress-Mails im Customizer einstellen:
+
+- **Absender-E-Mail** – E-Mail-Adresse für Passwort-Reset, Kommentarbänke etc.
+  - Standard: `info@potsdam-rechtsanwalt.de`
+  
+- **Absender-Name** – Anzeigename im `From:` Header (statt "WordPress")
+  - Standard: `Rechtsanwalt Lange`
+
+Die Einstellungen werden automatisch in alle `wp_mail()` Aufrufe übernommen und sind die sicherste Methode zum Anpassen des Absenders (alternative zu Plugins wie WP Mail SMTP).
+
+---
+
 ## ⚙️ Neue Customizer-Section
 
 Ab Version **1.0.16** gibt es eine neue Section im Customizer:

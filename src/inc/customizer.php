@@ -115,6 +115,31 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'type'     => 'text',
     ));
     
+    // Mail-Absender-Einstellungen
+    $wp_customize->add_setting('mail_from_address', array(
+        'default'   => 'info@potsdam-rechtsanwalt.de',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('mail_from_address', array(
+        'label'       => __('Absender-E-Mail (WordPress-Mails)', 'potsdam-rechtsanwalt'),
+        'description' => __('E-Mail-Adresse für automatische WordPress-Emails (z.B. Passwort-Reset, Kommentare)', 'potsdam-rechtsanwalt'),
+        'section'     => 'contact_info',
+        'type'        => 'email',
+    ));
+    
+    $wp_customize->add_setting('mail_from_name', array(
+        'default'   => 'Rechtsanwalt Lange',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('mail_from_name', array(
+        'label'       => __('Absender-Name (WordPress-Mails)', 'potsdam-rechtsanwalt'),
+        'description' => __('Name, der im "From:" Header der automatischen Mails angezeigt wird', 'potsdam-rechtsanwalt'),
+        'section'     => 'contact_info',
+        'type'        => 'text',
+    ));
+    
     // Adresse strukturiert
     $wp_customize->add_setting('contact_street', array(
         'default'   => 'Schornsteinfegergasse',
