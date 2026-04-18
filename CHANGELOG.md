@@ -10,6 +10,11 @@ und dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/).
 ### In Planung
 - Zusätzliche Farbschemata
 
+## [1.3.17] - 2026-04-18
+
+### Geändert
+- **Automatische Verschleierung** – E-Mail, Telefon und Fax werden jetzt standardmäßig immer als HTML-Entities verschleiert (kein `obfuscate="yes"` mehr nötig); mit `obfuscate="no"` kann es deaktiviert werden
+
 ## [1.3.16] - 2026-04-18
 
 ### Hinzugefügt

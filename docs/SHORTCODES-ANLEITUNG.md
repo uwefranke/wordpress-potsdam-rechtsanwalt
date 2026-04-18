@@ -45,14 +45,15 @@ Alle Customizer-Felder können im WordPress-Editor als Shortcodes verwendet werd
 
 ### Spam-Schutz (Verschleierung)
 
-```
-[kontakt field="phone" obfuscate="yes"]             → Telefon als HTML-Entities
-[kontakt field="email" obfuscate="yes"]             → E-Mail als HTML-Entities
-[kontakt field="phone" link="yes" obfuscate="yes"]  → Klickbarer Link, verschleiert
-[kontakt field="email" link="yes" obfuscate="yes"]  → Klickbarer Link, verschleiert
-```
+E-Mail, Telefon und Fax werden **automatisch** als HTML-Entities verschleiert – kein extra Parameter nötig.
 
-Im Browser wird der Text normal angezeigt, im HTML-Quelltext steht z.B. `&#105;&#110;&#102;&#111;&#64;...` – schwer lesbar für Spam-Bots.
+Im Browser wird der Text normal angezeigt, im Quelltext steht z.B. `&#105;&#110;&#102;&#111;&#64;...` – schwer lesbar für Spam-Bots.
+
+Mit `obfuscate="no"` kann die Verschleierung bei Bedarf deaktiviert werden:
+
+```
+[kontakt field="email" obfuscate="no"]  → E-Mail als Klartext
+```
 
 ## 🏛️ Rechtsgebiete-Shortcodes
 

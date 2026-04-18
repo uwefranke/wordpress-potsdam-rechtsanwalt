@@ -29,13 +29,15 @@ function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
         'field'      => '',
         'link'       => 'no',
         'format'     => 'text',
-        'obfuscate'  => 'no',
+        'obfuscate'  => 'auto',
     ), $atts, 'kontakt');
     
     $field = strtolower($atts['field']);
     $link = ($atts['link'] === 'yes' || $atts['link'] === 'true');
     $format_html = ($atts['format'] === 'html');
-    $obfuscate = ($atts['obfuscate'] === 'yes' || $atts['obfuscate'] === 'true');
+    // auto = verschleiern bei phone/email, manuell überschreibbar mit yes/no
+    $sensitive_field = in_array($field, array('phone', 'fax', 'email'), true);
+    $obfuscate = ($atts['obfuscate'] === 'yes') || ($atts['obfuscate'] === 'auto' && $sensitive_field);
     
     // Einzelfelder
     $values = array(
@@ -115,7 +117,7 @@ function potsdam_rechtsanwalt_kontakt_shortcode($atts) {
         } else {
             $output = esc_html($output);
         }
-    } elseif ($obfuscate && in_array($field, array('phone', 'email'), true)) {
+    } elseif ($obfuscate && in_array($field, array('phone', 'fax', 'email'), true)) {
         $output = potsdam_rechtsanwalt_obfuscate($output);
     } else {
         $output = $format_html ? wp_kses_post($output) : esc_html($output);
