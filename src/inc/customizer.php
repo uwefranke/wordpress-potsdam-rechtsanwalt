@@ -123,7 +123,7 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     ));
     
     $wp_customize->add_setting('mail_from_address', array(
-        'default'   => 'info@potsdam-rechtsanwalt.de',
+        'default'   => 'noreply@potsdam-rechtsanwalt.de',
         'transport' => 'refresh',
     ));
     
@@ -135,7 +135,7 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     ));
     
     $wp_customize->add_setting('mail_from_name', array(
-        'default'   => 'Rechtsanwalt Lange',
+        'default'   => 'Rechtsanwalt Matthias Lange',
         'transport' => 'refresh',
     ));
     
