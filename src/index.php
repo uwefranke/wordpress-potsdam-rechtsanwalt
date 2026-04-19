@@ -11,7 +11,7 @@ get_header();
 $hero_image = get_theme_mod('hero_image');
 $hero_style = '';
 if ($hero_image) {
-    $hero_style = sprintf('style="background-image: linear-gradient(rgba(26, 58, 92, 0.7), rgba(26, 58, 92, 0.7)), url(%s);"', esc_url($hero_image));
+    $hero_style = sprintf('style="background: linear-gradient(rgba(26, 58, 92, 0.7), rgba(26, 58, 92, 0.7)), url(%s) center center / cover no-repeat;"', esc_url($hero_image));
 }
 ?>
 <section class="hero-section" <?php echo $hero_style; ?>>

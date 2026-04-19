@@ -516,9 +516,6 @@ body {
     position: relative;
     min-height: 350px;
     background: linear-gradient(rgba(26, 58, 92, 0.6), rgba(26, 58, 92, 0.75)), var(--color-navy);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
