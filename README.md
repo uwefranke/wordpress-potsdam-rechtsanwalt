@@ -17,6 +17,7 @@ Ein elegantes, professionelles WordPress-Theme für Rechtsanwaltskanzleien in Po
 - 📱 **Vollständig responsive** für alle Geräte
 - 🎨 **Umfangreicher Customizer** für einfache Anpassungen
 - 🎨 **Icon-Auswahl** für Rechtsgebiete (20 rechtsspezifische Icons)
+- ♿ **Barrierefrei** nach WCAG 2.1 Level AA
 - 🔐 **DSGVO-konform** mit Cookie Consent System
 
 ## 📁 Repository-Struktur
@@ -154,6 +155,7 @@ Umfangreiche Dokumentation im [`docs/`](docs/) Verzeichnis:
 - [STRUKTUR.md](docs/STRUKTUR.md) - Projekt-Struktur
 - [THEME-STRUKTUR.md](docs/THEME-STRUKTUR.md) - Theme-Dateistruktur
 - [FONTS.md](docs/FONTS.md) - Font-Integration
+- [ACCESSIBILITY.md](docs/ACCESSIBILITY.md) - Barrierefreiheit (WCAG 2.1)
 - [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) - Problemlösungen
 - [SCREENSHOT-INFO.md](docs/SCREENSHOT-INFO.md) - Screenshot-Anforderungen
 
