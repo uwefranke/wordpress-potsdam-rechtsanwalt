@@ -1,5 +1,17 @@
 # Changelog
 
+## [v2.2.5](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.5)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.4...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* Meta-Beschreibung für SEO und Accessibility hinzugefügt ([0771c3a](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/0771c3acbfe52e87020e8c24e836463f4e93e6ac))
+
+
+### Features
+
+* Custom REST API Endpoint für Rank Math Meta-Description Updates ([f9f8dd3](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/f9f8dd3c4d3ea1d06e1f6300c1bc4471f5be9946))
+
 ## [v2.2.4](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.4)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.3...v) (2026-04-23)
 
 
