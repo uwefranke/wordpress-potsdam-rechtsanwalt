@@ -497,5 +497,26 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         'section'  => 'footer_content',
         'type'     => 'textarea',
     ));
+    
+    // === SEO-Einstellungen ===
+    $wp_customize->add_section('seo_settings', array(
+        'title'       => __('SEO-Einstellungen', 'potsdam-rechtsanwalt'),
+        'description' => __('Meta-Beschreibung für Suchmaschinen (wird von SEO-Plugins wie Rank Math überschrieben, falls konfiguriert)', 'potsdam-rechtsanwalt'),
+        'priority'    => 25,
+    ));
+    
+    // Meta-Description
+    $wp_customize->add_setting('site_meta_description', array(
+        'default'   => 'Rechtsanwalt Matthias Lange in Potsdam - Kompetente Rechtsberatung in Mietrecht, Immobilienrecht, Baurecht und Berufsunfähigkeitsversicherung. Persönliche Beratung mit langjähriger Erfahrung.',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('site_meta_description', array(
+        'label'    => __('Meta-Beschreibung (Standard)', 'potsdam-rechtsanwalt'),
+        'section'  => 'seo_settings',
+        'type'     => 'textarea',
+        'description' => __('Empfohlen: 150-160 Zeichen. Diese Beschreibung wird nur verwendet, wenn kein SEO-Plugin aktiv ist.', 'potsdam-rechtsanwalt'),
+    ));
 }
 add_action('customize_register', 'potsdam_rechtsanwalt_customizer');

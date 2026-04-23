@@ -3,7 +3,19 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php bloginfo('description'); ?>">
+    <?php 
+    // Meta-Description: Fallback falls kein SEO-Plugin aktiv ist
+    if (is_front_page() || is_home()) {
+        $description = get_theme_mod('site_meta_description', 'Rechtsanwalt Matthias Lange in Potsdam - Kompetente Rechtsberatung in Mietrecht, Immobilienrecht, Baurecht und Berufsunfähigkeitsversicherung.');
+    } elseif (is_singular()) {
+        $description = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 25);
+    } else {
+        $description = get_bloginfo('description');
+    }
+    if (!empty($description)) {
+        echo '<meta name="description" content="' . esc_attr(wp_strip_all_tags($description)) . '">' . "\n    ";
+    }
+    ?>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
