@@ -23,6 +23,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $false)]
+    [ValidateSet("dev", "test", "prod")]
+    [string]$Environment = "prod",
+
+    [Parameter(Mandatory = $false)]
     [string[]]$Topics = @(),
     
     [Parameter(Mandatory = $false)]
@@ -71,14 +75,34 @@ catch {
 
 #endregion
 
+$script:SelectedEnvironment = $Environment.ToUpperInvariant()
+
+function Resolve-EnvironmentVariable {
+    param(
+        [string]$BaseName
+    )
+
+    $envSpecificName = "${BaseName}_${script:SelectedEnvironment}"
+    $envSpecificVar = Get-Variable -Name $envSpecificName -Scope Script -ErrorAction SilentlyContinue
+
+    if ($envSpecificVar -and -not [string]::IsNullOrWhiteSpace([string]$envSpecificVar.Value)) {
+        return [string]$envSpecificVar.Value
+    }
+
+    return $null
+}
+
 #region Configuration
+$resolvedDefaultCategory = Resolve-EnvironmentVariable -BaseName "WP_DEFAULT_CATEGORY"
+$defaultCategory = if ($resolvedDefaultCategory) { [int]$resolvedDefaultCategory } else { 14 }
+
 $script:Config = @{
     # WordPress Settings (aus .env)
     WordPress = @{
-        Url = $WP_URL
-        User = $WP_USER
-        AppPassword = $WP_APP_PASSWORD
-        DefaultCategory = [int]$WP_DEFAULT_CATEGORY
+        Url = Resolve-EnvironmentVariable -BaseName "WP_URL"
+        User = Resolve-EnvironmentVariable -BaseName "WP_USER"
+        AppPassword = Resolve-EnvironmentVariable -BaseName "WP_APP_PASSWORD"
+        DefaultCategory = $defaultCategory
     }
     
     # AI Settings (aus .env)
@@ -140,9 +164,17 @@ function Write-ColorOutput {
 
 function Test-Configuration {
     $errors = @()
+
+    if ([string]::IsNullOrWhiteSpace($Config.WordPress.Url)) {
+        $errors += "WordPress URL fehlt! (WP_URL_$script:SelectedEnvironment)"
+    }
+
+    if ([string]::IsNullOrWhiteSpace($Config.WordPress.User)) {
+        $errors += "WordPress User fehlt! (WP_USER_$script:SelectedEnvironment)"
+    }
     
     if ([string]::IsNullOrWhiteSpace($Config.WordPress.AppPassword)) {
-        $errors += "WordPress Application Password fehlt!"
+        $errors += "WordPress Application Password fehlt! (WP_APP_PASSWORD_$script:SelectedEnvironment)"
     }
     
     # Provider-spezifische Validierung
@@ -594,6 +626,9 @@ function Start-ContentGeneration {
     Write-Host "║  WordPress AI Content Generator                        ║" -ForegroundColor Cyan
     Write-Host "║  Rechtsanwalt Matthias Lange, Potsdam                  ║" -ForegroundColor Cyan
     Write-Host "╚════════════════════════════════════════════════════════╝`n" -ForegroundColor Cyan
+    Write-ColorOutput "🧭 Umgebung: $($Environment.ToLower())" -Color $Colors.Info
+    Write-ColorOutput "🌐 Zielseite aus Konfiguration: $($Config.WordPress.Url)" -Color $Colors.Info
+    Write-ColorOutput ""
     
     # Konfiguration prüfen
     if (-not (Test-Configuration)) {
