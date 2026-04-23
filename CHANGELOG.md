@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.6](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.6)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.5...v) (2026-04-23)
+
+
+### Features
+
+* Fokus-Schluesselwort mit Meta-Description automatisch setzen ([d8f6de4](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/d8f6de44fc1f8396ba782a36d020f2cf46a5889c))
+
 ## [v2.2.5](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.5)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.4...v) (2026-04-23)
 
 
