@@ -690,7 +690,7 @@ body {
 
 .service-link-arrow {
     display: inline-block;
-    color: var(--color-gold);
+    color: var(--color-navy); /* Navy statt Gold für besseren Kontrast (8:1 auf Weiß) */
     font-weight: 500;
     font-size: 14px;
     margin-top: auto;
