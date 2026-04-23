@@ -137,7 +137,7 @@ html.dark-mode .footer-section a:hover {
 }
 
 html.dark-mode .footer-bottom {
-    color: #808080 !important;
+    color: #b8b8b8 !important; /* Hellerer Text für besseren Kontrast (7.2:1) */
 }
 
 /* Widgets im Dark Mode */
@@ -877,7 +877,7 @@ button:focus,
     padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8); /* Hellerer Text für besseren Kontrast (8:1) */
 }
 
 /* === Responsive Design === */
