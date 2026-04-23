@@ -167,7 +167,7 @@ function potsdam_display_service_cards() {
         $default_title = isset($default_services[$i]) ? $default_services[$i]['title'] : '';
         $default_desc = isset($default_services[$i]) ? $default_services[$i]['description'] : '';
         $default_link = isset($default_services[$i]) ? $default_services[$i]['link'] : '';
-        $default_icon = isset($default_services[$i]) ? $default_services[$i]['icon'] : 'file';
+        $default_icon = isset($default_services[$i]) ? $default_services[$i]['icon'] : 'file-text';
         
         // Customizer-Werte holen MIT Default als Fallback
         $title = get_theme_mod("service_{$i}_title", $default_title);

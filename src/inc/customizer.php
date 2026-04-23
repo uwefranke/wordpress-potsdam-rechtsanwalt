@@ -414,7 +414,7 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         $default_title = isset($default_services[$i]) ? $default_services[$i]['title'] : '';
         $default_desc = isset($default_services[$i]) ? $default_services[$i]['description'] : '';
         $default_link = isset($default_services[$i]) ? $default_services[$i]['link'] : '';
-        $default_icon = isset($default_icons[$i]) ? $default_icons[$i] : 'file';
+        $default_icon = isset($default_icons[$i]) ? $default_icons[$i] : 'file-text';
         
         // Titel
         $wp_customize->add_setting("service_{$i}_title", array(
