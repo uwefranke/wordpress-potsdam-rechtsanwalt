@@ -178,7 +178,7 @@ function potsdam_rechtsanwalt_rechtsgebiet_shortcode($atts) {
     $value = get_theme_mod($field_name, $default);
     
     if ($field === 'icon') {
-        return '<i class="' . esc_attr($value) . '"></i>';
+        return '<i class="' . esc_attr($value) . '" aria-hidden="true" role="presentation"></i>';
     }
     
     return esc_html($value);
