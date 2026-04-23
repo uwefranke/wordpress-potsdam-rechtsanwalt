@@ -133,6 +133,33 @@ function Test-WordPressConnection {
         return $false
     }
 }
+
+function Test-CustomMetaReadEndpoint {
+    try {
+        $headers = Get-WordPressHeaders
+        $url = "$($Config.WordPress.Url)/wp-json/potsdam/v1"
+        $response = Invoke-RestMethod -Uri $url -Headers $headers -ErrorAction Stop
+
+        if (-not $response.routes) {
+            return $false
+        }
+
+        $routeKey = '/potsdam/v1/meta-description/(?P<id>\\d+)'
+        if (-not $response.routes.$routeKey) {
+            return $false
+        }
+
+        $methods = $response.routes.$routeKey.methods
+        if (-not $methods) {
+            return $false
+        }
+
+        return ($methods -contains 'GET')
+    }
+    catch {
+        return $false
+    }
+}
 #endregion
 
 #region AI Functions
@@ -397,7 +424,7 @@ function Get-PostMeta {
     
     try {
         $headers = Get-WordPressHeaders
-        $url = "$($Config.WordPress.Url)/wp-json/wp/v2/$PostType/$PostId"
+        $url = "$($Config.WordPress.Url)/wp-json/potsdam/v1/meta-description/$PostId"
         $response = Invoke-RestMethod -Uri $url -Headers $headers -ErrorAction Stop
         
         $result = @{
@@ -405,13 +432,13 @@ function Get-PostMeta {
             FocusKeyword = $null
         }
 
-        if ($response.meta) {
-            if ($response.meta.rank_math_description) {
-                $result.Description = $response.meta.rank_math_description
+        if ($response.success) {
+            if ($response.description) {
+                $result.Description = $response.description
             }
 
-            if ($response.meta.rank_math_focus_keyword) {
-                $result.FocusKeyword = $response.meta.rank_math_focus_keyword
+            if ($response.focus_keyword) {
+                $result.FocusKeyword = $response.focus_keyword
             }
         }
 
@@ -509,6 +536,20 @@ if (-not (Test-WordPressConnection)) {
     exit 1
 }
 Write-ColorOutput ""
+
+if (-not $ReplaceExisting) {
+    Write-ColorOutput "🔎 Pruefe Meta-Leseendpoint fuer vorhandene Rank-Math-Werte..." -Color $Colors.Info
+    if (-not (Test-CustomMetaReadEndpoint)) {
+        Write-ColorOutput "❌ Der GET-Endpoint /wp-json/potsdam/v1/meta-description/{id} ist nicht verfuegbar." -Color $Colors.Error
+        Write-ColorOutput "   Ohne diesen Endpoint kann das Skript bestehende Werte nicht erkennen." -Color $Colors.Error
+        Write-ColorOutput "   Ergebnis waere: unnoetige Neugenerierung trotz fehlendem -ReplaceExisting." -Color $Colors.Error
+        Write-ColorOutput "" 
+        Write-ColorOutput "👉 Bitte zuerst das aktuelle Theme mit src/inc/rest-api-meta-description.php deployen." -Color $Colors.Warning
+        exit 1
+    }
+    Write-ColorOutput "✅ Meta-Leseendpoint verfuegbar." -Color $Colors.Success
+    Write-ColorOutput ""
+}
 
 # Items abrufen
 $allItems = @()

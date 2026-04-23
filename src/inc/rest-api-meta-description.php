@@ -18,6 +18,22 @@ if (!defined('ABSPATH')) {
  */
 add_action('rest_api_init', function () {
     register_rest_route('potsdam/v1', '/meta-description/(?P<id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'potsdam_get_meta_description',
+        'permission_callback' => function ($request) {
+            return current_user_can('edit_posts');
+        },
+        'args' => array(
+            'id' => array(
+                'required' => true,
+                'validate_callback' => function ($param) {
+                    return is_numeric($param);
+                }
+            ),
+        ),
+    ));
+
+    register_rest_route('potsdam/v1', '/meta-description/(?P<id>\d+)', array(
         'methods' => 'POST',
         'callback' => 'potsdam_update_meta_description',
         'permission_callback' => function ($request) {
@@ -53,6 +69,36 @@ add_action('rest_api_init', function () {
         ),
     ));
 });
+
+/**
+ * Callback für Meta-Description/Fokus-Schlüsselwort Read
+ *
+ * @param WP_REST_Request $request REST API Request
+ * @return WP_REST_Response|WP_Error
+ */
+function potsdam_get_meta_description($request) {
+    $post_id = $request->get_param('id');
+
+    $post = get_post($post_id);
+    if (!$post) {
+        return new WP_Error(
+            'post_not_found',
+            'Post nicht gefunden',
+            array('status' => 404)
+        );
+    }
+
+    $description = get_post_meta($post_id, 'rank_math_description', true);
+    $focus_keyword = get_post_meta($post_id, 'rank_math_focus_keyword', true);
+
+    return new WP_REST_Response(array(
+        'success' => true,
+        'post_id' => $post_id,
+        'post_title' => $post->post_title,
+        'description' => $description,
+        'focus_keyword' => $focus_keyword,
+    ), 200);
+}
 
 /**
  * Callback für Meta-Description Update
