@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.1.7](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.7)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.6...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* KRITISCH - Doppelte Funktionsdeklaration entfernt ([a36b21d](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/a36b21da0e5bc1449970cb8eb91191d6ecf8b5f7))
+* KRITISCHER FEHLER - Nicht existierendes Icon 'file' korrigiert ([74906c0](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/74906c09d18a39e84a3cfb870448adbf2c90dae1))
+
 ## [v2.1.6](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.6)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.5...v) (2026-04-23)
 
 
