@@ -1,5 +1,17 @@
 # Changelog
 
+## [v2.2.2](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.2)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.1...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* Farbkontrast Button-Text verbessert ([69ff1dc](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/69ff1dc2afe442f6acb8186ae7f3197fa4a1ea63)), closes [#0d1f35](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/0d1f35) [#d4af37](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/d4af37)
+* Farbkontrast Cookie-Accept-Button verbessert ([11b9f42](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/11b9f42873b7c7b7e5bae7298076d6f5f503af48)), closes [#d4af37](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/d4af37) [#f4d03](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/f4d03) [#1a3a5](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/1a3a5) [#0d1f35](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/0d1f35) [#f6d84](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/f6d84)
+* Farbkontrast Footer-Copyright-Text verbessert ([bf6583e](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/bf6583e9b284758dff95f438aced91ca24f1b11a)), closes [#808080](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/808080) [#b8b8b8](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/b8b8b8)
+* Farbkontrast Footer-Links verbessert ([baf9a81](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/baf9a81ff5a565f198af201c638f64cfec08870c))
+* Farbkontrast Service-Card-Link-Pfeil verbessert ([bc59a41](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/bc59a41cb798db42b45a2edb58b70db2432750e0)), closes [#d4af37](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/d4af37) [#1a3a5](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/1a3a5)
+* Farbkontraste in Sidebar verbessert ([92b1769](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/92b1769dc4d4fe16886af593e4d37440beb69fbc)), closes [#d4af37](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/d4af37) [#1a3a5](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/1a3a5) [#888](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/888) [#555](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/555)
+
 ## [v2.2.1](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.1)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.0...v) (2026-04-23)
 
 
