@@ -84,14 +84,14 @@
 }
 
 .cookie-btn-accept {
-    background: #d4af37;
-    color: #1a3a5c;
+    background: #f4d03f; /* Helleres Gold für besseren Kontrast */
+    color: #0d1f35; /* Dunkleres Blau für WCAG AAA (7.5:1) */
 }
 
 .cookie-btn-accept:hover {
-    background: #f4d03f;
+    background: #f6d84a; /* Noch hellerer Gold-Ton beim Hover */
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 12px rgba(244, 208, 63, 0.4);
 }
 
 .cookie-btn-settings,
