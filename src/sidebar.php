@@ -93,7 +93,7 @@
         
         <p style="margin-bottom: 15px;">
             <strong>Telefon:</strong><br>
-            <a href="tel:<?php echo esc_attr(str_replace(' ', '', get_theme_mod('contact_phone', '+49 331 123456'))); ?>" style="color: var(--color-navy); text-decoration: none;">
+            <a href="tel:<?php echo esc_attr(str_replace(' ', '', get_theme_mod('contact_phone', '+49 331 123456'))); ?>" style="color: var(--color-navy); text-decoration: underline;">
                 <?php echo esc_html(get_theme_mod('contact_phone', '+49 331 123456')); ?>
             </a>
         </p>
@@ -107,7 +107,7 @@
         
         <p style="margin-bottom: 15px;">
             <strong>E-Mail:</strong><br>
-            <a href="mailto:<?php echo esc_attr(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>" style="color: #1a3a5c;"> <!-- Navy statt Gold für besseren Kontrast -->
+            <a href="mailto:<?php echo esc_attr(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>" style="color: #1a3a5c; text-decoration: underline;"> <!-- Navy statt Gold für besseren Kontrast -->
                 <?php echo esc_html(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>
             </a>
         </p>
