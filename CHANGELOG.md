@@ -1,5 +1,17 @@
 # Changelog
 
+## [v2.1.6](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.6)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.5...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* Rechtsspezifische Icons für Rechtsgebiete ([a06aafa](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/a06aafa8de1269ecea03393f9164f4a889072d95))
+
+
+### Features
+
+* Icon-Auswahl für Rechtsgebiete im Customizer ([10b8063](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/10b8063ce4e7ee3fc93bd78a9a50c3212e446c62))
+
 ## [v2.1.5](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.5)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.4...v) (2026-04-23)
 
 ## [v2.1.4](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.4)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.3...v) (2026-04-23)
