@@ -2,9 +2,11 @@
 
 ## 📝 Übersicht
 
-Das `update-post-descriptions.ps1` Skript generiert automatisch SEO-optimierte Meta-Descriptions (150-160 Zeichen) für alle WordPress-Seiten und Beiträge mithilfe von Claude AI.
+Das `update-post-descriptions.ps1` Skript generiert automatisch SEO-optimierte Meta-Descriptions (150-160 Zeichen) und Fokus-Schlüsselwörter für alle WordPress-Seiten und Beiträge mithilfe von Claude AI.
 
-Die Descriptions werden als **Rank Math Custom Field** (`rank_math_description`) gespeichert.
+Die Werte werden als **Rank Math Custom Fields** gespeichert:
+- `rank_math_description`
+- `rank_math_focus_keyword`
 
 ---
 
@@ -154,6 +156,7 @@ WordPress → Seiten → [Seite öffnen]
 → Nach unten scrollen zur Rank Math Meta Box
 → "Edit Snippet" klicken
 → Meta-Description prüfen
+→ Fokus-Schlüsselwort prüfen
 ```
 
 ### 4. **Mit Lighthouse testen**
@@ -202,12 +205,13 @@ POST /wp-json/wp/v2/posts/{id}  # Beitrag aktualisieren
 POST /wp-json/wp/v2/pages/{id}  # Seite aktualisieren
 ```
 
-### Rank Math Custom Field
+### Rank Math Custom Fields
 ```json
 {
-  "meta": {
-    "rank_math_description": "Ihre Meta-Description hier..."
-  }
+   "meta": {
+      "rank_math_description": "Ihre Meta-Description hier...",
+      "rank_math_focus_keyword": "Ihre Fokus-Keyphrase hier"
+   }
 }
 ```
 

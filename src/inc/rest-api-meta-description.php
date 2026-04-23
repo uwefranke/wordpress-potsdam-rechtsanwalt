@@ -38,6 +38,13 @@ add_action('rest_api_init', function () {
                     return !empty($param) && strlen($param) <= 300;
                 }
             ),
+            'focus_keyword' => array(
+                'required' => false,
+                'sanitize_callback' => 'sanitize_text_field',
+                'validate_callback' => function ($param) {
+                    return is_null($param) || strlen($param) <= 120;
+                }
+            ),
             'post_type' => array(
                 'required' => false,
                 'default' => 'post',
@@ -56,6 +63,7 @@ add_action('rest_api_init', function () {
 function potsdam_update_meta_description($request) {
     $post_id = $request->get_param('id');
     $description = $request->get_param('description');
+    $focus_keyword = $request->get_param('focus_keyword');
     $post_type = $request->get_param('post_type');
     
     // Prüfe ob Post existiert
@@ -88,15 +96,31 @@ function potsdam_update_meta_description($request) {
             array('status' => 500)
         );
     }
+
+    if (!empty($focus_keyword)) {
+        $focus_result = update_post_meta($post_id, 'rank_math_focus_keyword', $focus_keyword);
+
+        if ($focus_result === false) {
+            return new WP_Error(
+                'focus_keyword_update_failed',
+                'Fokus-Schluesselwort konnte nicht gespeichert werden',
+                array('status' => 500)
+            );
+        }
+    }
+
+    $saved_description = get_post_meta($post_id, 'rank_math_description', true);
+    $saved_focus_keyword = get_post_meta($post_id, 'rank_math_focus_keyword', true);
     
     // Erfolgreiche Antwort
     return new WP_REST_Response(array(
         'success' => true,
         'post_id' => $post_id,
         'post_title' => $post->post_title,
-        'description' => $description,
-        'description_length' => strlen($description),
-        'message' => 'Meta-Description erfolgreich gespeichert'
+        'description' => $saved_description,
+        'description_length' => strlen($saved_description),
+        'focus_keyword' => $saved_focus_keyword,
+        'message' => 'Meta-Description und Fokus-Schluesselwort erfolgreich gespeichert'
     ), 200);
 }
 

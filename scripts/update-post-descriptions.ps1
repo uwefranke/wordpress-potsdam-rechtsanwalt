@@ -296,6 +296,54 @@ $($Content.Substring(0, [Math]::Min(800, $Content.Length)))
     
     return $null
 }
+
+function New-FocusKeyword {
+    param(
+        [string]$Title,
+        [string]$Content,
+        [string]$PostType
+    )
+
+    $contentType = if ($PostType -eq "page") { "Seite" } else { "Artikel" }
+
+    $prompt = @"
+Erstelle ein Fokus-Schluesselwort fuer Rank Math fuer folgende WordPress-$contentType.
+
+Titel: $Title
+
+Anforderungen:
+- Nur EIN Fokus-Schluesselwort bzw. eine kurze Keyphrase
+- 2 bis 5 Woerter
+- Maximal 60 Zeichen
+- Keine Satzzeichen am Ende
+- Keine Erklaerung, nur die Keyphrase ausgeben
+- Fokus auf Suchintention im juristischen Kontext in Potsdam
+
+$contentType-Anfang:
+$($Content.Substring(0, [Math]::Min(400, $Content.Length)))
+"@
+
+    $keyword = Invoke-AIRequest `
+        -SystemPrompt "Du bist ein SEO-Experte fuer Rechtsanwaelte. Gib nur eine klare Fokus-Keyphrase aus." `
+        -UserPrompt $prompt
+
+    if ($keyword) {
+        $keyword = $keyword.Trim() -replace '^"|"$', '' -replace '\s+', ' '
+        $keyword = $keyword.TrimEnd('.', ',', ';', ':', '!', '?')
+
+        if ($keyword.Length -gt 60) {
+            $keyword = $keyword.Substring(0, 60).Trim()
+        }
+
+        if ([string]::IsNullOrWhiteSpace($keyword)) {
+            return $null
+        }
+
+        return $keyword
+    }
+
+    return $null
+}
 #endregion
 
 #region WordPress Functions
@@ -352,15 +400,28 @@ function Get-PostMeta {
         $url = "$($Config.WordPress.Url)/wp-json/wp/v2/$PostType/$PostId"
         $response = Invoke-RestMethod -Uri $url -Headers $headers -ErrorAction Stop
         
-        # Rank Math Description aus Meta abrufen
-        if ($response.meta -and $response.meta.rank_math_description) {
-            return $response.meta.rank_math_description
+        $result = @{
+            Description = $null
+            FocusKeyword = $null
         }
-        
-        return $null
+
+        if ($response.meta) {
+            if ($response.meta.rank_math_description) {
+                $result.Description = $response.meta.rank_math_description
+            }
+
+            if ($response.meta.rank_math_focus_keyword) {
+                $result.FocusKeyword = $response.meta.rank_math_focus_keyword
+            }
+        }
+
+        return $result
     }
     catch {
-        return $null
+        return @{
+            Description = $null
+            FocusKeyword = $null
+        }
     }
 }
 
@@ -368,7 +429,8 @@ function Update-PostMetaDescription {
     param(
         [int]$PostId,
         [string]$PostType,
-        [string]$Description
+        [string]$Description,
+        [string]$FocusKeyword
     )
     
     $headers = Get-WordPressHeaders
@@ -376,6 +438,7 @@ function Update-PostMetaDescription {
     # Nutze Custom REST API Endpoint für Rank Math Meta-Description
     $updateData = @{
         description = $Description
+        focus_keyword = $FocusKeyword
         post_type = $PostType
     } | ConvertTo-Json
     
@@ -386,6 +449,20 @@ function Update-PostMetaDescription {
         
         if ($response.success) {
             Write-ColorOutput "   ✅ Response: $($response.message) ($($response.description_length) Zeichen)" -Color $Colors.Debug
+
+            $savedDescription = if ($response.description) { $response.description } else { "" }
+            $savedKeyword = if ($response.focus_keyword) { $response.focus_keyword } else { "" }
+
+            if ($savedDescription -ne $Description) {
+                Write-ColorOutput "   ❌ Verifikation fehlgeschlagen: Description wurde nicht korrekt gespeichert" -Color $Colors.Error
+                return $false
+            }
+
+            if (-not [string]::IsNullOrWhiteSpace($FocusKeyword) -and $savedKeyword -ne $FocusKeyword) {
+                Write-ColorOutput "   ❌ Verifikation fehlgeschlagen: Fokus-Schluesselwort wurde nicht korrekt gespeichert" -Color $Colors.Error
+                return $false
+            }
+
             return $true
         }
         else {
@@ -479,19 +556,22 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
     Write-ColorOutput "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -Color $Colors.Debug
     
     try {
-        # Prüfe existierende Description
-        $existingDesc = Get-PostMeta -PostId $item.id -PostType $item._type
-        
-        if ($existingDesc -and -not $ReplaceExisting) {
-            Write-ColorOutput "   ⏭️  Hat bereits Description ($($existingDesc.Length) Zeichen) - übersprungen" -Color $Colors.Warning
-            Write-ColorOutput "      '$existingDesc'" -Color $Colors.Debug
+        # Prüfe existierende Rank Math Felder
+        $existingMeta = Get-PostMeta -PostId $item.id -PostType $item._type
+        $existingDesc = $existingMeta.Description
+        $existingFocusKeyword = $existingMeta.FocusKeyword
+
+        if ($existingDesc -and $existingFocusKeyword -and -not $ReplaceExisting) {
+            Write-ColorOutput "   ⏭️  Hat bereits Description und Fokus-Schluesselwort - uebersprungen" -Color $Colors.Warning
+            Write-ColorOutput "      Description: '$existingDesc'" -Color $Colors.Debug
+            Write-ColorOutput "      Fokus-Schluesselwort: '$existingFocusKeyword'" -Color $Colors.Debug
             $stats.AlreadyHas++
             Write-ColorOutput ""
             continue
         }
-        
-        if ($existingDesc -and $ReplaceExisting) {
-            Write-ColorOutput "   🔄 Ersetze existierende Description..." -Color $Colors.Warning
+
+        if (($existingDesc -or $existingFocusKeyword) -and $ReplaceExisting) {
+            Write-ColorOutput "   🔄 Ersetze existierende SEO-Felder..." -Color $Colors.Warning
         }
         
         # Content bereinigen (HTML entfernen)
@@ -507,27 +587,44 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
         # Meta-Description generieren
         Write-ColorOutput "   📝 Generiere Meta-Description..." -Color $Colors.Info
         $newDescription = New-MetaDescription -Title $item.title.rendered -Content $cleanContent -PostType $item._type
+
+        Write-ColorOutput "   🔑 Generiere Fokus-Schluesselwort..." -Color $Colors.Info
+        $newFocusKeyword = New-FocusKeyword -Title $item.title.rendered -Content $cleanContent -PostType $item._type
+
+        if (-not $newFocusKeyword) {
+            $fallbackKeyword = ($item.title.rendered -replace '[^\p{L}\p{N}\s-]', '' -replace '\s+', ' ').Trim()
+            if ($fallbackKeyword.Length -gt 60) {
+                $fallbackKeyword = $fallbackKeyword.Substring(0, 60).Trim()
+            }
+            $newFocusKeyword = $fallbackKeyword
+            Write-ColorOutput "   ⚠️  Fokus-Schluesselwort Fallback aus Titel verwendet" -Color $Colors.Warning
+        }
         
         if ($newDescription) {
             Write-ColorOutput "   ✅ Description generiert:" -Color $Colors.Success
             Write-ColorOutput "      '$newDescription'" -Color $Colors.Success
+
+            if ($newFocusKeyword) {
+                Write-ColorOutput "   ✅ Fokus-Schluesselwort generiert:" -Color $Colors.Success
+                Write-ColorOutput "      '$newFocusKeyword'" -Color $Colors.Success
+            }
             
             # Im DryRun-Modus nur anzeigen
             if ($DryRun) {
-                Write-ColorOutput "   💭 Würde Description setzen (DRY RUN)" -Color $Colors.Warning
+                Write-ColorOutput "   💭 Wuerde Description und Fokus-Schluesselwort setzen (DRY RUN)" -Color $Colors.Warning
                 $stats.Success++
             }
             else {
                 # Description aktualisieren
-                Write-ColorOutput "   💾 Aktualisiere Meta-Description in WordPress..." -Color $Colors.Info
-                $result = Update-PostMetaDescription -PostId $item.id -PostType $item._type -Description $newDescription
+                Write-ColorOutput "   💾 Aktualisiere Meta-Description und Fokus-Schluesselwort in WordPress..." -Color $Colors.Info
+                $result = Update-PostMetaDescription -PostId $item.id -PostType $item._type -Description $newDescription -FocusKeyword $newFocusKeyword
                 
                 if ($result) {
-                    Write-ColorOutput "   ✅ Meta-Description erfolgreich gespeichert!" -Color $Colors.Success
+                    Write-ColorOutput "   ✅ Meta-Description und Fokus-Schluesselwort erfolgreich gespeichert!" -Color $Colors.Success
                     $stats.Success++
                 }
                 else {
-                    Write-ColorOutput "   ❌ Fehler beim Speichern der Meta-Description" -Color $Colors.Error
+                    Write-ColorOutput "   ❌ Fehler beim Speichern der SEO-Felder" -Color $Colors.Error
                     $stats.Failed++
                 }
             }
@@ -567,7 +664,7 @@ if ($DryRun) {
     Write-ColorOutput ""
 }
 else {
-    Write-ColorOutput "🎉 Meta-Description Update abgeschlossen!" -Color $Colors.Success
+    Write-ColorOutput "🎉 Meta-Description/Fokus-Schluesselwort Update abgeschlossen!" -Color $Colors.Success
     Write-ColorOutput ""
     Write-ColorOutput "📍 Nächste Schritte:" -Color $Colors.Info
     Write-ColorOutput "   1. Prüfe die Seiten im WordPress-Admin" -Color $Colors.Info
