@@ -848,7 +848,7 @@ button:focus,
 .footer-section h4 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: var(--color-gold);
+    color: #f4d03f; /* Helleres Gold für besseren Kontrast (8.5:1) */
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
