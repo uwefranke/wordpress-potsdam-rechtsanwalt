@@ -10,6 +10,7 @@ require get_template_directory() . '/inc/github-updater.php';
 require get_template_directory() . '/inc/mail-settings.php';
 require get_template_directory() . '/inc/qrcode-generator.php';
 require get_template_directory() . '/inc/shortcodes.php';
+require get_template_directory() . '/inc/rest-api-meta-description.php';
 
 // Theme-Setup
 function potsdam_rechtsanwalt_setup() {
