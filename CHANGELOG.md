@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.2.4](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.4)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.3...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* Footer-Überschriftenhierarchie korrigiert (H4 zu H2) ([46ea80d](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/46ea80dd640cb173b0314dc95b6c75406b0dd6d8))
+* Touch Target Größen für Menu-Toggle und Site-Logo erhöht ([b1399af](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/b1399afaad5569c62ac3340a55c09e4edf72c86d))
+
 ## [v2.2.3](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.3)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.2...v) (2026-04-23)
 
 
