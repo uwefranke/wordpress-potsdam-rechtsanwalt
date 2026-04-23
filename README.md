@@ -16,6 +16,7 @@ Ein elegantes, professionelles WordPress-Theme für Rechtsanwaltskanzleien in Po
 - 🔄 **Automatische Updates** über GitHub
 - 📱 **Vollständig responsive** für alle Geräte
 - 🎨 **Umfangreicher Customizer** für einfache Anpassungen
+- 🎨 **Icon-Auswahl** für Rechtsgebiete (20 rechtsspezifische Icons)
 - 🔐 **DSGVO-konform** mit Cookie Consent System
 
 ## 📁 Repository-Struktur
@@ -132,6 +133,7 @@ Umfangreiche Dokumentation im [`docs/`](docs/) Verzeichnis:
 ### Features & Anpassung
 - [CUSTOMIZER-LAYOUT-OPTIONEN.md](docs/CUSTOMIZER-LAYOUT-OPTIONEN.md) - Customizer-Einstellungen
 - [RECHTSGEBIETE-CUSTOMIZER-ANLEITUNG.md](docs/RECHTSGEBIETE-CUSTOMIZER-ANLEITUNG.md) - Rechtsgebiete konfigurieren
+- [ICON-AUSWAHL-ANLEITUNG.md](docs/ICON-AUSWAHL-ANLEITUNG.md) - Icon-Auswahl für Rechtsgebiete
 - [SHORTCODES-ANLEITUNG.md](docs/SHORTCODES-ANLEITUNG.md) - Alle verfügbaren Shortcodes
 - [COOKIE-CONSENT.md](docs/COOKIE-CONSENT.md) - Cookie-Consent System
 - [BREADCRUMBS-ANLEITUNG.md](docs/BREADCRUMBS-ANLEITUNG.md) - Breadcrumb-Navigation
@@ -165,7 +167,8 @@ Umfangreiche Dokumentation im [`docs/`](docs/) Verzeichnis:
 - **Dark Mode**: Umschaltbarer Dark Mode mit persistenter Speicherung
 - **Farbschema**: Elegantes Marineblau, Anthrazitgrau mit Gold/Beige-Akzenten
 - **Hero-Bereich**: Eindrucksvoller Hero mit Hintergrundbild und Call-to-Action
-- **Service-Grid**: 4 Rechtsdienstleistungsfelder mit Icons
+- **Service-Grid**: 1-8 Rechtsdienstleistungsfelder mit individuellen Icons
+- **Icon-Auswahl**: 20 rechtsspezifische Icons (Waage, Hammer, Vertrag, etc.)
 - **Breadcrumbs**: Automatische Breadcrumb-Navigation
 - **Custom Animations**: Fade-In und Slide-Up Effekte
 
