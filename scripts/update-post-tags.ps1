@@ -38,6 +38,8 @@
 #>
 
 param(
+    [ValidateSet('dev', 'test', 'prod')]
+    [string]$Environment = 'prod',
     [int]$CategoryId,
     [string]$Status = "publish",
     [switch]$ReplaceExisting,
@@ -88,10 +90,31 @@ Get-Content $envPath | ForEach-Object {
     }
 }
 
+$SelectedEnvironment = $Environment.ToUpperInvariant()
+
+function Get-EnvironmentWordPressValue {
+    param(
+        [string]$KeyBase
+    )
+
+    $envKey = "${KeyBase}_${SelectedEnvironment}"
+
+    if ($Config.WordPress.ContainsKey($envKey) -and -not [string]::IsNullOrWhiteSpace([string]$Config.WordPress[$envKey])) {
+        return $Config.WordPress[$envKey]
+    }
+
+    return $null
+}
+
+$Config.WordPress.Url = Get-EnvironmentWordPressValue -KeyBase 'URL'
+$Config.WordPress.User = Get-EnvironmentWordPressValue -KeyBase 'USER'
+$Config.WordPress.App_Password = Get-EnvironmentWordPressValue -KeyBase 'APP_PASSWORD'
+$Config.WordPress.Default_Category = Get-EnvironmentWordPressValue -KeyBase 'DEFAULT_CATEGORY'
+
 # Validierung
-if (-not $Config.WordPress.Url) { throw "WP_URL nicht in .env definiert" }
-if (-not $Config.WordPress.User) { throw "WP_USER nicht in .env definiert" }
-if (-not $Config.WordPress.App_Password) { throw "WP_APP_PASSWORD nicht in .env definiert" }
+if (-not $Config.WordPress.Url) { throw "WP_URL_$SelectedEnvironment nicht in .env definiert" }
+if (-not $Config.WordPress.User) { throw "WP_USER_$SelectedEnvironment nicht in .env definiert" }
+if (-not $Config.WordPress.App_Password) { throw "WP_APP_PASSWORD_$SelectedEnvironment nicht in .env definiert" }
 if (-not $Config.AI.Provider) { throw "AI_PROVIDER nicht in .env definiert" }
 if (-not $Config.Content.Tag_Count) { $Config.Content.Tag_Count = 5 }
 
@@ -393,6 +416,9 @@ Write-ColorOutput "║  WordPress Tags Updater (AI)                          ║
 Write-ColorOutput "║  Rechtsanwalt Matthias Lange, Potsdam                  ║" -Color $Colors.Header
 Write-ColorOutput "╚════════════════════════════════════════════════════════╝" -Color $Colors.Header
 Write-ColorOutput ""
+Write-ColorOutput "🧭 Umgebung: $($Environment.ToLower())" -Color $Colors.Info
+Write-ColorOutput "🌐 Zielseite aus Konfiguration: $($Config.WordPress.Url)" -Color $Colors.Info
+Write-ColorOutput ""
 
 if ($DryRun) {
     Write-ColorOutput "⚠️  DRY RUN MODUS - Keine Änderungen werden gespeichert!" -Color $Colors.Warning
@@ -429,24 +455,20 @@ $stats = @{
 }
 
 # Beiträge verarbeiten
+$failedTitles = @()
 for ($i = 0; $i -lt $posts.Count; $i++) {
     $post = $posts[$i]
     $number = $i + 1
-    
     Write-ColorOutput "[$number/$($posts.Count)] $($post.title.rendered)" -Color $Colors.Info
     Write-ColorOutput "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -Color $Colors.Debug
-    
     try {
         # Content bereinigen (HTML entfernen)
         $cleanContent = $post.content.rendered -replace '<[^>]+>', ' ' -replace '\s+', ' '
-        
         # Tags generieren
         Write-ColorOutput "🏷️  Generiere Tags..." -Color $Colors.Info
         $newTags = New-PostTags -Title $post.title.rendered -Content $cleanContent
-        
         if ($newTags -and $newTags.Count -gt 0) {
             Write-ColorOutput "   ✅ Tags generiert: $($newTags -join ', ')" -Color $Colors.Success
-            
             # Im DryRun-Modus nur anzeigen
             if ($DryRun) {
                 Write-ColorOutput "   💭 Würde Tags setzen (DRY RUN)" -Color $Colors.Warning
@@ -456,7 +478,6 @@ for ($i = 0; $i -lt $posts.Count; $i++) {
                 # Tags aktualisieren
                 Write-ColorOutput "   💾 Aktualisiere Tags in WordPress..." -Color $Colors.Info
                 $result = Update-PostTags -PostId $post.id -NewTags $newTags -ExistingTagIds $post.tags -Replace:$ReplaceExisting
-                
                 if ($result) {
                     Write-ColorOutput "   ✅ Tags erfolgreich aktualisiert!" -Color $Colors.Success
                     $stats.Success++
@@ -464,6 +485,7 @@ for ($i = 0; $i -lt $posts.Count; $i++) {
                 else {
                     Write-ColorOutput "   ❌ Fehler beim Aktualisieren der Tags" -Color $Colors.Error
                     $stats.Failed++
+                    $failedTitles += $post.title.rendered
                 }
             }
         }
@@ -475,8 +497,8 @@ for ($i = 0; $i -lt $posts.Count; $i++) {
     catch {
         Write-ColorOutput "   ❌ Fehler: $($_.Exception.Message)" -Color $Colors.Error
         $stats.Failed++
+        $failedTitles += $post.title.rendered
     }
-    
     Write-ColorOutput ""
 }
 
@@ -494,6 +516,11 @@ if ($stats.Skipped -gt 0) {
 Write-ColorOutput "   📝 Gesamt: $($stats.Total)" -Color $Colors.Info
 Write-ColorOutput ""
 
+if ($failedTitles.Count -gt 0) {
+    Write-ColorOutput "❌ Fehlerhafte Beiträge (nicht erfolgreich aktualisiert):" -Color $Colors.Error
+    $failedTitles | ForEach-Object { Write-ColorOutput "   - $_" -Color $Colors.Error }
+    Write-ColorOutput ""
+}
 if ($DryRun) {
     Write-ColorOutput "💡 Führe das Skript ohne -DryRun aus, um die Änderungen zu übernehmen" -Color $Colors.Info
 }

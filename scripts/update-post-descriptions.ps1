@@ -42,6 +42,8 @@
 #>
 
 param(
+    [ValidateSet('dev', 'test', 'prod')]
+    [string]$Environment = 'prod',
     [ValidateSet('posts', 'pages', 'both')]
     [string]$PostType = "both",
     [int]$CategoryId,
@@ -94,10 +96,31 @@ Get-Content $envPath | ForEach-Object {
     }
 }
 
+$SelectedEnvironment = $Environment.ToUpperInvariant()
+
+function Get-EnvironmentWordPressValue {
+    param(
+        [string]$KeyBase
+    )
+
+    $envKey = "${KeyBase}_${SelectedEnvironment}"
+
+    if ($Config.WordPress.ContainsKey($envKey) -and -not [string]::IsNullOrWhiteSpace([string]$Config.WordPress[$envKey])) {
+        return $Config.WordPress[$envKey]
+    }
+
+    return $null
+}
+
+$Config.WordPress.Url = Get-EnvironmentWordPressValue -KeyBase 'URL'
+$Config.WordPress.User = Get-EnvironmentWordPressValue -KeyBase 'USER'
+$Config.WordPress.App_Password = Get-EnvironmentWordPressValue -KeyBase 'APP_PASSWORD'
+$Config.WordPress.Default_Category = Get-EnvironmentWordPressValue -KeyBase 'DEFAULT_CATEGORY'
+
 # Validierung
-if (-not $Config.WordPress.Url) { throw "WP_URL nicht in .env definiert" }
-if (-not $Config.WordPress.User) { throw "WP_USER nicht in .env definiert" }
-if (-not $Config.WordPress.App_Password) { throw "WP_APP_PASSWORD nicht in .env definiert" }
+if (-not $Config.WordPress.Url) { throw "WP_URL_$SelectedEnvironment nicht in .env definiert" }
+if (-not $Config.WordPress.User) { throw "WP_USER_$SelectedEnvironment nicht in .env definiert" }
+if (-not $Config.WordPress.App_Password) { throw "WP_APP_PASSWORD_$SelectedEnvironment nicht in .env definiert" }
 if (-not $Config.AI.Provider) { throw "AI_PROVIDER nicht in .env definiert" }
 
 #endregion
@@ -144,17 +167,22 @@ function Test-CustomMetaReadEndpoint {
             return $false
         }
 
-        $routeKey = '/potsdam/v1/meta-description/(?P<id>\\d+)'
-        if (-not $response.routes.$routeKey) {
+        $candidateRoutes = @($response.routes.PSObject.Properties.Name) | Where-Object {
+            $_ -like '/potsdam/v1/meta-description/*'
+        }
+
+        if (-not $candidateRoutes -or $candidateRoutes.Count -eq 0) {
             return $false
         }
 
-        $methods = $response.routes.$routeKey.methods
-        if (-not $methods) {
-            return $false
+        foreach ($routeKey in $candidateRoutes) {
+            $methods = $response.routes.$routeKey.methods
+            if ($methods -and ($methods -contains 'GET')) {
+                return $true
+            }
         }
 
-        return ($methods -contains 'GET')
+        return $false
     }
     catch {
         return $false
@@ -524,6 +552,9 @@ Write-ColorOutput "║  WordPress Meta-Description Updater (AI)              ║
 Write-ColorOutput "║  Rechtsanwalt Matthias Lange, Potsdam                  ║" -Color $Colors.Header
 Write-ColorOutput "╚════════════════════════════════════════════════════════╝" -Color $Colors.Header
 Write-ColorOutput ""
+Write-ColorOutput "🧭 Umgebung: $($Environment.ToLower())" -Color $Colors.Info
+Write-ColorOutput "🌐 Zielseite aus Konfiguration: $($Config.WordPress.Url)" -Color $Colors.Info
+Write-ColorOutput ""
 
 if ($DryRun) {
     Write-ColorOutput "⚠️  DRY RUN MODUS - Keine Änderungen werden gespeichert!" -Color $Colors.Warning
@@ -588,20 +619,18 @@ $stats = @{
 }
 
 # Items verarbeiten
+$failedTitles = @()
 for ($i = 0; $i -lt $allItems.Count; $i++) {
     $item = $allItems[$i]
     $number = $i + 1
     $typeLabel = if ($item._type -eq "pages") { "Seite" } else { "Beitrag" }
-    
     Write-ColorOutput "[$number/$($allItems.Count)] ${typeLabel}: $($item.title.rendered)" -Color $Colors.Info
     Write-ColorOutput "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -Color $Colors.Debug
-    
     try {
         # Prüfe existierende Rank Math Felder
         $existingMeta = Get-PostMeta -PostId $item.id -PostType $item._type
         $existingDesc = $existingMeta.Description
         $existingFocusKeyword = $existingMeta.FocusKeyword
-
         if ($existingDesc -and $existingFocusKeyword -and -not $ReplaceExisting) {
             Write-ColorOutput "   ⏭️  Hat bereits Description und Fokus-Schluesselwort - uebersprungen" -Color $Colors.Warning
             Write-ColorOutput "      Description: '$existingDesc'" -Color $Colors.Debug
@@ -610,28 +639,22 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
             Write-ColorOutput ""
             continue
         }
-
         if (($existingDesc -or $existingFocusKeyword) -and $ReplaceExisting) {
             Write-ColorOutput "   🔄 Ersetze existierende SEO-Felder..." -Color $Colors.Warning
         }
-        
         # Content bereinigen (HTML entfernen)
         $cleanContent = $item.content.rendered -replace '<[^>]+>', ' ' -replace '\s+', ' '
-        
         if ($cleanContent.Length -lt 50) {
             Write-ColorOutput "   ⚠️  Inhalt zu kurz für Description-Generierung" -Color $Colors.Warning
             $stats.Skipped++
             Write-ColorOutput ""
             continue
         }
-        
         # Meta-Description generieren
         Write-ColorOutput "   📝 Generiere Meta-Description..." -Color $Colors.Info
         $newDescription = New-MetaDescription -Title $item.title.rendered -Content $cleanContent -PostType $item._type
-
         Write-ColorOutput "   🔑 Generiere Fokus-Schluesselwort..." -Color $Colors.Info
         $newFocusKeyword = New-FocusKeyword -Title $item.title.rendered -Content $cleanContent -PostType $item._type
-
         if (-not $newFocusKeyword) {
             $fallbackKeyword = ($item.title.rendered -replace '[^\p{L}\p{N}\s-]', '' -replace '\s+', ' ').Trim()
             if ($fallbackKeyword.Length -gt 60) {
@@ -640,16 +663,13 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
             $newFocusKeyword = $fallbackKeyword
             Write-ColorOutput "   ⚠️  Fokus-Schluesselwort Fallback aus Titel verwendet" -Color $Colors.Warning
         }
-        
         if ($newDescription) {
             Write-ColorOutput "   ✅ Description generiert:" -Color $Colors.Success
             Write-ColorOutput "      '$newDescription'" -Color $Colors.Success
-
             if ($newFocusKeyword) {
                 Write-ColorOutput "   ✅ Fokus-Schluesselwort generiert:" -Color $Colors.Success
                 Write-ColorOutput "      '$newFocusKeyword'" -Color $Colors.Success
             }
-            
             # Im DryRun-Modus nur anzeigen
             if ($DryRun) {
                 Write-ColorOutput "   💭 Wuerde Description und Fokus-Schluesselwort setzen (DRY RUN)" -Color $Colors.Warning
@@ -659,7 +679,6 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
                 # Description aktualisieren
                 Write-ColorOutput "   💾 Aktualisiere Meta-Description und Fokus-Schluesselwort in WordPress..." -Color $Colors.Info
                 $result = Update-PostMetaDescription -PostId $item.id -PostType $item._type -Description $newDescription -FocusKeyword $newFocusKeyword
-                
                 if ($result) {
                     Write-ColorOutput "   ✅ Meta-Description und Fokus-Schluesselwort erfolgreich gespeichert!" -Color $Colors.Success
                     $stats.Success++
@@ -667,6 +686,7 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
                 else {
                     Write-ColorOutput "   ❌ Fehler beim Speichern der SEO-Felder" -Color $Colors.Error
                     $stats.Failed++
+                    $failedTitles += $item.title.rendered
                 }
             }
         }
@@ -678,8 +698,8 @@ for ($i = 0; $i -lt $allItems.Count; $i++) {
     catch {
         Write-ColorOutput "   ❌ Fehler: $($_.Exception.Message)" -Color $Colors.Error
         $stats.Failed++
+        $failedTitles += $item.title.rendered
     }
-    
     Write-ColorOutput ""
 }
 
@@ -700,6 +720,11 @@ if ($stats.Skipped -gt 0) {
 Write-ColorOutput "   📝 Gesamt: $($stats.Total)" -Color $Colors.Info
 Write-ColorOutput ""
 
+if ($failedTitles.Count -gt 0) {
+    Write-ColorOutput "❌ Fehlerhafte Artikel/Seiten (nicht erfolgreich aktualisiert):" -Color $Colors.Error
+    $failedTitles | ForEach-Object { Write-ColorOutput "   - $_" -Color $Colors.Error }
+    Write-ColorOutput ""
+}
 if ($DryRun) {
     Write-ColorOutput "💡 Führe das Skript ohne -DryRun aus, um die Änderungen zu übernehmen" -Color $Colors.Info
     Write-ColorOutput ""
