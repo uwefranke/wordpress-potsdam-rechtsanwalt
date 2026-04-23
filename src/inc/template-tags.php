@@ -172,7 +172,7 @@ function potsdam_display_service_cards() {
         
         <a href="<?php echo $url; ?>" class="service-card-link">
             <div class="service-card">
-                <div class="service-icon">
+                <div class="service-icon" aria-hidden="true">
                     <?php echo $icon_svg; ?>
                 </div>
                 <h3><?php echo esc_html($title); ?></h3>

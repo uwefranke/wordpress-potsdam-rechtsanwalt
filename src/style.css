@@ -14,6 +14,39 @@ Text Domain: potsdam-rechtsanwalt
 Update URI: https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt
 */
 
+/* === Accessibility === */
+/* Screen Reader Only - Inhalt nur für Screen Reader sichtbar */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Skip Link - nur sichtbar wenn fokussiert */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-navy);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
 /* === CSS Variablen === */
 :root {
     --color-navy: #1a3a5c;
@@ -608,6 +641,24 @@ body {
     font-weight: 600;
 }
 
+/* Focus Style für Service Cards (Tastaturnavigation) */
+.service-card-link:focus {
+    outline: none;
+}
+
+.service-card-link:focus .service-card {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-navy);
+}
+
+.service-card-link:focus .service-icon {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+}
+
 .service-icon {
     width: 60px;
     height: 60px;
@@ -737,6 +788,14 @@ body {
 
 .btn-appointment:hover {
     background-color: var(--color-gold);
+}
+
+/* Focus Styles für Links und Buttons */
+a:focus,
+button:focus,
+.btn:focus {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
 }
 
 /* === Content Area === */

@@ -8,7 +8,7 @@ get_header();
 
 <div class="container">
     <div class="wrapper">
-        <main class="main-content">
+        <main class="main-content" id="main-content" role="main">
             <div class="content-area" style="text-align: center; padding: 80px 40px;">
                 <h1 style="font-size: 120px; color: var(--color-navy); margin-bottom: 20px;">404</h1>
                 <h2 style="font-size: 36px; color: var(--color-anthracite); margin-bottom: 30px;">Seite nicht gefunden</h2>

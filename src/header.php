@@ -9,7 +9,10 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header class="site-header">
+<!-- Skip Link für Accessibility -->
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+<header class="site-header" role="banner">
     <div class="header-container">
         <div class="site-branding">
             <?php if (has_custom_logo()) : ?>
@@ -25,7 +28,7 @@
             <span class="menu-toggle-icon"></span>
         </button>
         
-        <nav class="main-navigation">
+        <nav class="main-navigation" role="navigation" aria-label="Hauptnavigation">
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'primary',

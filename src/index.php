@@ -31,7 +31,7 @@ if ($hero_image) {
 <div class="container">
     <div class="wrapper">
         <!-- Main Content Area -->
-        <main class="main-content">
+        <main class="main-content" id="main-content" role="main">
             
             <!-- Services Section -->
             <section class="services-section" id="rechtsgebiete">

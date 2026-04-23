@@ -1,4 +1,4 @@
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo">
     <div class="footer-content">
         
         <!-- Footer Widget 1: Über uns -->

@@ -1,4 +1,4 @@
-<aside class="sidebar" id="kontakt">
+<aside class="sidebar" id="kontakt" role="complementary">
     
     <?php if (get_theme_mod('show_contact_form', true)) : ?>
     <!-- Kontaktformular -->

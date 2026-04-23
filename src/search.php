@@ -8,7 +8,7 @@ get_header();
 
 <div class="container">
     <div class="wrapper">
-        <main class="main-content">
+        <main class="main-content" id="main-content" role="main">
             <div class="content-area">
                 <h1>Suchergebnisse für: "<?php echo get_search_query(); ?>"</h1>
                 
