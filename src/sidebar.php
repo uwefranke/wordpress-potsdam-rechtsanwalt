@@ -107,7 +107,7 @@
         
         <p style="margin-bottom: 15px;">
             <strong>E-Mail:</strong><br>
-            <a href="mailto:<?php echo esc_attr(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>" style="color: #d4af37;">
+            <a href="mailto:<?php echo esc_attr(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>" style="color: #1a3a5c;"> <!-- Navy statt Gold für besseren Kontrast -->
                 <?php echo esc_html(get_theme_mod('contact_email', 'info@potsdam-rechtsanwalt.de')); ?>
             </a>
         </p>
@@ -190,7 +190,7 @@
             $qr_url = potsdam_generate_qrcode_url($vcard, 200);
         ?>
         <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
-            <p style="font-size: 12px; color: #888; margin-bottom: 10px;">Kontakt speichern:</p>
+            <p style="font-size: 12px; color: #555; margin-bottom: 10px;">Kontakt speichern:</p> <!-- Dunkleres Grau für WCAG AA (7.5:1) -->
             
             <?php 
             // Debug: vCard-Daten anzeigen (zum Testen)
