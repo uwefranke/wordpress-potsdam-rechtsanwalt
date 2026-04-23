@@ -250,7 +250,7 @@
                    style="display: inline-block; padding: 8px 16px; background: #1a3a5c; color: white; text-decoration: none; border-radius: 4px; font-size: 13px;">
                     📥 Kontakt herunterladen (.vcf)
                 </a>
-                <p style="font-size: 11px; color: #666; margin-top: 8px; margin-bottom: 0;">
+                <p style="font-size: 11px; color: #495057; margin-top: 8px; margin-bottom: 0;">
                     Alternative: vCard-Datei direkt ins Adressbuch importieren
                 </p>
             </div>
