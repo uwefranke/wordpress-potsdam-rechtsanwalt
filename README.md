@@ -156,6 +156,7 @@ Umfangreiche Dokumentation im [`docs/`](docs/) Verzeichnis:
 - [THEME-STRUKTUR.md](docs/THEME-STRUKTUR.md) - Theme-Dateistruktur
 - [FONTS.md](docs/FONTS.md) - Font-Integration
 - [ACCESSIBILITY.md](docs/ACCESSIBILITY.md) - Barrierefreiheit (WCAG 2.1)
+- [ACCESSIBILITY-CHECKLISTE.md](docs/ACCESSIBILITY-CHECKLISTE.md) - Checkliste für Content-Prüfung
 - [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) - Problemlösungen
 - [SCREENSHOT-INFO.md](docs/SCREENSHOT-INFO.md) - Screenshot-Anforderungen
 
