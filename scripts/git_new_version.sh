@@ -1,9 +1,16 @@
 #!/bin/bash
 
+# --- Git Root ermitteln für robuste Pfade ---
+GIT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ -z "$GIT_ROOT" ]; then
+    echo "FEHLER: Kein Git-Repository gefunden!"
+    exit 1
+fi
+
 # --- Konfiguration ---
 start_from_this_tag="2.1.3" # Aktuelle WordPress Theme Version
-CHANGELOG_FILE="CHANGELOG.md" # Changelog-Datei im Root
-STYLE_CSS="../src/style.css" # WordPress Theme style.css
+CHANGELOG_FILE="$GIT_ROOT/CHANGELOG.md" # Changelog-Datei im Root
+STYLE_CSS="$GIT_ROOT/src/style.css" # WordPress Theme style.css
 GITHUB_REPO="uwefranke/wordpress-potsdam-rechtsanwalt"
 
 SCRIPT_DIR=$(dirname "$0")
