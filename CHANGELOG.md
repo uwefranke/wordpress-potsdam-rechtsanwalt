@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.2.1](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.1)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.0...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* Farbkontrast Footer-Ueberschriften verbessert ([215587a](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/215587ad2a44118e7cbd0ef45894a78fbc99880e)), closes [#d4af37](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/d4af37) [#f4d03](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/f4d03)
+* Farbkontrast-Problem bei vCard-Hinweistext behoben ([1d0e9f5](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/1d0e9f54290c7d292b3acee221c0b0982e650c54)), closes [#666](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/666) [#495057](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/issues/495057)
+
 ## [v2.2.0](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.0)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.7...v) (2026-04-23)
 
 
