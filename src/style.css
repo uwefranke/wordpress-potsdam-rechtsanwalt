@@ -643,15 +643,15 @@ body {
 
 /* Focus Style für Service Cards (Tastaturnavigation) */
 .service-card-link:focus {
-    outline: none;
+    outline: 3px solid var(--color-gold);
+    outline-offset: 5px;
+    border-radius: 12px;
 }
 
 .service-card-link:focus .service-card {
-    outline: 3px solid var(--color-gold);
-    outline-offset: 3px;
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-navy);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-gold);
 }
 
 .service-card-link:focus .service-icon {
