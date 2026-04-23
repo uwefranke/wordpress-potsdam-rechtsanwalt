@@ -1,5 +1,19 @@
 # Changelog
 
+## [v2.1.4](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.4)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.3...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* Default Werte geändert. ([f2b577b](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/f2b577b3593d1c3ae8fb4fde633dda133d506df0))
+* Doppeltes 'vv' in Git-Tags behoben ([f15210b](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/f15210bf674410ceeb62a15bfd009f38939e7f9d))
+* Git-Root-basierte Pfade für git_new_version.sh ([1805d59](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/1805d5984bd7c67331705e8536379d17bf300b58))
+
+
+### Features
+
+* Version & Release Management Automatisierung ([d1cbfa8](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/d1cbfa893f55aa88011102d636a3023146c8b678))
+
 ## [v2.1.4](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/vv2.1.4)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.3...v) (2026-04-23)
 
 
