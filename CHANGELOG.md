@@ -1,5 +1,19 @@
 # Changelog
 
+## [v2.2.3](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.3)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.2...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* ARIA-Attribute für dekorative SVG- und Icon-Elemente hinzugefügt ([99cd837](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/99cd837663ca4b62ddef83553d63439f02f1eb75))
+* Sichtbaren Fokusindikator für Service Cards hinzugefügt ([730a1db](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/730a1dbcbb331a59d92c9b960409814f9add3e3f))
+* Text-Unterstreichung für alle Links hinzugefügt (WCAG SC 1.4.1) ([33a9cfc](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/33a9cfc466f60fe10e8dde04ed86cc00d9da9ecc))
+
+
+### Features
+
+* Cookie-Einstellungen-Link aus Tastaturnavigation entfernt ([a8eede8](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/a8eede88b0ecc8f0f5b7fdf048d5f8cacf7d29b8))
+
 ## [v2.2.2](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.2)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.1...v) (2026-04-23)
 
 
