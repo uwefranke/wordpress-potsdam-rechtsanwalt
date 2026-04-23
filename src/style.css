@@ -759,7 +759,7 @@ body {
 
 .btn {
     background-color: var(--color-gold);
-    color: var(--color-white);
+    color: #0d1f35; /* Sehr dunkles Blau für WCAG AAA Kontrast (7.7:1 auf Gold) */
     padding: 14px 30px;
     border: none;
     border-radius: 4px;
@@ -776,6 +776,7 @@ body {
 
 .btn:hover {
     background-color: var(--color-navy);
+    color: var(--color-white); /* Weiß auf Navy-Blau hat guten Kontrast */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -1080,7 +1081,7 @@ button:focus,
 
 .btn-primary {
     background-color: var(--color-gold);
-    color: var(--color-white);
+    color: #0d1f35; /* Sehr dunkles Blau für WCAG AAA Kontrast (7.7:1 auf Gold) */
     border-color: var(--color-gold);
 }
 
