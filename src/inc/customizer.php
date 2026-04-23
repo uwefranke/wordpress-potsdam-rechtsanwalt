@@ -372,26 +372,42 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
     
     // Icon-Optionen für die Auswahl
     $icon_choices = array(
-        'building'     => __('🏢 Bürogebäude / Verwaltung', 'potsdam-rechtsanwalt'),
-        'home'         => __('🏠 Haus / Immobilie', 'potsdam-rechtsanwalt'),
-        'tool'         => __('🔧 Werkzeug / Baurecht', 'potsdam-rechtsanwalt'),
-        'users'        => __('👥 Menschen / Sozialrecht', 'potsdam-rechtsanwalt'),
-        'truck'        => __('🚛 LKW / Verkehrsrecht', 'potsdam-rechtsanwalt'),
-        'file'         => __('📄 Dokument / Vertragsrecht', 'potsdam-rechtsanwalt'),
-        'clock'        => __('🕐 Uhr / Zeit', 'potsdam-rechtsanwalt'),
-        'tag'          => __('🏷️ Etikett / Kennzeichnung', 'potsdam-rechtsanwalt'),
-        'briefcase'    => __('💼 Aktentasche / Business', 'potsdam-rechtsanwalt'),
-        'shield'       => __('🛡️ Schild / Schutz / Versicherung', 'potsdam-rechtsanwalt'),
-        'balance'      => __('⚖️ Waage / Gerechtigkeit', 'potsdam-rechtsanwalt'),
-        'handshake'    => __('🤝 Handschlag / Vereinbarung', 'potsdam-rechtsanwalt'),
-        'heart'        => __('❤️ Herz / Familie', 'potsdam-rechtsanwalt'),
-        'car'          => __('🚗 Auto / Verkehr', 'potsdam-rechtsanwalt'),
-        'key'          => __('🔑 Schlüssel / Eigentum', 'potsdam-rechtsanwalt'),
-        'graduation'   => __('🎓 Studium / Bildung', 'potsdam-rechtsanwalt'),
+        // Rechts-Icons
+        'scale'        => __('⚖️ Waage - Gerechtigkeit / Allgemeines Recht', 'potsdam-rechtsanwalt'),
+        'gavel'        => __('🔨 Richterhammer - Gerichtsverfahren', 'potsdam-rechtsanwalt'),
+        'file-text'    => __('📋 Vertrag - Vertragsrecht', 'potsdam-rechtsanwalt'),
+        'handshake'    => __('🤝 Handschlag - Vereinbarung / Mediation', 'potsdam-rechtsanwalt'),
+        
+        // Immobilien & Mietrecht
+        'building'     => __('🏢 Gebäude - Mietrecht / WEG', 'potsdam-rechtsanwalt'),
+        'home'         => __('🏠 Haus - Immobilienrecht', 'potsdam-rechtsanwalt'),
+        'key'          => __('🔑 Schlüssel - Eigentum / Besitz', 'potsdam-rechtsanwalt'),
+        
+        // Familien- & Sozialrecht
+        'users'        => __('👥 Menschen - Familienrecht / Sozialrecht', 'potsdam-rechtsanwalt'),
+        'heart'        => __('❤️ Herz - Erbrecht / Familie', 'potsdam-rechtsanwalt'),
+        
+        // Arbeits- & Wirtschaftsrecht
+        'briefcase'    => __('💼 Aktentasche - Arbeitsrecht', 'potsdam-rechtsanwalt'),
+        'dollar'       => __('💰 Geld - Finanzrecht / Forderungen', 'potsdam-rechtsanwalt'),
+        
+        // Verkehrs- & Baurecht
+        'car'          => __('🚗 Auto - Verkehrsrecht', 'potsdam-rechtsanwalt'),
+        'tool'         => __('🔧 Werkzeug - Baurecht', 'potsdam-rechtsanwalt'),
+        
+        // Versicherungs- & Schutzrecht
+        'shield'       => __('🛡️ Schild - Versicherungsrecht / Schutz', 'potsdam-rechtsanwalt'),
+        
+        // Allgemeine Icons
+        'clock'        => __('🕐 Uhr - Fristen / Verjährung', 'potsdam-rechtsanwalt'),
+        'bookmark'     => __('🔖 Lesezeichen - Dokumentation', 'potsdam-rechtsanwalt'),
+        'award'        => __('🏆 Auszeichnung - Erfolg / Qualität', 'potsdam-rechtsanwalt'),
+        'check-circle' => __('✓ Häkchen - Beratung / Prüfung', 'potsdam-rechtsanwalt'),
+        'info'         => __('ℹ️ Info - Beratung / Information', 'potsdam-rechtsanwalt'),
     );
     
     // Default-Icons für die ersten 4 Rechtsgebiete
-    $default_icons = array(1 => 'building', 2 => 'home', 3 => 'tool', 4 => 'users');
+    $default_icons = array(1 => 'scale', 2 => 'home', 3 => 'tool', 4 => 'shield');
     
     // Felder für bis zu 8 Rechtsgebiete
     for ($i = 1; $i <= 8; $i++) {
