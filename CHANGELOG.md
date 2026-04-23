@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.0](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.0)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.7...v) (2026-04-23)
+
+
+### Features
+
+* Accessibility-Verbesserungen WCAG 2.1 ([4cf026b](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/4cf026b9c213d97cd3771e28e7e7de6627a6035d))
+
 ## [v2.1.7](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.1.7)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.1.6...v) (2026-04-23)
 
 
