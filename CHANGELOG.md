@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.7](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.7)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.6...v) (2026-04-23)
+
+
+### Bug Fixes
+
+* ReplaceExisting-Logik gegen ungewollte Neugenerierung absichern ([325eea5](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/325eea51cb4c212d10c7b11861d9d420b235ea4b))
+
 ## [v2.2.6](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.6)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.5...v) (2026-04-23)
 
 
