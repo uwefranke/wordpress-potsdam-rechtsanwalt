@@ -62,8 +62,11 @@ if [ -z "$latest_tag" ]; then
     version="0.0.1"
     echo "Kein existierender Tag gefunden. Starte mit Version: $version"
 else
-    # Parse Major, Minor, Patch aus dem letzten Tag
-    IFS='.' read -r major minor patch <<< "$latest_tag"
+    # Entferne führendes "v" vom Tag, falls vorhanden
+    latest_version="${latest_tag#v}"
+    
+    # Parse Major, Minor, Patch aus dem letzten Tag (ohne "v")
+    IFS='.' read -r major minor patch <<< "$latest_version"
     
     # Berechne neue Version basierend auf Modus
     if [ "$version_mode" = "custom" ]; then
@@ -170,7 +173,7 @@ fi
 echo "# Changelog" > "$CHANGELOG_FILE"
 echo "" >> "$CHANGELOG_FILE" # Leerzeile für Formatierung
 # conventional-changelog fügt den Versionstitel selbst hinzu (z.B. "## 1.2.0 (2025-07-06)")
-echo "## [$version]($ReleaseTagUrl) ${changelog_content#\#}" >> "$CHANGELOG_FILE"
+echo "## [v$version]($ReleaseTagUrl) ${changelog_content#\#}" >> "$CHANGELOG_FILE"
 #echo "" >> "$CHANGELOG_FILE" # Leerzeile für Formatierung
 #echo "#$changelog_content" >> "$CHANGELOG_FILE"
 #echo "" >> "$CHANGELOG_FILE" # Leerzeile für Formatierung
