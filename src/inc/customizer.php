@@ -370,11 +370,35 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
         ),
     );
     
+    // Icon-Optionen für die Auswahl
+    $icon_choices = array(
+        'building'     => __('🏢 Bürogebäude / Verwaltung', 'potsdam-rechtsanwalt'),
+        'home'         => __('🏠 Haus / Immobilie', 'potsdam-rechtsanwalt'),
+        'tool'         => __('🔧 Werkzeug / Baurecht', 'potsdam-rechtsanwalt'),
+        'users'        => __('👥 Menschen / Sozialrecht', 'potsdam-rechtsanwalt'),
+        'truck'        => __('🚛 LKW / Verkehrsrecht', 'potsdam-rechtsanwalt'),
+        'file'         => __('📄 Dokument / Vertragsrecht', 'potsdam-rechtsanwalt'),
+        'clock'        => __('🕐 Uhr / Zeit', 'potsdam-rechtsanwalt'),
+        'tag'          => __('🏷️ Etikett / Kennzeichnung', 'potsdam-rechtsanwalt'),
+        'briefcase'    => __('💼 Aktentasche / Business', 'potsdam-rechtsanwalt'),
+        'shield'       => __('🛡️ Schild / Schutz / Versicherung', 'potsdam-rechtsanwalt'),
+        'balance'      => __('⚖️ Waage / Gerechtigkeit', 'potsdam-rechtsanwalt'),
+        'handshake'    => __('🤝 Handschlag / Vereinbarung', 'potsdam-rechtsanwalt'),
+        'heart'        => __('❤️ Herz / Familie', 'potsdam-rechtsanwalt'),
+        'car'          => __('🚗 Auto / Verkehr', 'potsdam-rechtsanwalt'),
+        'key'          => __('🔑 Schlüssel / Eigentum', 'potsdam-rechtsanwalt'),
+        'graduation'   => __('🎓 Studium / Bildung', 'potsdam-rechtsanwalt'),
+    );
+    
+    // Default-Icons für die ersten 4 Rechtsgebiete
+    $default_icons = array(1 => 'building', 2 => 'home', 3 => 'tool', 4 => 'users');
+    
     // Felder für bis zu 8 Rechtsgebiete
     for ($i = 1; $i <= 8; $i++) {
         $default_title = isset($default_services[$i]) ? $default_services[$i]['title'] : '';
         $default_desc = isset($default_services[$i]) ? $default_services[$i]['description'] : '';
         $default_link = isset($default_services[$i]) ? $default_services[$i]['link'] : '';
+        $default_icon = isset($default_icons[$i]) ? $default_icons[$i] : 'file';
         
         // Titel
         $wp_customize->add_setting("service_{$i}_title", array(
@@ -386,6 +410,19 @@ function potsdam_rechtsanwalt_customizer($wp_customize) {
             'label'    => sprintf(__('Rechtsgebiet %d - Titel', 'potsdam-rechtsanwalt'), $i),
             'section'  => 'services',
             'type'     => 'text',
+        ));
+        
+        // Icon-Auswahl
+        $wp_customize->add_setting("service_{$i}_icon", array(
+            'default'   => $default_icon,
+            'transport' => 'refresh',
+        ));
+        
+        $wp_customize->add_control("service_{$i}_icon", array(
+            'label'    => sprintf(__('Rechtsgebiet %d - Icon', 'potsdam-rechtsanwalt'), $i),
+            'section'  => 'services',
+            'type'     => 'select',
+            'choices'  => $icon_choices,
         ));
         
         // Beschreibung
