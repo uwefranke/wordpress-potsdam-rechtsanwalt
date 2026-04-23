@@ -1,14 +1,12 @@
 # Potsdam Rechtsanwalt - WordPress Theme
 
-[![Version](https://img.shields.io/badge/version-v2.1.4-blue.svg)](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases)
+[![Version](https://img.shields.io/github/v/release/uwefranke/wordpress-potsdam-rechtsanwalt)](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases)
 [![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-purple.svg)](https://www.php.net/)
 [![License](https://img.shields.io/badge/license-GPLv2-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![AI Powered](https://img.shields.io/badge/AI-Claude%20Sonnet%204.6-orange.svg)](https://www.anthropic.com/)
 
 Ein elegantes, professionelles WordPress-Theme für Rechtsanwaltskanzleien in Potsdam und Berlin mit AI-gestützter Content-Erstellung, Dark Mode und umfangreichen Customizer-Optionen.
-
-**Aktuelle Version:** v2.1.4
 
 ## ✨ Highlights
 
@@ -429,8 +427,8 @@ Bearbeiten Sie `index.php` (ab Zeile 25) um die Service-Karten zu ändern:
 
 ## Support & Updates
 
-### Theme-Version
-Aktuelle Version: **v2.1.4** (23. April 2026)
+### Aktuelle Version
+Die neueste Version finden Sie unter [GitHub Releases](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases) – der Release-Badge oben zeigt die aktuelle Version automatisch an.
 
 ### Changelog
 Vollständige Versionshistorie mit allen Änderungen: **[CHANGELOG.md](CHANGELOG.md)**
