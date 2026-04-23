@@ -6,7 +6,7 @@
             <?php if (is_active_sidebar('footer-1')) : ?>
                 <?php dynamic_sidebar('footer-1'); ?>
             <?php else : ?>
-                <h4><?php echo esc_html(get_theme_mod('footer_about_title', 'Über uns')); ?></h4>
+                <h2><?php echo esc_html(get_theme_mod('footer_about_title', 'Über uns')); ?></h2>
                 <p><?php echo esc_html(get_theme_mod('footer_about_text', 'Ihre kompetenten Rechtsanwälte in Potsdam. Wir bieten professionelle Rechtsberatung in allen wichtigen Rechtsgebieten mit persönlichem Service und langjähriger Erfahrung.')); ?></p>
             <?php endif; ?>
         </div>
@@ -16,7 +16,7 @@
             <?php if (is_active_sidebar('footer-2')) : ?>
                 <?php dynamic_sidebar('footer-2'); ?>
             <?php else : ?>
-                <h4>Rechtsgebiete</h4>
+                <h2>Rechtsgebiete</h2>
                 <a href="<?php echo esc_url(home_url('/rechtsgebiete/miet-wohnungseigentumsrecht/')); ?>">Miet- / Wohnungseigentumsrecht</a>
                 <a href="<?php echo esc_url(home_url('/rechtsgebiete/grundstuecks-immobilienrecht/')); ?>">Grundstücks- / Immobilienrecht</a>
                 <a href="<?php echo esc_url(home_url('/rechtsgebiete/baurecht/')); ?>">Baurecht</a>
@@ -29,7 +29,7 @@
             <?php if (is_active_sidebar('footer-3')) : ?>
                 <?php dynamic_sidebar('footer-3'); ?>
             <?php else : ?>
-                <h4>Kontakt</h4>
+                <h2>Kontakt</h2>
                 <p>
                     <strong>Telefon:</strong><br>
                     <?php echo get_theme_mod('contact_phone', '+49 331 123456'); ?>
@@ -57,7 +57,7 @@
         
         <!-- Footer Widget 4: Links -->
         <div class="footer-section">
-            <h4>Weitere Links</h4>
+            <h2>Weitere Links</h2>
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'footer',
