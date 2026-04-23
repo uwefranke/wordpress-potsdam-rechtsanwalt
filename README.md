@@ -432,27 +432,10 @@ Bearbeiten Sie `index.php` (ab Zeile 25) um die Service-Karten zu ändern:
 ### Theme-Version
 Aktuelle Version: **v2.1.4** (23. April 2026)
 
-### Changelog (Auszug)
+### Changelog
+Vollständige Versionshistorie mit allen Änderungen: **[CHANGELOG.md](CHANGELOG.md)**
 
-**v2.1.4** (2026-04-23)
-- ✨ Version & Release Management Automatisierung
-- 🐛 Git-Root-basierte Pfade für git_new_version.sh
-- 🐛 Default-Werte für Customizer angepasst
-
-**v2.1.3** (2026-04-22)
-- 🐛 Dark Mode Button-Kontrast behoben ("Unsere Leistungen" Button)
-- 🐛 Edge Browser Hero-Image Doppeldarstellung behoben
-- ✨ Berlin zu AI-Prompts hinzugefügt (neben Potsdam)
-
-**v2.1.2** (2026-04-22)
-- ✨ AI-gestützte Tag-Generierung für neue Artikel
-- ✨ Bulk Tag Update Script für bestehende Posts (61 Artikel aktualisiert)
-- 📚 UPDATE-POST-TAGS-ANLEITUNG.md erstellt
-
-**v1.3.19** (2026-04-18)
-- ⚙️ Mail-Absender in eigene Customizer-Section verschoben
-
-Vollständige Versionshistorie: [CHANGELOG.md](CHANGELOG.md)
+Die CHANGELOG.md wird automatisch durch das `git_new_version.sh` Script generiert und enthält alle Features, Bugfixes und Änderungen basierend auf den Git-Commits (Conventional Commits Standard).
 
 ## Browser-Kompatibilität
 
