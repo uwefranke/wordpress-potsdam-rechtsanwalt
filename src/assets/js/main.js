@@ -120,17 +120,9 @@
         $(window).on('scroll resize', checkServiceCards);
         checkServiceCards(); // Initial check
         
-        // Scroll to Top Button im Header ansprechen (nicht mehr dynamisch erzeugen)
-        var scrollTopButton = $('.scroll-to-top');
-
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 300) {
-                scrollTopButton.fadeIn();
-            } else {
-                scrollTopButton.fadeOut();
-            }
-        });
-
+        // Scroll to Top Button im Header: immer sichtbar, kein fadeIn/fadeOut mehr
+        var scrollTopButton = $('.site-header .scroll-to-top');
+        scrollTopButton.show();
         scrollTopButton.on('click', function() {
             $('html, body').animate({
                 scrollTop: 0

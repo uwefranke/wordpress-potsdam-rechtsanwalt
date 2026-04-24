@@ -60,17 +60,14 @@
     transform: translateY(-3px);
 }
 
-/* Scroll-to-Top-Button im Header (neben Dark Mode Toggle) */
+/* Scroll-to-Top-Button im Header (immer sichtbar, wie Dark Mode Toggle) */
 .site-header .scroll-to-top {
     position: static;
     bottom: auto;
     right: auto;
     margin-left: 10px;
-    display: inline-flex;
+    display: inline-flex !important;
     vertical-align: middle;
-}
-
-.site-header .scroll-to-top {
     background: var(--color-navy);
     color: var(--color-gold);
     border: 2px solid var(--color-gold);
@@ -80,6 +77,8 @@
     font-size: 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+    align-items: center;
+    justify-content: center;
 }
 
 .site-header .scroll-to-top:hover {
