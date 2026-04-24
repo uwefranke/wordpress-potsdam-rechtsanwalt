@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.34](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.34)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.33...v) (2026-04-24)
+
+
+### Bug Fixes
+
+* css für Scroll Button ([3335423](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/3335423d0227e84cd83bd9a498a967c0aa464abc))
+
 ## [v2.2.33](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.33)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.32...v) (2026-04-24)
 
 ## [v2.2.32](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.32)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.31...v) (2026-04-24)
