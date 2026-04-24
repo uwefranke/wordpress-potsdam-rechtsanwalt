@@ -60,51 +60,6 @@
     transform: translateY(-3px);
 }
 
-/* Scroll-to-Top-Button im Header (immer sichtbar, wie Dark Mode Toggle) */
-.site-header .scroll-to-top {
-    position: static;
-    bottom: auto;
-    right: auto;
-    margin-left: 10px;
-    display: inline-flex !important;
-    vertical-align: middle;
-    background: var(--color-navy);
-    color: var(--color-gold);
-    border: 2px solid var(--color-gold);
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
-    align-items: center;
-    justify-content: center;
-}
-
-.site-header .scroll-to-top:hover {
-    background: var(--color-gold);
-    color: var(--color-navy);
-    border-color: var(--color-navy);
-    transform: translateY(-3px) scale(1.08);
-}
-
-/* Toggle-Stil für Scroll-to-Top auf paginierten Seiten */
-.scroll-to-top--toggle {
-    background: var(--color-navy);
-    color: var(--color-gold);
-    border: 2px solid var(--color-gold);
-    font-size: 26px;
-    width: 52px;
-    height: 52px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
-}
-.scroll-to-top--toggle:hover {
-    background: var(--color-gold);
-    color: var(--color-navy);
-    border-color: var(--color-navy);
-    transform: translateY(-3px) scale(1.08);
-}
 
 /* Toggle-Button-Container für Dark Mode und Scroll-to-Top */
 .header-toggles {
