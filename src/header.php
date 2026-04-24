@@ -30,7 +30,7 @@
 </button>
 
 <!-- Scroll-to-Top Button direkt neben dem Dark Mode Toggle im Header platzieren -->
-<button class="scroll-to-top" aria-label="Nach oben scrollen" style="margin-left: 10px; display: none;"><span class="toggle-icon">⬆️</span></button>
+<button class="scroll-to-top" aria-label="Nach oben scrollen" style="margin-left: 10px;"><span class="toggle-icon">⬆️</span></button>
 
 <header class="site-header" role="banner">
     <div class="header-container">
