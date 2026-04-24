@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.42](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.42)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.41...v) (2026-04-24)
+
+
+### Bug Fixes
+
+* hinzufügen scroll-to-top in styles.css ([311a814](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/311a8141fd0f7b0829bea950d5125cd07b98a568))
+
 ## [v2.2.41](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.41)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.40...v) (2026-04-24)
 
 
