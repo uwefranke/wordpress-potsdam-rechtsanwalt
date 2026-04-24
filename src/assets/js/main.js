@@ -120,12 +120,8 @@
         $(window).on('scroll resize', checkServiceCards);
         checkServiceCards(); // Initial check
         
-        // Toggle-Button-Container für Dark Mode und Scroll-to-Top
-        var toggles = $('<div class="header-toggles"></div>');
-        var scrollTopButton = $('<button class="scroll-to-top" aria-label="Nach oben scrollen"><span class="toggle-icon">⬆️</span></button>');
-        var darkModeButton = $('.dark-mode-toggle').detach();
-        toggles.append(scrollTopButton).append(darkModeButton);
-        $('body').append(toggles);
+        // Scroll to Top Button im Header ansprechen (nicht mehr dynamisch erzeugen)
+        var scrollTopButton = $('.scroll-to-top');
 
         $(window).scroll(function() {
             if ($(this).scrollTop() > 300) {
