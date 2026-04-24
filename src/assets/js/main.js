@@ -120,6 +120,10 @@
         $(window).on('scroll resize', checkServiceCards);
         checkServiceCards(); // Initial check
         
+        // Scroll to Top Button (rundes Icon wie Dark Mode Switch)
+        var scrollTopButton = '<button class="scroll-to-top" aria-label="Nach oben scrollen"><span class="toggle-icon" style="font-size: 26px;">⬆️</span></button>';
+        $('body').append(scrollTopButton);
+        
     });
     
 })(jQuery);
