@@ -1000,6 +1000,23 @@ button:focus,
     .content-area {
         padding: 20px;
     }
+    
+    .dark-mode-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .scroll-to-top {
+        bottom: 70px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -1285,21 +1302,4 @@ button:focus,
 .toggle-icon {
     pointer-events: none;
     user-select: none;
-}
-
-@media (max-width: 768px) {
-    .dark-mode-toggle {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
-    .scroll-to-top {
-        bottom: 70px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
 }
