@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.3.1](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.1)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.0...v) (2026-04-24)
+
+
+### Bug Fixes
+
+* Styles.css übereinander Position für Icons ([5817c29](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/5817c2957c7da00460aa7d0392630c96f748cfaa))
+
 ## [v2.3.0](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.0)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.45...v) (2026-04-24)
 
 
