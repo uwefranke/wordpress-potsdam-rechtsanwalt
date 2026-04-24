@@ -123,6 +123,21 @@
         // Scroll to Top Button (rundes Icon wie Dark Mode Switch)
         var scrollTopButton = '<button class="scroll-to-top" aria-label="Nach oben scrollen"><span class="toggle-icon" style="font-size: 26px;">⬆️</span></button>';
         $('body').append(scrollTopButton);
+
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('.scroll-to-top').fadeIn();
+            } else {
+                $('.scroll-to-top').fadeOut();
+            }
+        });
+
+        $('.scroll-to-top').on('click', function() {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 600);
+            return false;
+        });
         
     });
     
