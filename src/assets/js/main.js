@@ -120,19 +120,22 @@
         $(window).on('scroll resize', checkServiceCards);
         checkServiceCards(); // Initial check
         
-        // Scroll to Top Button (rundes Icon wie Dark Mode Switch)
-        var scrollTopButton = '<button class="scroll-to-top" aria-label="Nach oben scrollen"><span class="toggle-icon" style="font-size: 26px;">⬆️</span></button>';
-        $('body').append(scrollTopButton);
+        // Toggle-Button-Container für Dark Mode und Scroll-to-Top
+        var toggles = $('<div class="header-toggles"></div>');
+        var scrollTopButton = $('<button class="scroll-to-top" aria-label="Nach oben scrollen"><span class="toggle-icon">⬆️</span></button>');
+        var darkModeButton = $('.dark-mode-toggle').detach();
+        toggles.append(scrollTopButton).append(darkModeButton);
+        $('body').append(toggles);
 
         $(window).scroll(function() {
             if ($(this).scrollTop() > 300) {
-                $('.scroll-to-top').fadeIn();
+                scrollTopButton.fadeIn();
             } else {
-                $('.scroll-to-top').fadeOut();
+                scrollTopButton.fadeOut();
             }
         });
 
-        $('.scroll-to-top').on('click', function() {
+        scrollTopButton.on('click', function() {
             $('html, body').animate({
                 scrollTop: 0
             }, 600);
