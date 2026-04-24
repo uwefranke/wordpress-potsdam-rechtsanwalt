@@ -25,14 +25,6 @@
 <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
 
-<!-- Floating Button-Container für Dark Mode und Scroll-to-Top -->
-<div class="header-toggles">
-    <button class="dark-mode-toggle" aria-label="Dark Mode umschalten">
-        <span class="toggle-icon">🌙</span>
-    </button>
-    <button class="scroll-to-top" aria-label="Nach oben scrollen"><span class="toggle-icon">⬆️</span></button>
-</div>
-
 <header class="site-header" role="banner">
     <div class="header-container">
         <div class="site-branding">
