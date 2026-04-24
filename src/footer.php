@@ -87,17 +87,8 @@
     </button>
 </div>
 
-<?php wp_footer(); ?>
 
-<!-- Fallback Footer-Menü -->
-<div class="fallback-menu">
-    <ul style="list-style: none; padding: 0;">
-        <li><a href="<?php echo esc_url(home_url('/impressum')) . '">Impressum</a></li>';
-        <li><a href="<?php echo esc_url(home_url('/datenschutz')) . '">Datenschutz</a></li>';
-        <li><a href="<?php echo esc_url(home_url('/agb')) . '">AGB</a></li>';
-        <li><a href="#" onclick="event.preventDefault(); window.openCookieSettings();">Cookie-Einstellungen</a></li>';
-    </ul>
-</div>
+<?php wp_footer(); ?>
 
 </body>
 </html>
