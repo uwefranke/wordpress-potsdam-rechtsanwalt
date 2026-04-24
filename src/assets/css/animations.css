@@ -1,3 +1,7 @@
+/* Nur der Scroll-to-Top-Button im Floating-Container bleibt sichtbar */
+.scroll-to-top:not(.header-toggles .scroll-to-top) {
+    display: none !important;
+}
 /* Mobile Styles für Navigation */
 .mobile-menu-toggle {
     display: none;
