@@ -1,7 +1,4 @@
 /* Nur der Scroll-to-Top-Button im Floating-Container bleibt sichtbar */
-.scroll-to-top {
-    display: none !important;
-}
 .header-toggles .scroll-to-top {
     display: flex !important;
 }
