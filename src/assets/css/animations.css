@@ -126,3 +126,21 @@
 .service-card:nth-child(4).fade-in {
     transition-delay: 0.4s;
 }
+.header-toggles .scroll-to-top {
+    display: flex !important;
+    position: fixed !important;
+    right: 30px !important;
+    bottom: 30px !important;
+    z-index: 99999 !important;
+    background: var(--color-navy) !important;
+    color: var(--color-gold) !important;
+    border: 2px solid var(--color-gold) !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
