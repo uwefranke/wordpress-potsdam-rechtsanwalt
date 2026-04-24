@@ -97,32 +97,6 @@
             $(this).removeClass('error');
         });
         
-        // Scroll to Top Button
-        console.log('main.js geladen: Scroll-to-Top-Button wird initialisiert');
-        var scrollTopButton = '<button class="scroll-to-top" aria-label="Nach oben scrollen">↑</button>';
-        $('body').append(scrollTopButton);
-        
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 300) {
-                $('.scroll-to-top').fadeIn();
-            } else {
-                $('.scroll-to-top').fadeOut();
-            }
-        });
-        
-        $('.scroll-to-top').on('click', function() {
-            $('html, body').animate({
-                scrollTop: 0
-            }, 600);
-            return false;
-        });
-        
-        // Scroll to Top Button (neben Dark Mode Toggle im Header)
-        $('.scroll-to-top-toggle').on('click', function() {
-            $('html, body').animate({ scrollTop: 0 }, 600);
-            return false;
-        });
-        
         // Hero Parallax-Effekt (leicht)
         $(window).scroll(function() {
             var scrolled = $(window).scrollTop();

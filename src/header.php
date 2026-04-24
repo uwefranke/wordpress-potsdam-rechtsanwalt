@@ -61,11 +61,6 @@
     <span class="toggle-icon">🌙</span>
 </button>
 
-<!-- Scroll to Top Button neben Dark Mode Toggle -->
-<button class="scroll-to-top-toggle" aria-label="Nach oben scrollen">
-    <span class="toggle-icon">⬆️</span>
-</button>
-
 <?php
 // Fallback-Menü falls kein Menü definiert ist
 function potsdam_rechtsanwalt_fallback_menu() {
