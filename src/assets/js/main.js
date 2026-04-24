@@ -120,9 +120,18 @@
         $(window).on('scroll resize', checkServiceCards);
         checkServiceCards(); // Initial check
         
-        // Scroll to Top Button im .header-toggles-Container: immer sichtbar, kein fadeIn/fadeOut mehr
+        // Scroll to Top Button im .header-toggles-Container: nur beim Scrollen sichtbar
         var scrollTopButton = $('.header-toggles .scroll-to-top');
-        scrollTopButton.show();
+        scrollTopButton.hide();
+
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 200) {
+                scrollTopButton.fadeIn();
+            } else {
+                scrollTopButton.fadeOut();
+            }
+        });
+
         scrollTopButton.on('click', function() {
             $('html, body').animate({
                 scrollTop: 0
