@@ -97,17 +97,11 @@
             $(this).removeClass('error');
         });
         
-        // Scroll to Top Button (angepasst für paginierte Seiten)
-        var isPaged = $('body').hasClass('paged-view');
-        var scrollTopButton;
-        if (isPaged) {
-            // Stil wie Dark-Mode-Toggle (runde Form, Icon, gleiche Klasse)
-            scrollTopButton = '<button class="scroll-to-top scroll-to-top--toggle dark-mode-toggle" aria-label="Nach oben scrollen"><span class="toggle-icon">↑</span></button>';
-        } else {
-            scrollTopButton = '<button class="scroll-to-top" aria-label="Nach oben scrollen">↑</button>';
-        }
+        // Scroll to Top Button
+        console.log('main.js geladen: Scroll-to-Top-Button wird initialisiert');
+        var scrollTopButton = '<button class="scroll-to-top" aria-label="Nach oben scrollen">↑</button>';
         $('body').append(scrollTopButton);
-
+        
         $(window).scroll(function() {
             if ($(this).scrollTop() > 300) {
                 $('.scroll-to-top').fadeIn();
@@ -115,7 +109,7 @@
                 $('.scroll-to-top').fadeOut();
             }
         });
-
+        
         $('.scroll-to-top').on('click', function() {
             $('html, body').animate({
                 scrollTop: 0
