@@ -1254,8 +1254,8 @@ button:focus,
 
 .scroll-to-top {
     position: fixed;
-    bottom: 30px;
-    right: 90px;
+    bottom: 90px;
+    right: 30px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -1296,7 +1296,7 @@ button:focus,
         font-size: 20px;
     }
     .scroll-to-top {
-                bottom: 20px;
+        bottom: 70px;
         right: 20px;
         width: 45px;
         height: 45px;
