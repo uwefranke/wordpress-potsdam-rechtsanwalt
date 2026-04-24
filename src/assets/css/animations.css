@@ -1,6 +1,6 @@
 /* Nur der Scroll-to-Top-Button im Floating-Container bleibt sichtbar */
 .header-toggles .scroll-to-top {
-    display: flex !important;
+    display: flex;
 }
 /* Mobile Styles für Navigation */
 .mobile-menu-toggle {
