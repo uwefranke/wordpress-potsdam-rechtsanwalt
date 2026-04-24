@@ -117,6 +117,12 @@
             return false;
         });
         
+        // Scroll to Top Button (neben Dark Mode Toggle im Header)
+        $('.scroll-to-top-toggle').on('click', function() {
+            $('html, body').animate({ scrollTop: 0 }, 600);
+            return false;
+        });
+        
         // Hero Parallax-Effekt (leicht)
         $(window).scroll(function() {
             var scrolled = $(window).scrollTop();

@@ -60,6 +60,31 @@
     transform: translateY(-3px);
 }
 
+/* Scroll to Top Toggle im Header */
+.scroll-to-top-toggle {
+    background: var(--color-navy);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    vertical-align: middle;
+}
+.scroll-to-top-toggle:hover {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    border-color: var(--color-navy);
+    transform: translateY(-3px) scale(1.08);
+}
+
 /* Toggle-Stil für Scroll-to-Top auf paginierten Seiten */
 .scroll-to-top--toggle {
     background: var(--color-navy);
