@@ -24,6 +24,11 @@
 <!-- Skip Link für Accessibility -->
 <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
+<!-- Dark Mode Toggle Button wieder im Header platzieren -->
+<button class="dark-mode-toggle" aria-label="Dark Mode umschalten">
+    <span class="toggle-icon">🌙</span>
+</button>
+
 <header class="site-header" role="banner">
     <div class="header-container">
         <div class="site-branding">
