@@ -60,6 +60,24 @@
     transform: translateY(-3px);
 }
 
+/* Toggle-Stil für Scroll-to-Top auf paginierten Seiten */
+.scroll-to-top--toggle {
+    background: var(--color-navy);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    font-size: 26px;
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+}
+.scroll-to-top--toggle:hover {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    border-color: var(--color-navy);
+    transform: translateY(-3px) scale(1.08);
+}
+
 /* Formular Fehler-Styling */
 .contact-form input.error,
 .contact-form textarea.error,

@@ -1,3 +1,8 @@
+// Body-Class für paginierte Seiten hinzufügen
+add_filter('body_class', function($classes) {
+    if (is_paged()) $classes[] = 'paged-view';
+    return $classes;
+});
 <?php
 /**
  * Potsdam Rechtsanwalt Theme Functions
