@@ -1221,7 +1221,7 @@ button:focus,
 }
 
 /* === Dark Mode Toggle Button === */
-.dark-mode-toggle {
+.dark-mode-toggle .scroll-to-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -1241,13 +1241,13 @@ button:focus,
     box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-.dark-mode-toggle:hover {
+.dark-mode-toggle:hover .scroll-to-top:hover{
     background-color: var(--color-gold);
     color: var(--color-navy);
     transform: scale(1.1);
 }
 
-.dark-mode-toggle:focus {
+.dark-mode-toggle:focus .scroll-to-top:focus{
     outline: 3px solid var(--color-gold);
     outline-offset: 3px;
 }
@@ -1260,6 +1260,13 @@ button:focus,
 @media (max-width: 768px) {
     .dark-mode-toggle {
         bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    .scroll-to-top {
+                bottom: 20px;
         right: 20px;
         width: 45px;
         height: 45px;
