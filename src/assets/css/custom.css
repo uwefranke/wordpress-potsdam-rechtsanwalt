@@ -74,3 +74,13 @@
 */
 
 /* === Ihre eigenen Styles hier einfügen === */
+
+.header-toggles .toggle-icon,
+.header-toggles .toggle-icon img {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    object-fit: contain !important;
+}
