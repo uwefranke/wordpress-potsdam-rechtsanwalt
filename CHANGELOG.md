@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.3.0](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.0)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.45...v) (2026-04-24)
+
+
+### Bug Fixes
+
+* Styles.css für scroll-to-uo Buttoon ([045cd0e](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/045cd0e1e766986553ac1aa47785e0edbfc8a26e))
+
 ## [v2.2.45](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.45)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.44...v) (2026-04-24)
 
 
