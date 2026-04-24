@@ -120,14 +120,17 @@
         $(window).on('scroll resize', checkServiceCards);
         checkServiceCards(); // Initial check
         
-        // Scroll to Top Button im .header-toggles-Container: nur beim Scrollen sichtbar
+        // Scroll to Top Button im .header-toggles-Container: nur beim Scrollen sichtbar (mit Debug)
         var scrollTopButton = $('.header-toggles .scroll-to-top');
         scrollTopButton.hide();
 
         $(window).on('scroll', function() {
+            console.log('Scroll position:', $(window).scrollTop());
             if ($(window).scrollTop() > 200) {
+                console.log('Button anzeigen');
                 scrollTopButton.fadeIn();
             } else {
+                console.log('Button verstecken');
                 scrollTopButton.fadeOut();
             }
         });
