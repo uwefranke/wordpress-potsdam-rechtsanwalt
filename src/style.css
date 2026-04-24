@@ -1221,7 +1221,7 @@ button:focus,
 }
 
 /* === Dark Mode Toggle Button === */
-.dark-mode-toggle .scroll-to-top {
+.dark-mode-toggle {
     position: fixed;
     bottom: 30px;
     right: 30px;
