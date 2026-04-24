@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.2.40](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.40)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.39...v) (2026-04-24)
+
+
+### Bug Fixes
+
+* Test css ([fc04425](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/fc044253bf773d87430d12fb4844cc77a74e1126))
+
 ## [v2.2.39](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.2.39)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.2.38...v) (2026-04-24)
 
 
