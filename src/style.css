@@ -1121,24 +1121,28 @@ html.light-mode .content-area a:hover {
 }
 
 /* === Dark Mode: Weiter lesen Button === */
+html.dark-mode a.more-link,
+html.dark-mode a.read-more,
 html.dark-mode .more-link,
 html.dark-mode .read-more {
-    background: var(--color-gold);
-    color: #000;
-    border-radius: 4px;
-    padding: 10px 24px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-block;
-    border: 2px solid var(--color-gold);
-    transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background: var(--color-gold) !important;
+    color: #000 !important;
+    border-radius: 4px !important;
+    padding: 10px 24px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    border: 2px solid var(--color-gold) !important;
+    transition: var(--transition) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
 }
+html.dark-mode a.more-link:hover,
+html.dark-mode a.read-more:hover,
 html.dark-mode .more-link:hover,
 html.dark-mode .read-more:hover {
-    background: transparent;
-    color: var(--color-gold);
-    border: 2px solid var(--color-gold);
+    background: transparent !important;
+    color: var(--color-gold) !important;
+    border: 2px solid var(--color-gold) !important;
 }
 
 @media (max-width: 600px) {
