@@ -1100,6 +1100,40 @@ button:focus,
     border: 2px solid transparent;
 }
 
+/* === Accessibility & Mobile Verbesserungen === */
+/* Besserer Kontrast für Content-Bereich */
+.content-area,
+.content-area p,
+.content-area span,
+.content-area .last {
+        color: #222 !important;
+        background: #fff !important;
+}
+
+.content-area a {
+        color: #1a3a5c !important;
+        text-decoration: underline;
+}
+
+.content-area a:hover {
+        color: #d4af37 !important;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 15px;
+    }
+    .content-area h2 {
+        font-size: 22px;
+    }
+    .content-area h3 {
+        font-size: 18px;
+    }
+    .content-area {
+        padding: 10px;
+    }
+}
+
 .btn-primary {
     background-color: var(--color-gold);
     color: #0d1f35; /* Sehr dunkles Blau für WCAG AAA Kontrast (7.7:1 auf Gold) */
