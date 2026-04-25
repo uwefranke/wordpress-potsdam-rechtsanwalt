@@ -1100,23 +1100,44 @@ button:focus,
     border: 2px solid transparent;
 }
 
+
 /* === Accessibility & Mobile Verbesserungen === */
-/* Besserer Kontrast für Content-Bereich */
-.content-area,
-.content-area p,
-.content-area span,
-.content-area .last {
-        color: #222 !important;
-        background: #fff !important;
+/* Besserer Kontrast für Content-Bereich NUR im Light Mode */
+html.light-mode .content-area,
+html.light-mode .content-area p,
+html.light-mode .content-area span,
+html.light-mode .content-area .last {
+    color: #222;
+    background: #fff;
 }
 
-.content-area a {
-        color: #1a3a5c !important;
-        text-decoration: underline;
+html.light-mode .content-area a {
+    color: #1a3a5c;
+    text-decoration: underline;
 }
 
-.content-area a:hover {
-        color: #d4af37 !important;
+html.light-mode .content-area a:hover {
+    color: #d4af37;
+}
+
+/* === Dark Mode: Weiter lesen Button === */
+html.dark-mode .more-link,
+html.dark-mode .read-more {
+     background: var(--color-gold);
+     color: #1a202c;
+     border-radius: 4px;
+     padding: 10px 24px;
+     font-weight: 600;
+     text-decoration: none;
+     display: inline-block;
+     border: none;
+     transition: var(--transition);
+}
+html.dark-mode .more-link:hover,
+html.dark-mode .read-more:hover {
+     background: transparent;
+     color: var(--color-gold);
+     border: 2px solid var(--color-gold);
 }
 
 @media (max-width: 600px) {
