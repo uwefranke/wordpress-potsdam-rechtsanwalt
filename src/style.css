@@ -1123,21 +1123,22 @@ html.light-mode .content-area a:hover {
 /* === Dark Mode: Weiter lesen Button === */
 html.dark-mode .more-link,
 html.dark-mode .read-more {
-     background: var(--color-gold);
-     color: #1a202c;
-     border-radius: 4px;
-     padding: 10px 24px;
-     font-weight: 600;
-     text-decoration: none;
-     display: inline-block;
-     border: none;
-     transition: var(--transition);
+    background: var(--color-gold);
+    color: #000;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid var(--color-gold);
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 html.dark-mode .more-link:hover,
 html.dark-mode .read-more:hover {
-     background: transparent;
-     color: var(--color-gold);
-     border: 2px solid var(--color-gold);
+    background: transparent;
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
 }
 
 @media (max-width: 600px) {
@@ -1152,6 +1153,13 @@ html.dark-mode .read-more:hover {
     }
     .content-area {
         padding: 10px;
+    }
+    .more-link,
+    .read-more {
+        padding: 10px 14px;
+        font-size: 15px;
+        max-width: 90vw;
+        white-space: normal;
     }
 }
 
