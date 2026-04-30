@@ -1,5 +1,7 @@
 # Changelog
 
+## [v2.3.8](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.8)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.7...v) (2026-04-30)
+
 ## [v2.3.7](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.7)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.6...v) (2026-04-30)
 
 ## [v2.3.6](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.6)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.5...v) (2026-04-25)
