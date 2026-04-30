@@ -188,28 +188,52 @@ html.dark-mode .hero-content p {
     opacity: 1;
 }
 
-/* Buttons im Dark Mode */
-html.dark-mode .btn-primary {
-    background-color: var(--color-gold);
-    color: #000000;
-    border-color: var(--color-gold);
+
+/* Buttons im Dark Mode - konsolidiert */
+html.dark-mode .btn,
+html.dark-mode a.btn,
+html.dark-mode .btn-primary,
+html.dark-mode a.btn-primary {
+    background-color: var(--color-gold) !important;
+    color: #000 !important;
+    border: 2px solid var(--color-gold) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+html.dark-mode .btn:hover,
+html.dark-mode a.btn:hover,
+html.dark-mode .btn-primary:hover,
+html.dark-mode a.btn-primary:hover {
+    background-color: transparent !important;
+    color: var(--color-gold) !important;
+    border: 2px solid var(--color-gold) !important;
+}
+html.dark-mode .btn-secondary,
+html.dark-mode a.btn-secondary {
+    background-color: transparent !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+html.dark-mode .btn-secondary:hover,
+html.dark-mode a.btn-secondary:hover {
+    background-color: #fff !important;
+    color: #1a202c !important;
 }
 
-html.dark-mode .btn-primary:hover {
-    background-color: transparent;
-    color: var(--color-gold);
-    border-color: var(--color-gold);
+/* Links in Buttons im Dark Mode immer kontrastreich */
+html.dark-mode .btn a,
+html.dark-mode a.btn,
+html.dark-mode .btn-primary a,
+html.dark-mode a.btn-primary a {
+    color: #000 !important;
+    text-decoration: none !important;
 }
-
-html.dark-mode .btn-secondary {
-    background-color: transparent;
-    color: #ffffff;
-    border-color: #ffffff;
+html.dark-mode .btn-secondary a,
+html.dark-mode a.btn-secondary a {
+    color: #fff !important;
 }
-
-html.dark-mode .btn-secondary:hover {
-    background-color: #ffffff;
-    color: #1a202c;
+html.dark-mode .btn-secondary:hover a,
+html.dark-mode a.btn-secondary:hover a {
+    color: #1a202c !important;
 }
 
 /* Content Area im Dark Mode */
@@ -761,11 +785,14 @@ body {
     resize: vertical;
 }
 
-.btn {
+
+/* Konsolidierte Button-Basis-Styles */
+.btn,
+a.btn {
     background-color: var(--color-gold);
-    color: #0d1f35; /* Sehr dunkles Blau für WCAG AAA Kontrast (7.7:1 auf Gold) */
+    color: #0d1f35;
     padding: 14px 30px;
-    border: none;
+    border: 2px solid var(--color-gold);
     border-radius: 4px;
     font-size: 16px;
     font-weight: 500;
@@ -778,9 +805,11 @@ body {
     display: inline-block;
 }
 
-.btn:hover {
+.btn:hover,
+a.btn:hover {
     background-color: var(--color-navy);
-    color: var(--color-white); /* Weiß auf Navy-Blau hat guten Kontrast */
+    color: var(--color-white);
+    border: 2px solid var(--color-navy);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -1167,27 +1196,31 @@ html.dark-mode .read-more:hover {
     }
 }
 
-.btn-primary {
-    background-color: var(--color-gold);
-    color: #0d1f35; /* Sehr dunkles Blau für WCAG AAA Kontrast (7.7:1 auf Gold) */
-    border-color: var(--color-gold);
-}
 
-.btn-primary:hover {
+.btn-primary,
+a.btn-primary {
+    background-color: var(--color-gold);
+    color: #0d1f35;
+    border: 2px solid var(--color-gold);
+}
+.btn-primary:hover,
+a.btn-primary:hover {
     background-color: transparent;
     color: var(--color-gold);
+    border: 2px solid var(--color-gold);
     transform: translateY(-2px);
 }
-
-.btn-secondary {
+.btn-secondary,
+a.btn-secondary {
     background-color: transparent;
     color: var(--color-white);
-    border-color: var(--color-white);
+    border: 2px solid var(--color-white);
 }
-
-.btn-secondary:hover {
+.btn-secondary:hover,
+a.btn-secondary:hover {
     background-color: var(--color-white);
     color: var(--color-navy);
+    border: 2px solid var(--color-white);
     transform: translateY(-2px);
 }
 
