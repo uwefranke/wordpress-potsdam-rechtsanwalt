@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.3.9](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.9)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.8...v) (2026-04-30)
+
+
+### Bug Fixes
+
+* Button mobile ([e8a5683](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/commit/e8a5683fe2c7d6c359dd2b184708f7c2b7a8d1a1))
+
 ## [v2.3.8](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.8)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.7...v) (2026-04-30)
 
 ## [v2.3.7](https://github.com/uwefranke/wordpress-potsdam-rechtsanwalt/releases/tag/v2.3.7)  [](https://github.com/uwefranke/joomla-potsdam-rechtsanwalt/compare/v2.3.6...v) (2026-04-30)
