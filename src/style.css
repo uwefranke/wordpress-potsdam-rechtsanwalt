@@ -1189,10 +1189,13 @@ html.dark-mode .read-more:hover {
     }
     .more-link,
     .read-more {
-        padding: 10px 14px;
-        font-size: 15px;
-        max-width: 90vw;
-        white-space: normal;
+        padding: 10px 14px !important;
+        font-size: 15px !important;
+        max-width: 90vw !important;
+        width: auto !important;
+        display: inline-block !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
     }
 }
 
